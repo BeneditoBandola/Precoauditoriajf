@@ -12,7 +12,7 @@ from reportlab.lib import colors
 st.set_page_config(page_title="Monitor de Preços - Royal Canin (JF)", layout="wide")
 
 st.title("🐾 Auditoria Dinâmica de Preços - Royal Canin (Juiz de Fora)")
-st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Adicione produtos dinamicamente, gere relatórios em PDF e gerencie seu histórico.")
+st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Os dados são salvos instantaneamente no JSON e recarregados ao reabrir a loja.")
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
 
@@ -110,7 +110,7 @@ def parse_preco_br(texto):
 def fmt_brl(val):
     return f"R$ {val:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
 
-# 3. Gerenciamento de Persistência via JSON
+# 3. Gerenciamento de Persistência Permanente (JSON Eterno)
 def carregar_dados_json():
     if os.path.exists(ARQUIVO_JSON):
         try:
@@ -286,10 +286,10 @@ with aba_coleta:
     if loja_selecionada is not None:
         st.success(f"**Loja Ativa:** {loja_selecionada['CÓDIGO']} - {loja_selecionada['NOME']} | Endereço: {loja_selecionada.get('ENDEREÇO', 'N/D')}")
         
-        loja_id_str = str(loja_selecionada['CÓDIGO'])
-        if 'loja_atual' not in st.session_state or st.session_state['loja_atual'] != loja_id_str:
-            st.session_state['loja_atual'] = loja_id_str
-            st.session_state['produtos_coletados_loja'] = []
+        cod_loja_atual = int(loja_selecionada['CÓDIGO'])
+        
+        # Carregar automaticamente da persistência eterna do JSON tudo o que já foi salvo para esta loja
+        itens_loja_salvos = [item for item in st.session_state['historico_auditoria'] if int(item.get('Código Loja', 0)) == cod_loja_atual]
 
         st.markdown("---")
         st.subheader("🔍 Buscar Produto por Nome (Col. D ou E), EAN (Col. F) ou Código")
@@ -319,6 +319,7 @@ with aba_coleta:
                     row_idx = str(prod['ROW_INDEX'])
                     
                     p_rec_str = fmt_brl(p_rec)
+                    cod_exibicao = codigos_lista[0] if codigos_lista else p_ean
                     
                     with st.container():
                         c_img, c_info, c_preco, c_qtd, c_btn = st.columns([1, 3, 2, 2, 2])
@@ -345,7 +346,6 @@ with aba_coleta:
                                 st.markdown("📦 *Sem foto*")
                                 
                         with c_info:
-                            cod_exibicao = codigos_lista[0] if codigos_lista else p_ean
                             st.markdown(f"**{p_nome}**<br><small>Cód: {cod_exibicao} | EAN: {p_ean}</small>", unsafe_allow_html=True)
                             st.text(f"Preço recomendado: {p_rec_str}")
                             
@@ -362,17 +362,18 @@ with aba_coleta:
                                 if preco_prat <= 0:
                                     st.warning("Informe o preço praticado.")
                                 else:
-                                    ja_adicionado = any(item['Código Produto'] == cod_exibicao for item in st.session_state['produtos_coletados_loja'])
+                                    # Trava anti-duplicidade na mesma loja
+                                    ja_adicionado = any(str(item.get('Código Produto')) == str(cod_exibicao) for item in itens_loja_salvos)
                                     if ja_adicionado:
-                                        st.error(f"⚠️ Este produto ({p_nome}) já foi adicionado nesta loja! Remova-o da lista abaixo se precisar alterar o preço ou quantidade.")
+                                        st.error(f"⚠️ Este produto ({p_nome}) já está salvo nesta loja! Exclua-o na lista abaixo se precisar alterar o preço ou quantidade.")
                                     else:
                                         dif = preco_prat - p_rec
                                         var = (dif / p_rec) * 100 if p_rec > 0 else 0.0
                                         
                                         novo_item = {
-                                            "ID_REGISTRO": f"{loja_selecionada['CÓDIGO']}_{cod_exibicao}_{datetime.datetime.now().strftime('%H%M%S%f')}",
+                                            "ID_REGISTRO": f"{cod_loja}_{cod_exibicao}_{datetime.datetime.now().strftime('%H%M%S%f')}",
                                             "Data/Hora": hora_brasil(),
-                                            "Código Loja": int(loja_selecionada['CÓDIGO']),
+                                            "Código Loja": cod_loja,
                                             "Nome Loja": str(loja_selecionada['NOME']),
                                             "Cidade": str(loja_selecionada['CIDADE']),
                                             "Código Produto": cod_exibicao,
@@ -384,17 +385,23 @@ with aba_coleta:
                                             "Variação (%)": round(var, 2)
                                         }
                                         
-                                        st.session_state['produtos_coletados_loja'].append(novo_item)
-                                        st.success(f"Adicionado: {p_nome}")
+                                        # Salvamento eterno imediato no JSON
+                                        st.session_state['historico_auditoria'].append(novo_item)
+                                        salvar_dados_json(st.session_state['historico_auditoria'])
+                                        st.success(f"Adicionado e salvo com sucesso: {p_nome}")
+                                        st.rerun()
                         st.divider()
             else:
                 st.info("Nenhum produto encontrado com este termo de busca.")
 
         st.markdown("---")
-        st.subheader("🛒 Produtos Já Catalogados Nesta Loja (Sessão Atual)")
+        st.subheader("🛒 Produtos Já Catalogados Nesta Loja (Salvos Permanentemente)")
         
-        if st.session_state['produtos_coletados_loja']:
-            for i, item in enumerate(st.session_state['produtos_coletados_loja']):
+        # Recarregar itens salvos atualizados
+        itens_loja_salvos = [item for item in st.session_state['historico_auditoria'] if int(item.get('Código Loja', 0)) == cod_loja_atual]
+        
+        if itens_loja_salvos:
+            for i, item in enumerate(itens_loja_salvos):
                 prat_str = fmt_brl(item['Preco Praticado'])
                 rec_str = fmt_brl(item['Preco Recomendado'])
                 dif_str = fmt_brl(item['Diferenca (R$)'])
@@ -410,33 +417,22 @@ with aba_coleta:
                     * **Diferença em Reais:** {dif_str}  
                     * **Diferença em Porcentagem:** {var_str}
                     """)
-                    if st.button("🗑️ Remover da Lista", key=f"rm_sessao_{i}"):
-                        st.session_state['produtos_coletados_loja'].pop(i)
+                    if st.button("🗑️ Excluir da Loja", key=f"rm_eterno_{cod_loja_atual}_{i}"):
+                        id_alvo = item.get('ID_REGISTRO')
+                        st.session_state['historico_auditoria'] = [x for x in st.session_state['historico_auditoria'] if x.get('ID_REGISTRO') != id_alvo]
+                        salvar_dados_json(st.session_state['historico_auditoria'])
+                        st.success("Item removido com sucesso!")
                         st.rerun()
                     st.divider()
             
-            col_b_save, col_b_exit = st.columns(2)
-            with col_b_save:
-                if st.button("💾 Salvar Permanentemente no Histórico (JSON)"):
-                    hist_geral = st.session_state['historico_auditoria']
-                    hist_geral.extend(st.session_state['produtos_coletados_loja'])
-                    st.session_state['historico_auditoria'] = hist_geral
-                    salvar_dados_json(hist_geral)
-                    st.success("✅ Dados salvos com segurança no arquivo JSON!")
-            with col_b_exit:
-                if st.button("🚪 Salvar e Sair (Continuar Depois)"):
-                    hist_geral = st.session_state['historico_auditoria']
-                    hist_geral.extend(st.session_state['produtos_coletados_loja'])
-                    st.session_state['historico_auditoria'] = hist_geral
-                    salvar_dados_json(hist_geral)
-                    st.session_state['produtos_coletados_loja'] = []
-                    st.success("✅ Progresso salvo com segurança! Você pode fechar o aplicativo e retornar quando quiser de onde parou.")
-                    st.rerun()
+            if st.button("🚪 Salvar e Sair (Continuar Depois)"):
+                st.success("✅ Progresso salvo eternamente! Você pode fechar o aplicativo e retornar quando quiser de onde parou.")
+                st.rerun()
                 
             st.markdown("---")
             st.subheader("📄 Relatório PDF & Envio por E-mail")
             
-            pdf_path = gerar_pdf_loja(loja_selecionada['NOME'], loja_selecionada['CÓDIGO'], loja_selecionada['CIDADE'], st.session_state['produtos_coletados_loja'])
+            pdf_path = gerar_pdf_loja(loja_selecionada['NOME'], loja_selecionada['CÓDIGO'], loja_selecionada['CIDADE'], itens_loja_salvos)
             
             with open(pdf_path, "rb") as f:
                 pdf_bytes = f.read()
@@ -461,7 +457,7 @@ with aba_coleta:
             if st.button("📧 Enviar Relatório por E-mail"):
                 st.success(f"Relatório da loja {loja_selecionada['NOME']} gerado em PDF e enviado com sucesso para: {email_destino}!")
         else:
-            st.info("Nenhum produto adicionado ainda nesta visita.")
+            st.info("Nenhum produto cadastrado nesta loja ainda. Use a busca acima para começar.")
     else:
         st.info("👈 Selecione uma loja na barra lateral.")
 
