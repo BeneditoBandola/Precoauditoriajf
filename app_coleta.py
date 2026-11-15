@@ -7,7 +7,7 @@ import json
 st.set_page_config(page_title="Monitor de Preços - Royal Canin (JF)", layout="wide")
 
 st.title("🐾 Auditoria Dinâmica de Preços - Royal Canin (Juiz de Fora)")
-st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. As imagens são carregadas automaticamente da pasta `imagens/`.")
+st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Edite ou exclua registros salvos a qualquer momento.")
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
 
@@ -44,7 +44,6 @@ def load_produtos():
                 if idx == 0 and any(str(v).upper() in ['DESCRIÇÃO', 'PRODUTO', 'NOME', 'EAN', 'PREÇO'] for v in row.values):
                     continue
                 
-                # Capturar colunas de código/ID (A, B, C)
                 cods = []
                 for col_idx in range(min(3, len(row))):
                     val = str(row.iloc[col_idx]).strip()
@@ -90,6 +89,15 @@ def load_produtos():
 
 df_produtos = load_produtos()
 
+def parse_preco_br(texto):
+    if not texto:
+        return 0.0
+    try:
+        limpo = str(texto).strip().replace('R$', '').replace(' ', '').replace('.', '').replace(',', '.')
+        return float(limpo)
+    except:
+        return 0.0
+
 # 3. Gerenciamento de Persistência via JSON
 def carregar_dados_json():
     if os.path.exists(ARQUIVO_JSON):
@@ -129,7 +137,7 @@ if not df_lojas_disponiveis.empty:
         loja_selecionada = df_lojas_disponiveis[df_lojas_disponiveis['CÓDIGO'] == cod_loja].iloc[0]
 
 # --- ABAS DO APLICATIVO ---
-aba_coleta, aba_historico = st.tabs(["📝 Coleta Dinâmica em Loja", "📊 Histórico e Consultas (JSON)"])
+aba_coleta, aba_historico = st.tabs(["📝 Coleta Dinâmica em Loja", "📊 Histórico, Edição e Exclusão (JSON)"])
 
 with aba_coleta:
     if loja_selecionada is not None:
@@ -167,7 +175,6 @@ with aba_coleta:
                     p_rec = float(prod['PREÇO'])
                     row_idx = str(prod['ROW_INDEX'])
                     
-                    # Formatar preço com vírgula
                     p_rec_str = f"R$ {p_rec:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
                     
                     with st.container():
@@ -200,7 +207,8 @@ with aba_coleta:
                             st.text(f"Preço recomendado: {p_rec_str}")
                             
                         with c_preco:
-                            preco_prat = st.number_input(f"Preço Gôndola", min_value=0.0, value=0.0, step=0.50, format="%.2f", key=f"preco_{row_idx}_{idx}")
+                            preco_prat_txt = st.text_input(f"Preço Gôndola", value="", placeholder="0,00", key=f"preco_{row_idx}_{idx}")
+                            preco_prat = parse_preco_br(preco_prat_txt)
                             
                         with c_qtd:
                             qtd_loja = st.number_input(f"Qtd Loja", min_value=0, value=1, step=1, key=f"qtd_{row_idx}_{idx}")
@@ -215,6 +223,7 @@ with aba_coleta:
                                     var = (dif / p_rec) * 100 if p_rec > 0 else 0.0
                                     
                                     novo_item = {
+                                        "ID_REGISTRO": f"{loja_selecionada['CÓDIGO']}_{cod_exibicao}_{datetime.datetime.now().strftime('%H%M%S%f')}",
                                         "Data/Hora": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                                         "Código Loja": int(loja_selecionada['CÓDIGO']),
                                         "Nome Loja": str(loja_selecionada['NOME']),
@@ -235,16 +244,20 @@ with aba_coleta:
                 st.info("Nenhum produto encontrado com este termo de busca.")
 
         st.markdown("---")
-        st.subheader("🛒 Produtos Já Catalogados Nesta Loja")
+        st.subheader("🛒 Produtos Já Catalogados Nesta Loja (Sessão Atual)")
         
         if st.session_state['produtos_coletados_loja']:
-            df_sessao = pd.DataFrame(st.session_state['produtos_coletados_loja'])
-            st.dataframe(df_sessao.style.format({
-                "Preco Recomendado": "R$ {:.2f}",
-                "Preco Praticado": "R$ {:.2f}",
-                "Diferenca (R$)": "R$ {:.2f}",
-                "Variação (%)": "{:.1f}%"
-            }), use_container_width=True)
+            for i, item in enumerate(st.session_state['produtos_coletados_loja']):
+                col_i1, col_i2, col_i3 = st.columns([4, 2, 1])
+                with col_i1:
+                    prat_str = f"R$ {item['Preco Praticado']:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
+                    st.markdown(f"**{item['Produto']}** | Gôndola: {prat_str} | Qtd: {item['Quantidade Loja']}")
+                with col_i2:
+                    st.text(f"Var: {item['Variação (%)']:.1f}%")
+                with col_i3:
+                    if st.button("🗑️ Remover", key=f"rm_sessao_{i}"):
+                        st.session_state['produtos_coletados_loja'].pop(i)
+                        st.rerun()
             
             if st.button("💾 Salvar Permanentemente no Histórico (JSON)"):
                 hist_geral = st.session_state['historico_auditoria']
@@ -253,27 +266,67 @@ with aba_coleta:
                 salvar_dados_json(hist_geral)
                 st.success("✅ Dados salvos com segurança no arquivo JSON!")
         else:
-            st.info("Nenhum produto adicionado ainda nesta visita. Use a busca acima.")
+            st.info("Nenhum produto adicionado ainda nesta visita.")
     else:
         st.info("👈 Selecione uma loja na barra lateral.")
 
 with aba_historico:
-    st.header("📂 Histórico Geral Persistido (JSON)")
-    st.markdown("Aqui ficam salvos todos os registros de todas as lojas e visitas.")
+    st.header("📂 Histórico Geral, Edição e Exclusão (JSON)")
+    st.markdown("Aqui você pode consultar, editar o preço/quantidade ou excluir qualquer registro salvo.")
     
     if st.session_state['historico_auditoria']:
-        df_hist = pd.DataFrame(st.session_state['historico_auditoria'])
-        st.metric("Total de Registros Salvos", len(df_hist))
+        hist = st.session_state['historico_auditoria']
         
-        st.dataframe(df_hist.style.format({
-            "Preco Recomendado": "R$ {:.2f}",
-            "Preco Praticado": "R$ {:.2f}",
-            "Diferenca (R$)": "R$ {:.2f}",
-            "Variação (%)": "{:.1f}%"
-        }), use_container_width=True)
+        lojas_hist = list(set([f"{item['Código Loja']} - {item['Nome Loja']}" for item in hist]))
+        filtro_l = st.selectbox("Filtrar Histórico por Loja:", ["Todas as Lojas"] + lojas_hist)
         
+        for i, item in enumerate(hist):
+            loja_str = f"{item['Código Loja']} - {item['Nome Loja']}"
+            if filtro_l != "Todas as Lojas" and filtro_l != loja_str:
+                continue
+                
+            with st.expander(f"📌 [{item['Data/Hora']}] {item['Nome Loja']} — {item['Produto']} (Gôndola: R$ {item['Preco Praticado']:.2f})"):
+                with st.form(f"form_edit_{i}"):
+                    c_e1, c_e2, c_e3 = st.columns(3)
+                    with c_e1:
+                        novo_prat = st.number_input("Preço Praticado (R$)", min_value=0.0, value=float(item['Preco Praticado']), step=0.50, format="%.2f")
+                    with c_e2:
+                        nova_qtd = st.number_input("Quantidade", min_value=0, value=int(item['Quantidade Loja']), step=1)
+                    with c_e3:
+                        st.text(f"Rec.: R$ {item['Preco Recomendado']:.2f}")
+                        
+                    col_b1, col_b2 = st.columns(2)
+                    with col_b1:
+                        atualizar = st.form_submit_button("✏️ Atualizar Registro")
+                    with col_b2:
+                        deletar = st.form_submit_button("🗑️ Excluir Registro")
+                        
+                    if atualizar:
+                        rec = float(item['Preco Recomendado'])
+                        dif = novo_prat - rec
+                        var = (dif / rec) * 100 if rec > 0 else 0.0
+                        
+                        hist[i]['Preco Praticado'] = float(novo_prat)
+                        hist[i]['Quantidade Loja'] = int(nova_qtd)
+                        hist[i]['Diferenca (R$)'] = round(dif, 2)
+                        hist[i]['Variação (%)'] = round(var, 2)
+                        
+                        st.session_state['historico_auditoria'] = hist
+                        salvar_dados_json(hist)
+                        st.success("Registro atualizado com sucesso!")
+                        st.rerun()
+                        
+                    if deletar:
+                        hist.pop(i)
+                        st.session_state['historico_auditoria'] = hist
+                        salvar_dados_json(hist)
+                        st.success("Registro excluído com sucesso!")
+                        st.rerun()
+                        
+        st.markdown("---")
+        df_hist = pd.DataFrame(hist)
         csv_b = df_hist.to_csv(index=False).encode('utf-8')
-        st.download_button("📥 Baixar Histórico em CSV/Excel", data=csv_b, file_name="historico_auditoria_completo.csv", mime="text/csv")
+        st.download_button("📥 Baixar Histórico Completo em CSV/Excel", data=csv_b, file_name="historico_auditoria_completo.csv", mime="text/csv")
         
         if st.button("🗑️ Limpar Todo o Histórico Salvo"):
             st.session_state['historico_auditoria'] = []
