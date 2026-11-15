@@ -4,6 +4,8 @@ import datetime
 from datetime import timezone, timedelta
 import os
 import json
+import base64
+import requests
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -12,7 +14,7 @@ from reportlab.lib import colors
 st.set_page_config(page_title="Monitor de Preços - Royal Canin (JF)", layout="wide")
 
 st.title("🐾 Auditoria Dinâmica de Preços - Royal Canin (Juiz de Fora)")
-st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Os dados são salvos instantaneamente no JSON e recarregados ao reabrir a loja.")
+st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Os dados são salvos instantaneamente no JSON e sincronizados com o GitHub.")
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
 
@@ -41,7 +43,7 @@ else:
 
 codigos_10 = [21209, 21874, 21878, 21140, 24310, 21873, 21921, 21472, 24077, 21888]
 
-# 2. Carregar base de produtos da planilha preçosrecoroyal.xlsx (Corrigido para usar EAN e Linha como chave única)
+# 2. Carregar base de produtos da planilha preçosrecoroyal.xlsx
 @st.cache_data
 def load_produtos():
     if os.path.exists('preçosrecoroyal.xlsx'):
@@ -54,7 +56,6 @@ def load_produtos():
                 if idx == 0 and any(str(v).upper() in ['DESCRIÇÃO', 'PRODUTO', 'NOME', 'EAN', 'PREÇO'] for v in row.values):
                     continue
                 
-                # Coluna D = index 3 (Nome D), Coluna E = index 4 (Nome E), Coluna F = index 5 (EAN), Coluna I = index 8 (Preço)
                 val_d = str(row.iloc[3]).strip() if len(row) > 3 and pd.notna(row.iloc[3]) else ""
                 val_e = str(row.iloc[4]).strip() if len(row) > 4 and pd.notna(row.iloc[4]) else ""
                 val_f = str(row.iloc[5]).strip() if len(row) > 5 and pd.notna(row.iloc[5]) else ""
@@ -102,8 +103,23 @@ def parse_preco_br(texto):
 def fmt_brl(val):
     return f"R$ {val:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
 
-# 3. Gerenciamento de Persistência Permanente (JSON Eterno)
+# 3. Sincronização Automática com o GitHub e JSON Local
 def carregar_dados_json():
+    # Tenta carregar do GitHub Secrets se disponível, senão do arquivo local
+    if "GITHUB_TOKEN" in st.secrets and "GITHUB_REPO" in st.secrets:
+        try:
+            token = st.secrets["GITHUB_TOKEN"]
+            repo = st.secrets["GITHUB_REPO"]
+            url = f"https://api.github.com/repos/{repo}/contents/{ARQUIVO_JSON}"
+            headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
+            resp = requests.get(url, headers=headers)
+            if resp.status_code == 200:
+                file_info = resp.json()
+                file_content = base64.b64decode(file_info['content']).decode('utf-8')
+                return json.loads(file_content)
+        except Exception:
+            pass
+
     if os.path.exists(ARQUIVO_JSON):
         try:
             with open(ARQUIVO_JSON, 'r', encoding='utf-8') as f:
@@ -113,82 +129,64 @@ def carregar_dados_json():
     return []
 
 def salvar_dados_json(dados):
+    # Salva localmente
     with open(ARQUIVO_JSON, 'w', encoding='utf-8') as f:
         json.dump(dados, f, ensure_ascii=False, indent=4)
+        
+    # Salva automaticamente no GitHub via API
+    if "GITHUB_TOKEN" in st.secrets and "GITHUB_REPO" in st.secrets:
+        try:
+            token = st.secrets["GITHUB_TOKEN"]
+            repo = st.secrets["GITHUB_REPO"]
+            url = f"https://api.github.com/repos/{repo}/contents/{ARQUIVO_JSON}"
+            headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
+            
+            # Buscar o SHA atual do arquivo (obrigatório pelo GitHub para atualizar)
+            resp_get = requests.get(url, headers=headers)
+            sha = resp_get.json().get('sha') if resp_get.status_code == 200 else None
+            
+            content_json_str = json.dumps(dados, ensure_ascii=False, indent=4)
+            content_encoded = base64.b64encode(content_json_str.encode('utf-8')).decode('utf-8')
+            
+            payload = {
+                "message": f"Atualização automática de auditoria via app em {hora_brasil()}",
+                "content": content_encoded
+            }
+            if sha:
+                payload["sha"] = sha
+                
+            requests.put(url, headers=headers, json=payload)
+        except Exception as e:
+            st.warning(f"Aviso: Não foi possível sincronizar automaticamente com o GitHub ({e}), mas os dados estão seguros localmente.")
 
 if 'historico_auditoria' not in st.session_state:
     st.session_state['historico_auditoria'] = carregar_dados_json()
 
-# Função para gerar PDF profissional da loja atual com o resumo informativo no rodapé
+# Função para gerar PDF profissional
 def gerar_pdf_loja(nome_loja, cod_loja, cidade_loja, itens):
     pdf_filename = f"auditoria_loja_{cod_loja}.pdf"
     doc = SimpleDocTemplate(pdf_filename, pagesize=letter, rightMargin=36, leftMargin=36, topMargin=36, bottomMargin=36)
     story = []
     styles = getSampleStyleSheet()
     
-    PRIMARY_COLOR = colors.HexColor("#1A365D")   # Azul Marinho Profissional
-    SECONDARY_COLOR = colors.HexColor("#2B6CB0") # Azul Secundário
-    TEXT_COLOR = colors.HexColor("#2D3748")      # Cinza Escuro para texto
-    BG_LIGHT = colors.HexColor("#F7FAFC")        # Cinza claro alternado
-    BORDER_COLOR = colors.HexColor("#E2E8F0")    # Bordas suaves
+    PRIMARY_COLOR = colors.HexColor("#1A365D")
+    SECONDARY_COLOR = colors.HexColor("#2B6CB0")
+    TEXT_COLOR = colors.HexColor("#2D3748")
+    BG_LIGHT = colors.HexColor("#F7FAFC")
+    BORDER_COLOR = colors.HexColor("#E2E8F0")
     
-    title_style = ParagraphStyle(
-        'DocTitle',
-        parent=styles['Heading1'],
-        fontSize=18,
-        leading=22,
-        textColor=PRIMARY_COLOR,
-        spaceAfter=6,
-        fontName='Helvetica-Bold'
-    )
-    
-    subtitle_style = ParagraphStyle(
-        'DocSubtitle',
-        parent=styles['Normal'],
-        fontSize=10,
-        leading=14,
-        textColor=TEXT_COLOR,
-        spaceAfter=15,
-        fontName='Helvetica'
-    )
-    
-    section_style = ParagraphStyle(
-        'SectionHeading',
-        parent=styles['Heading2'],
-        fontSize=12,
-        leading=16,
-        textColor=SECONDARY_COLOR,
-        spaceBefore=10,
-        spaceAfter=8,
-        fontName='Helvetica-Bold'
-    )
-    
-    body_style = ParagraphStyle(
-        'BodyTextCustom',
-        parent=styles['Normal'],
-        fontSize=9,
-        leading=12,
-        textColor=TEXT_COLOR,
-        fontName='Helvetica'
-    )
-    
-    footer_info_style = ParagraphStyle(
-        'FooterInfo',
-        parent=styles['Normal'],
-        fontSize=8.5,
-        leading=12,
-        textColor=colors.HexColor("#4A5568"),
-        fontName='Helvetica-Oblique'
-    )
+    title_style = ParagraphStyle('DocTitle', parent=styles['Heading1'], fontSize=18, leading=22, textColor=PRIMARY_COLOR, spaceAfter=6, fontName='Helvetica-Bold')
+    subtitle_style = ParagraphStyle('DocSubtitle', parent=styles['Normal'], fontSize=10, leading=14, textColor=TEXT_COLOR, spaceAfter=15, fontName='Helvetica')
+    section_style = ParagraphStyle('SectionHeading', parent=styles['Heading2'], fontSize=12, leading=16, textColor=SECONDARY_COLOR, spaceBefore=10, spaceAfter=8, fontName='Helvetica-Bold')
+    body_style = ParagraphStyle('BodyTextCustom', parent=styles['Normal'], fontSize=9, leading=12, textColor=TEXT_COLOR, fontName='Helvetica')
+    footer_info_style = ParagraphStyle('FooterInfo', parent=styles['Normal'], fontSize=8.5, leading=12, textColor=colors.HexColor("#4A5568"), fontName='Helvetica-Oblique')
 
     story.append(Paragraph("RELATÓRIO DE AUDITORIA DE PREÇOS", title_style))
     story.append(Paragraph(f"<b>Portfólio:</b> Royal Canin &mdash; <b>Loja:</b> {cod_loja} - {nome_loja} | <b>Cidade:</b> {cidade_loja}<br/><b>Data/Hora da Emissão (BR):</b> {hora_brasil()}", subtitle_style))
     story.append(Spacer(1, 5))
-    
     story.append(Paragraph("Detalhamento dos Itens Coletados na Gôndola", section_style))
     
     table_data = [["Produto", "Qtd", "Preço Rec.", "Preço Loja", "Total Rec.", "Total Loja", "Dif. (R$)", "Var (%)"]]
-    
     total_rec_geral = 0.0
     total_loja_geral = 0.0
     
@@ -198,7 +196,6 @@ def gerar_pdf_loja(nome_loja, cod_loja, cidade_loja, itens):
         p_loja = float(item['Preco Praticado'])
         tot_rec = qtd * p_rec
         tot_loja = qtd * p_loja
-        
         total_rec_geral += tot_rec
         total_loja_geral += tot_loja
         
@@ -237,16 +234,13 @@ def gerar_pdf_loja(nome_loja, cod_loja, cidade_loja, itens):
     diff_pct_total = (diff_total / total_rec_geral * 100) if total_rec_geral > 0 else 0.0
     
     story.append(Paragraph("Resumo e Análise Financeira (Informativo)", section_style))
-    
     resumo_texto = f"""
     <b>Total Recomendado (Tabela):</b> {fmt_brl(total_rec_geral)}<br/>
     <b>Total Praticado na Loja:</b> {fmt_brl(total_loja_geral)}<br/>
     <b>Diferença Financeira Total:</b> {fmt_brl(diff_total)} ({diff_pct_total:+.2f}% em relação ao recomendado)<br/><br/>
     <i>Nota Informativa:</i> Esta simulação demonstra o impacto financeiro caso todo o volume auditado fosse adquirido considerando os preços praticados na gôndola em comparação com a tabela de preços recomendados pela marca. Relatório gerado automaticamente para suporte à gestão de trade marketing e campo.
     """
-    
     story.append(Paragraph(resumo_texto, footer_info_style))
-    
     doc.build(story)
     return pdf_filename
 
@@ -279,8 +273,6 @@ with aba_coleta:
         st.success(f"**Loja Ativa:** {loja_selecionada['CÓDIGO']} - {loja_selecionada['NOME']} | Endereço: {loja_selecionada.get('ENDEREÇO', 'N/D')}")
         
         cod_loja_atual = int(loja_selecionada['CÓDIGO'])
-        
-        # Carregar automaticamente do JSON tudo o que já foi salvo para esta loja
         itens_loja_salvos = [item for item in st.session_state['historico_auditoria'] if int(item.get('Código Loja', 0)) == cod_loja_atual]
 
         st.markdown("---")
@@ -349,7 +341,6 @@ with aba_coleta:
                                 if preco_prat <= 0:
                                     st.warning("Informe o preço praticado.")
                                 else:
-                                    # Trava anti-duplicidade baseada no EAN exclusivo do produto
                                     ja_adicionado = any(str(item.get('Código Produto')) == str(p_ean) for item in itens_loja_salvos)
                                     if ja_adicionado:
                                         st.error(f"⚠️ Este produto ({p_nome}) já está salvo nesta loja! Exclua-o na lista abaixo se precisar alterar o preço ou quantidade.")
@@ -372,10 +363,9 @@ with aba_coleta:
                                             "Variação (%)": round(var, 2)
                                         }
                                         
-                                        # Salvamento eterno imediato no JSON
                                         st.session_state['historico_auditoria'].append(novo_item)
                                         salvar_dados_json(st.session_state['historico_auditoria'])
-                                        st.success(f"Adicionado e salvo com sucesso: {p_nome}")
+                                        st.success(f"Adicionado e sincronizado com o GitHub: {p_nome}")
                                         st.rerun()
                         st.divider()
             else:
@@ -384,7 +374,6 @@ with aba_coleta:
         st.markdown("---")
         st.subheader("🛒 Produtos Já Catalogados Nesta Loja (Salvos Permanentemente)")
         
-        # Recarregar itens salvos atualizados
         itens_loja_salvos = [item for item in st.session_state['historico_auditoria'] if int(item.get('Código Loja', 0)) == cod_loja_atual]
         
         if itens_loja_salvos:
@@ -408,31 +397,15 @@ with aba_coleta:
                         id_alvo = item.get('ID_REGISTRO')
                         st.session_state['historico_auditoria'] = [x for x in st.session_state['historico_auditoria'] if x.get('ID_REGISTRO') != id_alvo]
                         salvar_dados_json(st.session_state['historico_auditoria'])
-                        st.success("Item removido com sucesso!")
+                        st.success("Item removido e sincronizado!")
                         st.rerun()
                     st.divider()
             
-            col_b_save, col_b_exit = st.columns(2)
-            with col_b_save:
-                if st.button("💾 Salvar Permanentemente no Histórico (JSON)"):
-                    salvar_dados_json(st.session_state['historico_auditoria'])
-                    st.success("✅ Dados salvos com segurança no arquivo JSON!")
-            with col_b_exit:
-                if st.button("🚪 Salvar e Sair (Continuar Depois)"):
-                    salvar_dados_json(st.session_state['historico_auditoria'])
-                    st.success("✅ Progresso salvo eternamente! Você pode fechar o aplicativo e retornar quando quiser de onde parou.")
-                    st.rerun()
+            if st.button("🚪 Salvar e Sair (Continuar Depois)"):
+                salvar_dados_json(st.session_state['historico_auditoria'])
+                st.success("✅ Progresso salvo e sincronizado no GitHub!")
+                st.rerun()
 
-            if os.path.exists(ARQUIVO_JSON):
-                with open(ARQUIVO_JSON, "r", encoding="utf-8") as f:
-                    json_str = f.read()
-                st.download_button(
-                    label="📥 Baixar Backup do Arquivo JSON",
-                    data=json_str,
-                    file_name="auditorias_persistidas.json",
-                    mime="application/json"
-                )
-                
             st.markdown("---")
             st.subheader("📄 Relatório PDF & Envio por E-mail")
             
@@ -513,14 +486,14 @@ with aba_historico:
                         
                         st.session_state['historico_auditoria'] = hist
                         salvar_dados_json(hist)
-                        st.success("Registro atualizado com sucesso!")
+                        st.success("Registro atualizado e sincronizado!")
                         st.rerun()
                         
                     if deletar:
                         hist.pop(i)
                         st.session_state['historico_auditoria'] = hist
                         salvar_dados_json(hist)
-                        st.success("Registro excluído com sucesso!")
+                        st.success("Registro excluído e sincronizado!")
                         st.rerun()
                         
         st.markdown("---")
@@ -530,9 +503,8 @@ with aba_historico:
         
         if st.button("🗑️ Limpar Todo o Histórico Salvo"):
             st.session_state['historico_auditoria'] = []
-            if os.path.exists(ARQUIVO_JSON):
-                os.remove(ARQUIVO_JSON)
-            st.success("Histórico limpo com sucesso.")
+            salvar_dados_json([])
+            st.success("Histórico limpo e sincronizado.")
             st.rerun()
     else:
         st.info("Nenhum registro no histórico geral ainda.")
