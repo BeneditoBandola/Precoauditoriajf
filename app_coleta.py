@@ -92,10 +92,13 @@ with aba_coleta:
             registros = []
             
             for idx, row in df_produtos.iterrows():
-                # Identificar dinamicamente as colunas do arquivo de preços
+                # Código do produto
                 p_cod = str(row.get('CÓDIGO', row.get('CODIGO', row.get('Codigo', row.get('SKU', idx)))))
-                p_nome = str(row.get('PRODUTO', row.get('NOME', row.get('DESCRIÇÃO', row.get('DESC_PRODUTO', f"Produto {idx}"))))
+                # Nome do produto (corrigido com o parêntese fechado corretamente)
+                p_nome = str(row.get('PRODUTO', row.get('NOME', row.get('DESCRIÇÃO', row.get('DESC_PRODUTO', f"Produto {idx}")))))
+                # Linha / Ramo
                 p_linha = str(row.get('RAMO', row.get('LINHA', row.get('CATEGORIA', 'Royal Canin'))))
+                # Preço recomendado
                 p_rec = float(row.get('PREÇO', row.get('PRECO', row.get('PRECO_RECOMENDADO', row.get('VALOR', 100.0)))))
                 
                 col_img, col_info, col_preco = st.columns([1, 4, 3])
