@@ -288,7 +288,7 @@ with aba_coleta:
         
         cod_loja_atual = int(loja_selecionada['CÓDIGO'])
         
-        # Carregar automaticamente da persistência eterna do JSON tudo o que já foi salvo para esta loja
+        # Carregar automaticamente do JSON tudo o que já foi salvo para esta loja
         itens_loja_salvos = [item for item in st.session_state['historico_auditoria'] if int(item.get('Código Loja', 0)) == cod_loja_atual]
 
         st.markdown("---")
@@ -425,9 +425,27 @@ with aba_coleta:
                         st.rerun()
                     st.divider()
             
-            if st.button("🚪 Salvar e Sair (Continuar Depois)"):
-                st.success("✅ Progresso salvo eternamente! Você pode fechar o aplicativo e retornar quando quiser de onde parou.")
-                st.rerun()
+            col_b_save, col_b_exit = st.columns(2)
+            with col_b_save:
+                if st.button("💾 Salvar Permanentemente no Histórico (JSON)"):
+                    salvar_dados_json(st.session_state['historico_auditoria'])
+                    st.success("✅ Dados salvos com segurança no arquivo JSON!")
+            with col_b_exit:
+                if st.button("🚪 Salvar e Sair (Continuar Depois)"):
+                    salvar_dados_json(st.session_state['historico_auditoria'])
+                    st.success("✅ Progresso salvo eternamente! Você pode fechar o aplicativo e retornar quando quiser de onde parou.")
+                    st.rerun()
+
+            # Botão extra para baixar o arquivo JSON de backup direto para o seu celular/computador
+            if os.path.exists(ARQUIVO_JSON):
+                with open(ARQUIVO_JSON, "r", encoding="utf-8") as f:
+                    json_str = f.read()
+                st.download_button(
+                    label="📥 Baixar Backup do Arquivo JSON",
+                    data=json_str,
+                    file_name="auditorias_persistidas.json",
+                    mime="application/json"
+                )
                 
             st.markdown("---")
             st.subheader("📄 Relatório PDF & Envio por E-mail")
