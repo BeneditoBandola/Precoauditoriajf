@@ -7,7 +7,7 @@ import json
 st.set_page_config(page_title="Monitor de Preços - Royal Canin (JF)", layout="wide")
 
 st.title("🐾 Auditoria Dinâmica de Preços - Royal Canin (Juiz de Fora)")
-st.markdown("Busque os produtos por nome, código ou 5 últimos dígitos do EAN, informe o preço da gôndola e a quantidade.")
+st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou termo como '1kg' / '3kg'.")
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
 
@@ -31,29 +31,63 @@ else:
 
 codigos_10 = [21209, 21874, 21878, 21140, 24310, 21873, 21921, 21472, 24077, 21888]
 
-# 2. Carregar base de produtos
+# 2. Carregar base de produtos da planilha preçosrecoroyal.xlsx (Colunas D, E, F e I)
 @st.cache_data
 def load_produtos():
     if os.path.exists('preçosrecoroyal.xlsx'):
         try:
             xls = pd.ExcelFile('preçosrecoroyal.xlsx')
-            df_p = pd.read_excel('preçosrecoroyal.xlsx', sheet_name=xls.sheet_names[0])
-            return df_p
-        except Exception:
-            pass
+            # Lê a primeira aba sem cabeçalho fixo para pegar exatamente por índice de coluna
+            df_raw = pd.read_excel('preçosrecoroyal.xlsx', sheet_name=xls.sheet_names[0], header=None)
+            
+            produtos = []
+            for idx, row in df_raw.iterrows():
+                # Ignorar linha de cabeçalho se houver texto explicativo
+                if idx == 0 and any(str(v).upper() in ['DESCRIÇÃO', 'PRODUTO', 'NOME', 'EAN', 'PREÇO'] for v in row.values):
+                    continue
+                
+                # Coluna D = index 3, Coluna E = index 4, Coluna F = index 5, Coluna I = index 8
+                val_d = str(row.iloc[3]).strip() if len(row) > 3 and pd.notna(row.iloc[3]) else ""
+                val_e = str(row.iloc[4]).strip() if len(row) > 4 and pd.notna(row.iloc[4]) else ""
+                val_f = str(row.iloc[5]).strip() if len(row) > 5 and pd.notna(row.iloc[5]) else ""
+                val_i = row.iloc[8] if len(row) > 8 and pd.notna(row.iloc[8]) else 0.0
+                
+                # Converter preço para float com segurança
+                try:
+                    if isinstance(val_i, (int, float)):
+                        preco = float(val_i)
+                    else:
+                        preco = float(str(val_i).replace('R$', '').replace('.', '').replace(',', '.').strip())
+                except:
+                    preco = 0.0
+                
+                # Garantir que temos pelo menos nome ou ean
+                if val_d or val_e or val_f:
+                    # Nome principal exibe D ou E
+                    nome_principal = val_d if val_d and val_d.lower() != 'nan' else val_e
+                    
+                    produtos.append({
+                        "CÓDIGO": val_f if val_f and val_f.lower() != 'nan' else f"PROD_{idx}",
+                        "NOME_D": val_d,
+                        "NOME_E": val_e,
+                        "PRODUTO": nome_principal,
+                        "EAN": val_f,
+                        "PREÇO": preco
+                    })
+            
+            if produtos:
+                return pd.DataFrame(produtos)
+        except Exception as e:
+            st.warning(f"Aviso ao ler planilha de preços: {e}")
+            
+    # Fallback caso o arquivo não esteja presente
     data = [
-        {"CÓDIGO": "7896029011111", "LINHA": "Feline Care", "PRODUTO": "Royal Canin Hairball Care 1,5kg", "PREÇO": 89.90},
-        {"CÓDIGO": "7896029022222", "LINHA": "Feline Care", "PRODUTO": "Royal Canin Urinary Care 1,5kg", "PREÇO": 94.50},
+        {"CÓDIGO": "7896029011111", "NOME_D": "Royal Canin Hairball Care 1,5kg", "NOME_E": "Hairball 1.5", "PRODUTO": "Royal Canin Hairball Care 1,5kg", "EAN": "7896029011111", "PREÇO": 89.90},
+        {"CÓDIGO": "7896029022222", "NOME_D": "Royal Canin Urinary Care 1,5kg", "NOME_E": "Urinary 1.5", "PRODUTO": "Royal Canin Urinary Care 1,5kg", "EAN": "7896029022222", "PREÇO": 94.50},
     ]
     return pd.DataFrame(data)
 
 df_produtos = load_produtos()
-
-# Padronizar colunas de produtos
-df_produtos['CÓDIGO_STR'] = df_produtos.apply(lambda r: str(r.get('CÓDIGO', r.get('CODIGO', r.get('Codigo', r.get('SKU', ''))))), axis=1)
-df_produtos['PRODUTO_STR'] = df_produtos.apply(lambda r: str(r.get('PRODUTO', r.get('NOME', r.get('DESCRIÇÃO', r.get('DESC_PRODUTO', ''))))), axis=1)
-df_produtos['LINHA_STR'] = df_produtos.apply(lambda r: str(r.get('RAMO', r.get('LINHA', r.get('CATEGORIA', 'Royal Canin')))), axis=1)
-df_produtos['PRECO_NUM'] = df_produtos.apply(lambda r: float(r.get('PREÇO', r.get('PRECO', r.get('PRECO_RECOMENDADO', r.get('VALOR', 100.0))))), axis=1)
 
 # 3. Gerenciamento de Persistência via JSON
 def carregar_dados_json():
@@ -100,32 +134,34 @@ with aba_coleta:
     if loja_selecionada is not None:
         st.success(f"**Loja Ativa:** {loja_selecionada['CÓDIGO']} - {loja_selecionada['NOME']} | Endereço: {loja_selecionada.get('ENDEREÇO', 'N/D')}")
         
-        # Inicializar estado temporário da loja atual se necessário
         loja_id_str = str(loja_selecionada['CÓDIGO'])
         if 'loja_atual' not in st.session_state or st.session_state['loja_atual'] != loja_id_str:
             st.session_state['loja_atual'] = loja_id_str
             st.session_state['produtos_coletados_loja'] = []
 
         st.markdown("---")
-        st.subheader("🔍 Buscar e Adicionar Produto na Gôndola")
+        st.subheader("🔍 Buscar Produto por Nome (Col. D ou E), EAN (Col. F) ou Termo (ex: 1kg)")
         
-        # Campo de busca flexível (Nome, Código ou 5 últimos dígitos do EAN)
-        termo_busca = st.text_input("Digite o nome, código ou os 5 últimos dígitos do EAN/Código do produto:")
+        termo_busca = st.text_input("Digite sua busca (ex: 'uri', '1kg', '78960'):")
         
         if termo_busca:
             termo = termo_busca.strip().lower()
+            
+            # Filtrar buscando nas colunas NOME_D, NOME_E, EAN ou CÓDIGO
             df_encontrados = df_produtos[
-                df_produtos['PRODUTO_STR'].str.lower().str.contains(termo, na=False) |
-                df_produtos['CÓDIGO_STR'].str.lower().str.contains(termo, na=False) |
-                df_produtos['CÓDIGO_STR'].str.slice(-5).str.lower().str.contains(termo, na=False)
+                df_produtos['NOME_D'].astype(str).str.lower().str.contains(termo, na=False) |
+                df_produtos['NOME_E'].astype(str).str.lower().str.contains(termo, na=False) |
+                df_produtos['EAN'].astype(str).str.lower().str.contains(termo, na=False) |
+                df_produtos['CÓDIGO'].astype(str).str.lower().str.contains(termo, na=False)
             ]
             
             if not df_encontrados.empty:
+                st.info(f"Encontrado(s) {len(df_encontrados)} produto(s):")
                 for idx, prod in df_encontrados.iterrows():
-                    p_cod = prod['CÓDIGO_STR']
-                    p_nome = prod['PRODUTO_STR']
-                    p_linha = prod['LINHA_STR']
-                    p_rec = prod['PRECO_NUM']
+                    p_cod = str(prod['CÓDIGO'])
+                    p_ean = str(prod['EAN'])
+                    p_nome = str(prod['PRODUTO'])
+                    p_rec = float(prod['PREÇO'])
                     
                     with st.container():
                         c_img, c_info, c_preco, c_qtd, c_btn = st.columns([1, 3, 2, 2, 2])
@@ -137,36 +173,43 @@ with aba_coleta:
                                 if os.path.exists(teste):
                                     img_path = teste
                                     break
+                            if not img_path and p_ean:
+                                for ext in ['.jpg', '.png', '.jpeg', '.JPG', '.PNG']:
+                                    teste = os.path.join("imagens", f"{p_ean}{ext}")
+                                    if os.path.exists(teste):
+                                        img_path = teste
+                                        break
+                                        
                             if img_path:
                                 st.image(img_path, width=60)
                             else:
                                 st.markdown("📦 *Sem foto*")
                                 
                         with c_info:
-                            st.markdown(f"**{p_nome}**<br><small>Cód: {p_cod}</small>", unsafe_allow_html=True)
-                            st.text(f"Rec.: R$ {p_rec:.2f}")
+                            st.markdown(f"**{p_nome}**<br><small>EAN/Cód: {p_ean if p_ean else p_cod}</small>", unsafe_allow_html=True)
+                            st.text(f"Rec. (Col. I): R$ {p_rec:.2f}")
                             
                         with c_preco:
-                            preco_prat = st.number_input(f"Preço Gôndola ({p_cod})", min_value=0.0, value=0.0, step=0.50, format="%.2f", key=f"preco_{p_cod}")
+                            preco_prat = st.number_input(f"Preço Gôndola", min_value=0.0, value=0.0, step=0.50, format="%.2f", key=f"preco_{p_cod}_{idx}")
                             
                         with c_qtd:
-                            qtd_loja = st.number_input(f"Qtd Loja ({p_cod})", min_value=0, value=1, step=1, key=f"qtd_{p_cod}")
+                            qtd_loja = st.number_input(f"Qtd Loja", min_value=0, value=1, step=1, key=f"qtd_{p_cod}_{idx}")
                             
                         with c_btn:
                             st.markdown("<br>", unsafe_allow_html=True)
-                            if st.button("➕ Adicionar", key=f"btn_add_{p_cod}"):
+                            if st.button("➕ Adicionar", key=f"btn_add_{p_cod}_{idx}"):
                                 if preco_prat <= 0:
                                     st.warning("Informe o preço praticado.")
                                 else:
                                     dif = preco_prat - p_rec
-                                    var = (dif / p_rec) * 100
+                                    var = (dif / p_rec) * 100 if p_rec > 0 else 0.0
                                     
                                     novo_item = {
                                         "Data/Hora": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                                         "Código Loja": int(loja_selecionada['CÓDIGO']),
                                         "Nome Loja": str(loja_selecionada['NOME']),
                                         "Cidade": str(loja_selecionada['CIDADE']),
-                                        "Código Produto": p_cod,
+                                        "EAN/Código": p_ean if p_ean else p_cod,
                                         "Produto": p_nome,
                                         "Preco Recomendado": p_rec,
                                         "Preco Praticado": preco_prat,
@@ -179,7 +222,7 @@ with aba_coleta:
                                     st.success(f"Adicionado: {p_nome}")
                         st.divider()
             else:
-                st.info("Nenhum produto encontrado com este termo.")
+                st.info("Nenhum produto encontrado com este termo de busca.")
 
         st.markdown("---")
         st.subheader("🛒 Produtos Já Catalogados Nesta Loja")
@@ -200,7 +243,7 @@ with aba_coleta:
                 salvar_dados_json(hist_geral)
                 st.success("✅ Dados salvos com segurança no arquivo JSON!")
         else:
-            st.info("Nenhum produto adicionado ainda nesta visita. Use a busca acima para encontrar e catalogar os produtos.")
+            st.info("Nenhum produto adicionado ainda nesta visita. Use a busca acima.")
     else:
         st.info("👈 Selecione uma loja na barra lateral.")
 
