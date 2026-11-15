@@ -98,6 +98,9 @@ def parse_preco_br(texto):
     except:
         return 0.0
 
+def fmt_brl(val):
+    return f"R$ {val:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
+
 # 3. Gerenciamento de Persistência via JSON
 def carregar_dados_json():
     if os.path.exists(ARQUIVO_JSON):
@@ -175,7 +178,7 @@ with aba_coleta:
                     p_rec = float(prod['PREÇO'])
                     row_idx = str(prod['ROW_INDEX'])
                     
-                    p_rec_str = f"R$ {p_rec:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
+                    p_rec_str = fmt_brl(p_rec)
                     
                     with st.container():
                         c_img, c_info, c_preco, c_qtd, c_btn = st.columns([1, 3, 2, 2, 2])
@@ -248,16 +251,25 @@ with aba_coleta:
         
         if st.session_state['produtos_coletados_loja']:
             for i, item in enumerate(st.session_state['produtos_coletados_loja']):
-                col_i1, col_i2, col_i3 = st.columns([4, 2, 1])
-                with col_i1:
-                    prat_str = f"R$ {item['Preco Praticado']:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
-                    st.markdown(f"**{item['Produto']}** | Gôndola: {prat_str} | Qtd: {item['Quantidade Loja']}")
-                with col_i2:
-                    st.text(f"Var: {item['Variação (%)']:.1f}%")
-                with col_i3:
-                    if st.button("🗑️ Remover", key=f"rm_sessao_{i}"):
+                prat_str = fmt_brl(item['Preco Praticado'])
+                rec_str = fmt_brl(item['Preco Recomendado'])
+                dif_str = fmt_brl(item['Diferenca (R$)'])
+                var_val = item['Variação (%)']
+                var_str = f"{var_val:+.2f}%".replace('.', ',')
+                
+                with st.container():
+                    st.markdown(f"""
+                    **{item['Produto']}**  
+                    * **Quantidade:** {item['Quantidade Loja']}  
+                    * **Preço Recomendado:** {rec_str}  
+                    * **Preço da Loja (Gôndola):** {prat_str}  
+                    * **Diferença em Reais:** {dif_str}  
+                    * **Diferença em Porcentagem:** {var_str}
+                    """)
+                    if st.button("🗑️ Remover da Lista", key=f"rm_sessao_{i}"):
                         st.session_state['produtos_coletados_loja'].pop(i)
                         st.rerun()
+                    st.divider()
             
             if st.button("💾 Salvar Permanentemente no Histórico (JSON)"):
                 hist_geral = st.session_state['historico_auditoria']
@@ -285,7 +297,12 @@ with aba_historico:
             if filtro_l != "Todas as Lojas" and filtro_l != loja_str:
                 continue
                 
-            with st.expander(f"📌 [{item['Data/Hora']}] {item['Nome Loja']} — {item['Produto']} (Gôndola: R$ {item['Preco Praticado']:.2f})"):
+            prat_s = fmt_brl(item['Preco Praticado'])
+            rec_s = fmt_brl(item['Preco Recomendado'])
+            dif_s = fmt_brl(item['Diferenca (R$)'])
+            var_s = f"{item['Variação (%)']:+.2f}%".replace('.', ',')
+            
+            with st.expander(f"📌 [{item['Data/Hora']}] {item['Nome Loja']} — {item['Produto']} | Qtd: {item['Quantidade Loja']} | Gôndola: {prat_s} | Var: {var_s}"):
                 with st.form(f"form_edit_{i}"):
                     c_e1, c_e2, c_e3 = st.columns(3)
                     with c_e1:
@@ -293,7 +310,7 @@ with aba_historico:
                     with c_e2:
                         nova_qtd = st.number_input("Quantidade", min_value=0, value=int(item['Quantidade Loja']), step=1)
                     with c_e3:
-                        st.text(f"Rec.: R$ {item['Preco Recomendado']:.2f}")
+                        st.text(f"Rec.: {rec_s}")
                         
                     col_b1, col_b2 = st.columns(2)
                     with col_b1:
