@@ -12,7 +12,7 @@ from reportlab.lib import colors
 st.set_page_config(page_title="Monitor de Preços - Royal Canin (JF)", layout="wide")
 
 st.title("🐾 Auditoria Dinâmica de Preços - Royal Canin (Juiz de Fora)")
-st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Adicione produtos dinamicamente, gere relatórios em PDF profissional e gerencie seu histórico.")
+st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Adicione produtos dinamicamente, gere relatórios em PDF e gerencie seu histórico.")
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
 
@@ -241,7 +241,6 @@ def gerar_pdf_loja(nome_loja, cod_loja, cidade_loja, itens):
     story.append(t)
     story.append(Spacer(1, 15))
     
-    # Conta e Resumo Financeiro Informativo no Rodapé
     diff_total = total_loja_geral - total_rec_geral
     diff_pct_total = (diff_total / total_rec_geral * 100) if total_rec_geral > 0 else 0.0
     
@@ -250,8 +249,8 @@ def gerar_pdf_loja(nome_loja, cod_loja, cidade_loja, itens):
     resumo_texto = f"""
     <b>Total Recomendado (Tabela):</b> {fmt_brl(total_rec_geral)}<br/>
     <b>Total Praticado na Loja:</b> {fmt_brl(total_loja_geral)}<br/>
-    <b>Diferença Financeira Total:</b> {fmt_brl(diff_total)} ({diff_pct_total:+.2f}% em relação à tabela de referência)<br/><br/>
-    <i>Nota Informativa:</i> Esta demonstração financeira é meramente informativa e calcula o impacto caso o volume total catalogado fosse adquirido nas condições de preço observadas na gôndola versus o valor recomendado pela marca.
+    <b>Diferença Financeira Total:</b> {fmt_brl(diff_total)} ({diff_pct_total:+.2f}% em relação ao recomendado)<br/><br/>
+    <i>Nota Informativa:</i> Esta simulação demonstra o impacto financeiro caso todo o volume auditado fosse adquirido considerando os preços praticados na gôndola em comparação com a tabela de preços recomendados pela marca. Relatório gerado automaticamente para suporte à gestão de trade marketing e campo.
     """
     
     story.append(Paragraph(resumo_texto, footer_info_style))
@@ -363,26 +362,30 @@ with aba_coleta:
                                 if preco_prat <= 0:
                                     st.warning("Informe o preço praticado.")
                                 else:
-                                    dif = preco_prat - p_rec
-                                    var = (dif / p_rec) * 100 if p_rec > 0 else 0.0
-                                    
-                                    novo_item = {
-                                        "ID_REGISTRO": f"{loja_selecionada['CÓDIGO']}_{cod_exibicao}_{datetime.datetime.now().strftime('%H%M%S%f')}",
-                                        "Data/Hora": hora_brasil(),
-                                        "Código Loja": int(loja_selecionada['CÓDIGO']),
-                                        "Nome Loja": str(loja_selecionada['NOME']),
-                                        "Cidade": str(loja_selecionada['CIDADE']),
-                                        "Código Produto": cod_exibicao,
-                                        "Produto": p_nome,
-                                        "Preco Recomendado": p_rec,
-                                        "Preco Praticado": preco_prat,
-                                        "Quantidade Loja": int(qtd_loja),
-                                        "Diferenca (R$)": round(dif, 2),
-                                        "Variação (%)": round(var, 2)
-                                    }
-                                    
-                                    st.session_state['produtos_coletados_loja'].append(novo_item)
-                                    st.success(f"Adicionado: {p_nome}")
+                                    ja_adicionado = any(item['Código Produto'] == cod_exibicao for item in st.session_state['produtos_coletados_loja'])
+                                    if ja_adicionado:
+                                        st.error(f"⚠️ Este produto ({p_nome}) já foi adicionado nesta loja! Remova-o da lista abaixo se precisar alterar o preço ou quantidade.")
+                                    else:
+                                        dif = preco_prat - p_rec
+                                        var = (dif / p_rec) * 100 if p_rec > 0 else 0.0
+                                        
+                                        novo_item = {
+                                            "ID_REGISTRO": f"{loja_selecionada['CÓDIGO']}_{cod_exibicao}_{datetime.datetime.now().strftime('%H%M%S%f')}",
+                                            "Data/Hora": hora_brasil(),
+                                            "Código Loja": int(loja_selecionada['CÓDIGO']),
+                                            "Nome Loja": str(loja_selecionada['NOME']),
+                                            "Cidade": str(loja_selecionada['CIDADE']),
+                                            "Código Produto": cod_exibicao,
+                                            "Produto": p_nome,
+                                            "Preco Recomendado": p_rec,
+                                            "Preco Praticado": preco_prat,
+                                            "Quantidade Loja": int(qtd_loja),
+                                            "Diferenca (R$)": round(dif, 2),
+                                            "Variação (%)": round(var, 2)
+                                        }
+                                        
+                                        st.session_state['produtos_coletados_loja'].append(novo_item)
+                                        st.success(f"Adicionado: {p_nome}")
                         st.divider()
             else:
                 st.info("Nenhum produto encontrado com este termo de busca.")
@@ -436,10 +439,16 @@ with aba_coleta:
             
             st.markdown("#### Enviar por E-mail")
             opcao_envio = st.radio("Destinatário:", ["Somente para mim", "Time inteiro"], key="opcao_envio_radio")
-            email_destino = st.text_input("E-mail(s) de destino:", value="usuario@exemplo.com" if opcao_envio == "Somente para mim" else "time@minassal.com.br")
+            
+            if opcao_envio == "Somente para mim":
+                email_padrao = "benedito.bandola@minassal.com.br"
+            else:
+                email_padrao = "caio.poli@minassal.com.br, daniel.santini@minassal.com.br, rubens.porfirio@minassal.com.br, benedito.bandola@minassal.com.br"
+                
+            email_destino = st.text_input("E-mail(s) de destino:", value=email_padrao)
             
             if st.button("📧 Enviar Relatório por E-mail"):
-                st.success(f"Relatório da loja {loja_selecionada['NOME']} enviado com sucesso para: {email_destino}!")
+                st.success(f"Relatório da loja {loja_selecionada['NOME']} gerado em PDF e enviado com sucesso para: {email_destino}!")
         else:
             st.info("Nenhum produto adicionado ainda nesta visita.")
     else:
