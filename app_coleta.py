@@ -471,11 +471,18 @@ with aba_coleta:
             
             if st.button("📧 Enviar Relatório por E-mail"):
                 assunto = f"Relatório de Auditoria de Preços - Loja {loja_selecionada['CÓDIGO']} - {loja_selecionada['NOME']}"
-                corpo = f"Olá,\n\nSegue em anexo o relatório de auditoria de preços da loja {loja_selecionada['CÓDIGO']} - {loja_selecionada['NOME']} ({loja_selecionada['CIDADE']}), emitido em {hora_brasil()}.\n\nAtenciosamente,\nEquipe de Merchandising."
+                corpo = f"""Olá,
+
+Segue em anexo o relatório de auditoria de preços da loja {loja_selecionada['CÓDIGO']} - {loja_selecionada['NOME']} ({loja_selecionada['CIDADE']}), emitido em {hora_brasil()}.
+
+Nota: O valor da diferença financeira calculado no relatório é utilizado apenas como caráter informativo para suporte à gestão.
+
+Atenciosamente,
+Benedito"""
                 
                 sucesso, mensagem = enviar_email_com_anexo(email_destino, assunto, corpo, pdf_path)
                 if sucesso:
-                    st.success(f"✅ {mensagem} Disparado de beneditobandola@gmail.com para: {email_destino}")
+                    st.success(f"✅ E-mail enviado com sucesso de beneditobandola@gmail.com para: {email_destino}")
                 else:
                     st.error(f"❌ Falha no envio: {mensagem}")
         else:
