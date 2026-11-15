@@ -16,10 +16,10 @@ st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou códig
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
 
-# Fuso horário do Brasil (Brasília - UTC-3)
+# Fuso horário do Brasil e formato padrão brasileiro (DD/MM/YYYY HH:MM:SS)
 def hora_brasil():
     tz_br = timezone(timedelta(hours=-3))
-    return datetime.datetime.now(tz_br).strftime("%Y-%m-%d %H:%M:%S")
+    return datetime.datetime.now(tz_br).strftime("%d/%m/%Y %H:%M:%S")
 
 # 1. Carregar base de clientes de Juiz de Fora
 @st.cache_data
@@ -415,12 +415,23 @@ with aba_coleta:
                         st.rerun()
                     st.divider()
             
-            if st.button("💾 Salvar Permanentemente no Histórico (JSON)"):
-                hist_geral = st.session_state['historico_auditoria']
-                hist_geral.extend(st.session_state['produtos_coletados_loja'])
-                st.session_state['historico_auditoria'] = hist_geral
-                salvar_dados_json(hist_geral)
-                st.success("✅ Dados salvos com segurança no arquivo JSON!")
+            col_b_save, col_b_exit = st.columns(2)
+            with col_b_save:
+                if st.button("💾 Salvar Permanentemente no Histórico (JSON)"):
+                    hist_geral = st.session_state['historico_auditoria']
+                    hist_geral.extend(st.session_state['produtos_coletados_loja'])
+                    st.session_state['historico_auditoria'] = hist_geral
+                    salvar_dados_json(hist_geral)
+                    st.success("✅ Dados salvos com segurança no arquivo JSON!")
+            with col_b_exit:
+                if st.button("🚪 Salvar e Sair (Continuar Depois)"):
+                    hist_geral = st.session_state['historico_auditoria']
+                    hist_geral.extend(st.session_state['produtos_coletados_loja'])
+                    st.session_state['historico_auditoria'] = hist_geral
+                    salvar_dados_json(hist_geral)
+                    st.session_state['produtos_coletados_loja'] = []
+                    st.success("✅ Progresso salvo com segurança! Você pode fechar o aplicativo e retornar quando quiser de onde parou.")
+                    st.rerun()
                 
             st.markdown("---")
             st.subheader("📄 Relatório PDF & Envio por E-mail")
@@ -441,9 +452,9 @@ with aba_coleta:
             opcao_envio = st.radio("Destinatário:", ["Somente para mim", "Time inteiro"], key="opcao_envio_radio")
             
             if opcao_envio == "Somente para mim":
-                email_padrao = "benedito.bandola@minassal.com.br"
+                email_padrao = "benedito.bandola@minassal.com.br, beneditobandola@gmail.com"
             else:
-                email_padrao = "caio.poli@minassal.com.br, daniel.santini@minassal.com.br, rubens.porfirio@minassal.com.br, benedito.bandola@minassal.com.br"
+                email_padrao = "caio.poli@minassal.com.br, daniel.santini@minassal.com.br, rubens.porfirio@minassal.com.br, benedito.bandola@minassal.com.br, beneditobandola@gmail.com"
                 
             email_destino = st.text_input("E-mail(s) de destino:", value=email_padrao)
             
