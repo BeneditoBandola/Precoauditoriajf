@@ -6,6 +6,11 @@ import os
 import json
 import base64
 import requests
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
+from email import encoders
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -14,7 +19,7 @@ from reportlab.lib import colors
 st.set_page_config(page_title="Monitor de Preços - Royal Canin (JF)", layout="wide")
 
 st.title("🐾 Auditoria Dinâmica de Preços - Royal Canin (Juiz de Fora)")
-st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Os dados são salvos instantaneamente no JSON e sincronizados com o GitHub.")
+st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Os dados são salvos no GitHub e os e-mails são enviados via Gmail.")
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
 
@@ -105,7 +110,6 @@ def fmt_brl(val):
 
 # 3. Sincronização Automática com o GitHub e JSON Local
 def carregar_dados_json():
-    # Tenta carregar do GitHub Secrets se disponível, senão do arquivo local
     if "GITHUB_TOKEN" in st.secrets and "GITHUB_REPO" in st.secrets:
         try:
             token = st.secrets["GITHUB_TOKEN"]
@@ -116,7 +120,10 @@ def carregar_dados_json():
             if resp.status_code == 200:
                 file_info = resp.json()
                 file_content = base64.b64decode(file_info['content']).decode('utf-8')
-                return json.loads(file_content)
+                data = json.loads(file_content)
+                with open(ARQUIVO_JSON, 'w', encoding='utf-8') as f:
+                    json.dump(data, f, ensure_ascii=False, indent=4)
+                return data
         except Exception:
             pass
 
@@ -129,11 +136,9 @@ def carregar_dados_json():
     return []
 
 def salvar_dados_json(dados):
-    # Salva localmente
     with open(ARQUIVO_JSON, 'w', encoding='utf-8') as f:
         json.dump(dados, f, ensure_ascii=False, indent=4)
         
-    # Salva automaticamente no GitHub via API
     if "GITHUB_TOKEN" in st.secrets and "GITHUB_REPO" in st.secrets:
         try:
             token = st.secrets["GITHUB_TOKEN"]
@@ -141,7 +146,6 @@ def salvar_dados_json(dados):
             url = f"https://api.github.com/repos/{repo}/contents/{ARQUIVO_JSON}"
             headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
             
-            # Buscar o SHA atual do arquivo (obrigatório pelo GitHub para atualizar)
             resp_get = requests.get(url, headers=headers)
             sha = resp_get.json().get('sha') if resp_get.status_code == 200 else None
             
@@ -157,10 +161,44 @@ def salvar_dados_json(dados):
                 
             requests.put(url, headers=headers, json=payload)
         except Exception as e:
-            st.warning(f"Aviso: Não foi possível sincronizar automaticamente com o GitHub ({e}), mas os dados estão seguros localmente.")
+            st.warning(f"Aviso: Não foi possível sincronizar com o GitHub ({e}), mas os dados estão seguros localmente.")
 
 if 'historico_auditoria' not in st.session_state:
     st.session_state['historico_auditoria'] = carregar_dados_json()
+
+# Função para enviar e-mail via Gmail SMTP saindo estritamente de beneditobandola@gmail.com
+def enviar_email_com_anexo(destinatarios_str, assunto, corpo, caminho_pdf):
+    remetente = "beneditobandola@gmail.com"
+    if "GMAIL_APP_PASSWORD" not in st.secrets:
+        return False, "⚠️ GMAIL_APP_PASSWORD não configurado nos Secrets do Streamlit."
+    
+    senha = st.secrets["GMAIL_APP_PASSWORD"]
+    
+    try:
+        msg = MIMEMultipart()
+        msg['From'] = remetente
+        msg['To'] = destinatarios_str
+        msg['Subject'] = assunto
+        
+        msg.attach(MIMEText(corpo, 'plain', 'utf-8'))
+        
+        if os.path.exists(caminho_pdf):
+            with open(caminho_pdf, "rb") as f:
+                part = MIMEBase('application', 'octet-stream')
+                part.set_payload(f.read())
+            encoders.encode_base64(part)
+            part.add_header('Content-Disposition', f'attachment; filename="{os.path.basename(caminho_pdf)}"')
+            msg.attach(part)
+            
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(remetente, senha)
+        destinatarios_lista = [d.strip() for d in destinatarios_str.split(',') if d.strip()]
+        server.sendmail(remetente, destinatarios_lista, msg.as_string())
+        server.quit()
+        return True, "E-mail enviado com sucesso!"
+    except Exception as e:
+        return False, f"Erro ao enviar e-mail: {str(e)}"
 
 # Função para gerar PDF profissional
 def gerar_pdf_loja(nome_loja, cod_loja, cidade_loja, itens):
@@ -432,7 +470,14 @@ with aba_coleta:
             email_destino = st.text_input("E-mail(s) de destino:", value=email_padrao)
             
             if st.button("📧 Enviar Relatório por E-mail"):
-                st.success(f"Relatório da loja {loja_selecionada['NOME']} gerado em PDF e enviado com sucesso para: {email_destino}!")
+                assunto = f"Relatório de Auditoria de Preços - Loja {loja_selecionada['CÓDIGO']} - {loja_selecionada['NOME']}"
+                corpo = f"Olá,\n\nSegue em anexo o relatório de auditoria de preços da loja {loja_selecionada['CÓDIGO']} - {loja_selecionada['NOME']} ({loja_selecionada['CIDADE']}), emitido em {hora_brasil()}.\n\nAtenciosamente,\nEquipe de Merchandising."
+                
+                sucesso, mensagem = enviar_email_com_anexo(email_destino, assunto, corpo, pdf_path)
+                if sucesso:
+                    st.success(f"✅ {mensagem} Disparado de beneditobandola@gmail.com para: {email_destino}")
+                else:
+                    st.error(f"❌ Falha no envio: {mensagem}")
         else:
             st.info("Nenhum produto cadastrado nesta loja ainda. Use a busca acima para começar.")
     else:
