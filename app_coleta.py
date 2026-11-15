@@ -436,7 +436,6 @@ with aba_coleta:
                     st.success("✅ Progresso salvo eternamente! Você pode fechar o aplicativo e retornar quando quiser de onde parou.")
                     st.rerun()
 
-            # Botão extra para baixar o arquivo JSON de backup direto para o seu celular/computador
             if os.path.exists(ARQUIVO_JSON):
                 with open(ARQUIVO_JSON, "r", encoding="utf-8") as f:
                     json_str = f.read()
