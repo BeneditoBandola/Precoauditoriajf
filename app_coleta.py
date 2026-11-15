@@ -7,7 +7,7 @@ import json
 st.set_page_config(page_title="Monitor de Preços - Royal Canin (JF)", layout="wide")
 
 st.title("🐾 Auditoria Dinâmica de Preços - Royal Canin (Juiz de Fora)")
-st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou termo como '1kg' / '3kg'.")
+st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou termo (ex: '1kg', 'uri'). As imagens são carregadas automaticamente da pasta `imagens/` pelo código/EAN.")
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
 
@@ -37,12 +37,10 @@ def load_produtos():
     if os.path.exists('preçosrecoroyal.xlsx'):
         try:
             xls = pd.ExcelFile('preçosrecoroyal.xlsx')
-            # Lê a primeira aba sem cabeçalho fixo para pegar exatamente por índice de coluna
             df_raw = pd.read_excel('preçosrecoroyal.xlsx', sheet_name=xls.sheet_names[0], header=None)
             
             produtos = []
             for idx, row in df_raw.iterrows():
-                # Ignorar linha de cabeçalho se houver texto explicativo
                 if idx == 0 and any(str(v).upper() in ['DESCRIÇÃO', 'PRODUTO', 'NOME', 'EAN', 'PREÇO'] for v in row.values):
                     continue
                 
@@ -52,7 +50,6 @@ def load_produtos():
                 val_f = str(row.iloc[5]).strip() if len(row) > 5 and pd.notna(row.iloc[5]) else ""
                 val_i = row.iloc[8] if len(row) > 8 and pd.notna(row.iloc[8]) else 0.0
                 
-                # Converter preço para float com segurança
                 try:
                     if isinstance(val_i, (int, float)):
                         preco = float(val_i)
@@ -61,26 +58,25 @@ def load_produtos():
                 except:
                     preco = 0.0
                 
-                # Garantir que temos pelo menos nome ou ean
                 if val_d or val_e or val_f:
-                    # Nome principal exibe D ou E
                     nome_principal = val_d if val_d and val_d.lower() != 'nan' else val_e
+                    ean_cod = val_f if val_f and val_f.lower() != 'nan' else f"PROD_{idx}"
                     
                     produtos.append({
-                        "CÓDIGO": val_f if val_f and val_f.lower() != 'nan' else f"PROD_{idx}",
+                        "CÓDIGO": ean_cod,
                         "NOME_D": val_d,
                         "NOME_E": val_e,
                         "PRODUTO": nome_principal,
-                        "EAN": val_f,
+                        "EAN": ean_cod,
                         "PREÇO": preco
                     })
             
             if produtos:
                 return pd.DataFrame(produtos)
         except Exception as e:
-            st.warning(f"Aviso ao ler planilha de preços: {e}")
+            pass
             
-    # Fallback caso o arquivo não esteja presente
+    # Fallback caso o arquivo exato não esteja presente
     data = [
         {"CÓDIGO": "7896029011111", "NOME_D": "Royal Canin Hairball Care 1,5kg", "NOME_E": "Hairball 1.5", "PRODUTO": "Royal Canin Hairball Care 1,5kg", "EAN": "7896029011111", "PREÇO": 89.90},
         {"CÓDIGO": "7896029022222", "NOME_D": "Royal Canin Urinary Care 1,5kg", "NOME_E": "Urinary 1.5", "PRODUTO": "Royal Canin Urinary Care 1,5kg", "EAN": "7896029022222", "PREÇO": 94.50},
@@ -167,21 +163,22 @@ with aba_coleta:
                         c_img, c_info, c_preco, c_qtd, c_btn = st.columns([1, 3, 2, 2, 2])
                         
                         with c_img:
+                            # Buscar imagem na pasta imagens/ usando o código ou EAN como nome do arquivo
                             img_path = None
-                            for ext in ['.jpg', '.png', '.jpeg', '.JPG', '.PNG']:
-                                teste = os.path.join("imagens", f"{p_cod}{ext}")
-                                if os.path.exists(teste):
-                                    img_path = teste
-                                    break
-                            if not img_path and p_ean:
+                            possiveis_nomes = [p_cod, p_ean]
+                            for nome_arq in possiveis_nomes:
+                                if not nome_arq:
+                                    continue
                                 for ext in ['.jpg', '.png', '.jpeg', '.JPG', '.PNG']:
-                                    teste = os.path.join("imagens", f"{p_ean}{ext}")
+                                    teste = os.path.join("imagens", f"{nome_arq}{ext}")
                                     if os.path.exists(teste):
                                         img_path = teste
                                         break
-                                        
+                                if img_path:
+                                    break
+                                    
                             if img_path:
-                                st.image(img_path, width=60)
+                                st.image(img_path, width=70)
                             else:
                                 st.markdown("📦 *Sem foto*")
                                 
