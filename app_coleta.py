@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 import datetime
+from datetime import timezone, timedelta
 import os
 import json
-import base64
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -12,9 +12,14 @@ from reportlab.lib import colors
 st.set_page_config(page_title="Monitor de Preços - Royal Canin (JF)", layout="wide")
 
 st.title("🐾 Auditoria Dinâmica de Preços - Royal Canin (Juiz de Fora)")
-st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Gere PDF da visita e envie por e-mail com 1 clique.")
+st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Adicione produtos dinamicamente, gere relatórios em PDF profissional e gerencie seu histórico.")
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
+
+# Fuso horário do Brasil (Brasília - UTC-3)
+def hora_brasil():
+    tz_br = timezone(timedelta(hours=-3))
+    return datetime.datetime.now(tz_br).strftime("%Y-%m-%d %H:%M:%S")
 
 # 1. Carregar base de clientes de Juiz de Fora
 @st.cache_data
@@ -122,60 +127,135 @@ def salvar_dados_json(dados):
 if 'historico_auditoria' not in st.session_state:
     st.session_state['historico_auditoria'] = carregar_dados_json()
 
-# Função para gerar PDF da loja atual
+# Função para gerar PDF profissional da loja atual com o resumo informativo no rodapé
 def gerar_pdf_loja(nome_loja, cod_loja, cidade_loja, itens):
     pdf_filename = f"auditoria_loja_{cod_loja}.pdf"
-    doc = SimpleDocTemplate(pdf_filename, pagesize=letter, rightMargin=30, leftMargin=30, topMargin=30, bottomMargin=30)
+    doc = SimpleDocTemplate(pdf_filename, pagesize=letter, rightMargin=36, leftMargin=36, topMargin=36, bottomMargin=36)
     story = []
     styles = getSampleStyleSheet()
     
+    PRIMARY_COLOR = colors.HexColor("#1A365D")   # Azul Marinho Profissional
+    SECONDARY_COLOR = colors.HexColor("#2B6CB0") # Azul Secundário
+    TEXT_COLOR = colors.HexColor("#2D3748")      # Cinza Escuro para texto
+    BG_LIGHT = colors.HexColor("#F7FAFC")        # Cinza claro alternado
+    BORDER_COLOR = colors.HexColor("#E2E8F0")    # Bordas suaves
+    
     title_style = ParagraphStyle(
-        'TitleStyle',
+        'DocTitle',
         parent=styles['Heading1'],
-        fontSize=16,
-        textColor=colors.HexColor("#1b4332"),
-        spaceAfter=15
+        fontSize=18,
+        leading=22,
+        textColor=PRIMARY_COLOR,
+        spaceAfter=6,
+        fontName='Helvetica-Bold'
     )
     
     subtitle_style = ParagraphStyle(
-        'SubTitleStyle',
+        'DocSubtitle',
         parent=styles['Normal'],
-        fontSize=11,
-        textColor=colors.HexColor("#333333"),
-        spaceAfter=15
+        fontSize=10,
+        leading=14,
+        textColor=TEXT_COLOR,
+        spaceAfter=15,
+        fontName='Helvetica'
     )
     
-    story.append(Paragraph(f"<b>Relatório de Auditoria de Preços - Royal Canin</b>", title_style))
-    story.append(Paragraph(f"<b>Loja:</b> {cod_loja} - {nome_loja} | <b>Cidade:</b> {cidade_loja}<br/><b>Data/Hora:</b> {datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')}", subtitle_style))
-    story.append(Spacer(1, 10))
+    section_style = ParagraphStyle(
+        'SectionHeading',
+        parent=styles['Heading2'],
+        fontSize=12,
+        leading=16,
+        textColor=SECONDARY_COLOR,
+        spaceBefore=10,
+        spaceAfter=8,
+        fontName='Helvetica-Bold'
+    )
     
-    table_data = [["Produto", "Qtd", "Preço Rec.", "Preço Loja", "Dif. (R$)", "Var (%)"]]
+    body_style = ParagraphStyle(
+        'BodyTextCustom',
+        parent=styles['Normal'],
+        fontSize=9,
+        leading=12,
+        textColor=TEXT_COLOR,
+        fontName='Helvetica'
+    )
+    
+    footer_info_style = ParagraphStyle(
+        'FooterInfo',
+        parent=styles['Normal'],
+        fontSize=8.5,
+        leading=12,
+        textColor=colors.HexColor("#4A5568"),
+        fontName='Helvetica-Oblique'
+    )
+
+    story.append(Paragraph("RELATÓRIO DE AUDITORIA DE PREÇOS", title_style))
+    story.append(Paragraph(f"<b>Portfólio:</b> Royal Canin &mdash; <b>Loja:</b> {cod_loja} - {nome_loja} | <b>Cidade:</b> {cidade_loja}<br/><b>Data/Hora da Emissão (BR):</b> {hora_brasil()}", subtitle_style))
+    story.append(Spacer(1, 5))
+    
+    story.append(Paragraph("Detalhamento dos Itens Coletados na Gôndola", section_style))
+    
+    table_data = [["Produto", "Qtd", "Preço Rec.", "Preço Loja", "Total Rec.", "Total Loja", "Dif. (R$)", "Var (%)"]]
+    
+    total_rec_geral = 0.0
+    total_loja_geral = 0.0
     
     for item in itens:
+        qtd = int(item['Quantidade Loja'])
+        p_rec = float(item['Preco Recomendado'])
+        p_loja = float(item['Preco Praticado'])
+        tot_rec = qtd * p_rec
+        tot_loja = qtd * p_loja
+        
+        total_rec_geral += tot_rec
+        total_loja_geral += tot_loja
+        
         table_data.append([
-            item['Produto'],
-            str(item['Quantidade Loja']),
-            fmt_brl(item['Preco Recomendado']),
-            fmt_brl(item['Preco Praticado']),
+            Paragraph(item['Produto'], body_style),
+            str(qtd),
+            fmt_brl(p_rec),
+            fmt_brl(p_loja),
+            fmt_brl(tot_rec),
+            fmt_brl(tot_loja),
             fmt_brl(item['Diferenca (R$)']),
             f"{item['Variação (%)']:+.2f}%".replace('.', ',')
         ])
         
-    t = Table(table_data, colWidths=[200, 40, 70, 70, 70, 60])
+    t = Table(table_data, colWidths=[160, 30, 60, 60, 65, 65, 60, 50])
     t.setStyle(TableStyle([
-        ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#2d6a4f")),
+        ('BACKGROUND', (0,0), (-1,0), PRIMARY_COLOR),
         ('TEXTCOLOR', (0,0), (-1,0), colors.white),
         ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ('ALIGN', (0,0), (0,-1), 'LEFT'),
         ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0,0), (-1,0), 10),
-        ('BOTTOMPADDING', (0,0), (-1,0), 8),
-        ('BACKGROUND', (0,1), (-1,-1), colors.HexColor("#f8f9fa")),
-        ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor("#dee2e6")),
-        ('FONTSIZE', (0,1), (-1,-1), 9),
+        ('FONTSIZE', (0,0), (-1,0), 9),
+        ('BOTTOMPADDING', (0,0), (-1,0), 6),
+        ('TOPPADDING', (0,0), (-1,0), 6),
+        ('BACKGROUND', (0,1), (-1,-1), colors.white),
+        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, BG_LIGHT]),
+        ('GRID', (0,0), (-1,-1), 0.5, BORDER_COLOR),
+        ('FONTSIZE', (0,1), (-1,-1), 8.5),
         ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
     ]))
     
     story.append(t)
+    story.append(Spacer(1, 15))
+    
+    # Conta e Resumo Financeiro Informativo no Rodapé
+    diff_total = total_loja_geral - total_rec_geral
+    diff_pct_total = (diff_total / total_rec_geral * 100) if total_rec_geral > 0 else 0.0
+    
+    story.append(Paragraph("Resumo e Análise Financeira (Informativo)", section_style))
+    
+    resumo_texto = f"""
+    <b>Total Recomendado (Tabela):</b> {fmt_brl(total_rec_geral)}<br/>
+    <b>Total Praticado na Loja:</b> {fmt_brl(total_loja_geral)}<br/>
+    <b>Diferença Financeira Total:</b> {fmt_brl(diff_total)} ({diff_pct_total:+.2f}% em relação à tabela de referência)<br/><br/>
+    <i>Nota Informativa:</i> Esta demonstração financeira é meramente informativa e calcula o impacto caso o volume total catalogado fosse adquirido nas condições de preço observadas na gôndola versus o valor recomendado pela marca.
+    """
+    
+    story.append(Paragraph(resumo_texto, footer_info_style))
+    
     doc.build(story)
     return pdf_filename
 
@@ -288,7 +368,7 @@ with aba_coleta:
                                     
                                     novo_item = {
                                         "ID_REGISTRO": f"{loja_selecionada['CÓDIGO']}_{cod_exibicao}_{datetime.datetime.now().strftime('%H%M%S%f')}",
-                                        "Data/Hora": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                                        "Data/Hora": hora_brasil(),
                                         "Código Loja": int(loja_selecionada['CÓDIGO']),
                                         "Nome Loja": str(loja_selecionada['NOME']),
                                         "Cidade": str(loja_selecionada['CIDADE']),
