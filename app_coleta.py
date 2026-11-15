@@ -276,7 +276,7 @@ def gerar_pdf_loja(nome_loja, cod_loja, cidade_loja, itens):
     <b>Total Recomendado (Tabela):</b> {fmt_brl(total_rec_geral)}<br/>
     <b>Total Praticado na Loja:</b> {fmt_brl(total_loja_geral)}<br/>
     <b>Diferença Financeira Total:</b> {fmt_brl(diff_total)} ({diff_pct_total:+.2f}% em relação ao recomendado)<br/><br/>
-    <i>Nota Informativa:</i> Esta simulação demonstra o impacto financeiro caso todo o volume auditado fosse adquirido considerando os preços praticados na gôndola em comparação com a tabela de preços recomendados pela marca. Relatório gerado automaticamente para suporte à gestão de trade marketing e campo.
+    <i>Nota Informativa:</i> Esta simulação demonstra o impacto financeiro caso todo o volume auditado fosse adquirido considerando os preços praticados na gôndola em comparação com a tabela de preços recomendados pela marca. Relatório gerado automaticamente para suporte à gestão.
     """
     story.append(Paragraph(resumo_texto, footer_info_style))
     doc.build(story)
