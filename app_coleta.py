@@ -41,7 +41,7 @@ else:
 
 codigos_10 = [21209, 21874, 21878, 21140, 24310, 21873, 21921, 21472, 24077, 21888]
 
-# 2. Carregar base de produtos da planilha preçosrecoroyal.xlsx
+# 2. Carregar base de produtos da planilha preçosrecoroyal.xlsx (Corrigido para usar EAN e Linha como chave única)
 @st.cache_data
 def load_produtos():
     if os.path.exists('preçosrecoroyal.xlsx'):
@@ -54,12 +54,7 @@ def load_produtos():
                 if idx == 0 and any(str(v).upper() in ['DESCRIÇÃO', 'PRODUTO', 'NOME', 'EAN', 'PREÇO'] for v in row.values):
                     continue
                 
-                cods = []
-                for col_idx in range(min(3, len(row))):
-                    val = str(row.iloc[col_idx]).strip()
-                    if val and val.lower() != 'nan':
-                        cods.append(val.replace('.0', ''))
-                
+                # Coluna D = index 3 (Nome D), Coluna E = index 4 (Nome E), Coluna F = index 5 (EAN), Coluna I = index 8 (Preço)
                 val_d = str(row.iloc[3]).strip() if len(row) > 3 and pd.notna(row.iloc[3]) else ""
                 val_e = str(row.iloc[4]).strip() if len(row) > 4 and pd.notna(row.iloc[4]) else ""
                 val_f = str(row.iloc[5]).strip() if len(row) > 5 and pd.notna(row.iloc[5]) else ""
@@ -73,14 +68,11 @@ def load_produtos():
                 except:
                     preco = 0.0
                 
-                if val_d or val_e or val_f or cods:
+                if val_d or val_e or val_f:
                     nome_principal = val_d if val_d and val_d.lower() != 'nan' else val_e
-                    ean = val_f if val_f and val_f.lower() != 'nan' else ""
+                    ean = val_f.replace('.0', '') if val_f and val_f.lower() != 'nan' else f"ITEM_{idx}"
                     
                     produtos.append({
-                        "CODIGOS": cods,
-                        "NOME_D": val_d,
-                        "NOME_E": val_e,
                         "PRODUTO": nome_principal,
                         "EAN": ean,
                         "PREÇO": preco,
@@ -92,7 +84,7 @@ def load_produtos():
             pass
             
     data = [
-        {"CODIGOS": ["100052"], "NOME_D": "Royal Canin Hairball Care 1,5kg", "NOME_E": "Hairball 1.5", "PRODUTO": "Royal Canin Hairball Care 1,5kg", "EAN": "7896029011111", "PREÇO": 89.90, "ROW_INDEX": "1"},
+        {"PRODUTO": "Royal Canin Hairball Care 1,5kg", "EAN": "7896029011111", "PREÇO": 89.90, "ROW_INDEX": "1"},
     ]
     return pd.DataFrame(data)
 
@@ -300,11 +292,8 @@ with aba_coleta:
             termo = termo_busca.strip().lower()
             
             def match_row(row):
-                if termo in str(row['NOME_D']).lower(): return True
-                if termo in str(row['NOME_E']).lower(): return True
+                if termo in str(row['PRODUTO']).lower(): return True
                 if termo in str(row['EAN']).lower(): return True
-                for c in row['CODIGOS']:
-                    if termo in str(c).lower(): return True
                 return False
 
             df_encontrados = df_produtos[df_produtos.apply(match_row, axis=1)]
@@ -312,21 +301,19 @@ with aba_coleta:
             if not df_encontrados.empty:
                 st.info(f"Encontrado(s) {len(df_encontrados)} produto(s):")
                 for idx, prod in df_encontrados.iterrows():
-                    codigos_lista = prod['CODIGOS']
                     p_ean = str(prod['EAN'])
                     p_nome = str(prod['PRODUTO'])
                     p_rec = float(prod['PREÇO'])
                     row_idx = str(prod['ROW_INDEX'])
                     
                     p_rec_str = fmt_brl(p_rec)
-                    cod_exibicao = codigos_lista[0] if codigos_lista else p_ean
                     
                     with st.container():
                         c_img, c_info, c_preco, c_qtd, c_btn = st.columns([1, 3, 2, 2, 2])
                         
                         with c_img:
                             img_path = None
-                            candidatos = codigos_lista + [p_ean, row_idx]
+                            candidatos = [p_ean, row_idx]
                             
                             if os.path.exists("imagens"):
                                 arquivos_pasta = os.listdir("imagens")
@@ -346,7 +333,7 @@ with aba_coleta:
                                 st.markdown("📦 *Sem foto*")
                                 
                         with c_info:
-                            st.markdown(f"**{p_nome}**<br><small>Cód: {cod_exibicao} | EAN: {p_ean}</small>", unsafe_allow_html=True)
+                            st.markdown(f"**{p_nome}**<br><small>EAN: {p_ean}</small>", unsafe_allow_html=True)
                             st.text(f"Preço recomendado: {p_rec_str}")
                             
                         with c_preco:
@@ -362,8 +349,8 @@ with aba_coleta:
                                 if preco_prat <= 0:
                                     st.warning("Informe o preço praticado.")
                                 else:
-                                    # Trava anti-duplicidade na mesma loja
-                                    ja_adicionado = any(str(item.get('Código Produto')) == str(cod_exibicao) for item in itens_loja_salvos)
+                                    # Trava anti-duplicidade baseada no EAN exclusivo do produto
+                                    ja_adicionado = any(str(item.get('Código Produto')) == str(p_ean) for item in itens_loja_salvos)
                                     if ja_adicionado:
                                         st.error(f"⚠️ Este produto ({p_nome}) já está salvo nesta loja! Exclua-o na lista abaixo se precisar alterar o preço ou quantidade.")
                                     else:
@@ -371,12 +358,12 @@ with aba_coleta:
                                         var = (dif / p_rec) * 100 if p_rec > 0 else 0.0
                                         
                                         novo_item = {
-                                            "ID_REGISTRO": f"{cod_loja}_{cod_exibicao}_{datetime.datetime.now().strftime('%H%M%S%f')}",
+                                            "ID_REGISTRO": f"{cod_loja}_{p_ean}_{datetime.datetime.now().strftime('%H%M%S%f')}",
                                             "Data/Hora": hora_brasil(),
                                             "Código Loja": cod_loja,
                                             "Nome Loja": str(loja_selecionada['NOME']),
                                             "Cidade": str(loja_selecionada['CIDADE']),
-                                            "Código Produto": cod_exibicao,
+                                            "Código Produto": p_ean,
                                             "Produto": p_nome,
                                             "Preco Recomendado": p_rec,
                                             "Preco Praticado": preco_prat,
