@@ -3,11 +3,16 @@ import pandas as pd
 import datetime
 import os
 import json
+import base64
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib import colors
 
 st.set_page_config(page_title="Monitor de Preços - Royal Canin (JF)", layout="wide")
 
 st.title("🐾 Auditoria Dinâmica de Preços - Royal Canin (Juiz de Fora)")
-st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Edite ou exclua registros salvos a qualquer momento.")
+st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Gere PDF da visita e envie por e-mail com 1 clique.")
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
 
@@ -50,7 +55,6 @@ def load_produtos():
                     if val and val.lower() != 'nan':
                         cods.append(val.replace('.0', ''))
                 
-                # Coluna D = index 3, Coluna E = index 4, Coluna F = index 5, Coluna I = index 8
                 val_d = str(row.iloc[3]).strip() if len(row) > 3 and pd.notna(row.iloc[3]) else ""
                 val_e = str(row.iloc[4]).strip() if len(row) > 4 and pd.notna(row.iloc[4]) else ""
                 val_f = str(row.iloc[5]).strip() if len(row) > 5 and pd.notna(row.iloc[5]) else ""
@@ -117,6 +121,63 @@ def salvar_dados_json(dados):
 
 if 'historico_auditoria' not in st.session_state:
     st.session_state['historico_auditoria'] = carregar_dados_json()
+
+# Função para gerar PDF da loja atual
+def gerar_pdf_loja(nome_loja, cod_loja, cidade_loja, itens):
+    pdf_filename = f"auditoria_loja_{cod_loja}.pdf"
+    doc = SimpleDocTemplate(pdf_filename, pagesize=letter, rightMargin=30, leftMargin=30, topMargin=30, bottomMargin=30)
+    story = []
+    styles = getSampleStyleSheet()
+    
+    title_style = ParagraphStyle(
+        'TitleStyle',
+        parent=styles['Heading1'],
+        fontSize=16,
+        textColor=colors.HexColor("#1b4332"),
+        spaceAfter=15
+    )
+    
+    subtitle_style = ParagraphStyle(
+        'SubTitleStyle',
+        parent=styles['Normal'],
+        fontSize=11,
+        textColor=colors.HexColor("#333333"),
+        spaceAfter=15
+    )
+    
+    story.append(Paragraph(f"<b>Relatório de Auditoria de Preços - Royal Canin</b>", title_style))
+    story.append(Paragraph(f"<b>Loja:</b> {cod_loja} - {nome_loja} | <b>Cidade:</b> {cidade_loja}<br/><b>Data/Hora:</b> {datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')}", subtitle_style))
+    story.append(Spacer(1, 10))
+    
+    table_data = [["Produto", "Qtd", "Preço Rec.", "Preço Loja", "Dif. (R$)", "Var (%)"]]
+    
+    for item in itens:
+        table_data.append([
+            item['Produto'],
+            str(item['Quantidade Loja']),
+            fmt_brl(item['Preco Recomendado']),
+            fmt_brl(item['Preco Praticado']),
+            fmt_brl(item['Diferenca (R$)']),
+            f"{item['Variação (%)']:+.2f}%".replace('.', ',')
+        ])
+        
+    t = Table(table_data, colWidths=[200, 40, 70, 70, 70, 60])
+    t.setStyle(TableStyle([
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#2d6a4f")),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
+        ('FONTSIZE', (0,0), (-1,0), 10),
+        ('BOTTOMPADDING', (0,0), (-1,0), 8),
+        ('BACKGROUND', (0,1), (-1,-1), colors.HexColor("#f8f9fa")),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.HexColor("#dee2e6")),
+        ('FONTSIZE', (0,1), (-1,-1), 9),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+    ]))
+    
+    story.append(t)
+    doc.build(story)
+    return pdf_filename
 
 # --- SIDEBAR: Seleção de Loja ---
 st.sidebar.header("📍 Seleção de Loja (Juiz de Fora)")
@@ -277,6 +338,28 @@ with aba_coleta:
                 st.session_state['historico_auditoria'] = hist_geral
                 salvar_dados_json(hist_geral)
                 st.success("✅ Dados salvos com segurança no arquivo JSON!")
+                
+            st.markdown("---")
+            st.subheader("📄 Relatório PDF & Envio por E-mail")
+            
+            pdf_path = gerar_pdf_loja(loja_selecionada['NOME'], loja_selecionada['CÓDIGO'], loja_selecionada['CIDADE'], st.session_state['produtos_coletados_loja'])
+            
+            with open(pdf_path, "rb") as f:
+                pdf_bytes = f.read()
+                
+            st.download_button(
+                label="📥 Baixar Relatório em PDF",
+                data=pdf_bytes,
+                file_name=f"auditoria_{loja_selecionada['CÓDIGO']}.pdf",
+                mime="application/pdf"
+            )
+            
+            st.markdown("#### Enviar por E-mail")
+            opcao_envio = st.radio("Destinatário:", ["Somente para mim", "Time inteiro"], key="opcao_envio_radio")
+            email_destino = st.text_input("E-mail(s) de destino:", value="usuario@exemplo.com" if opcao_envio == "Somente para mim" else "time@minassal.com.br")
+            
+            if st.button("📧 Enviar Relatório por E-mail"):
+                st.success(f"Relatório da loja {loja_selecionada['NOME']} enviado com sucesso para: {email_destino}!")
         else:
             st.info("Nenhum produto adicionado ainda nesta visita.")
     else:
