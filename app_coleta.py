@@ -7,7 +7,7 @@ import json
 st.set_page_config(page_title="Monitor de Preços - Royal Canin (JF)", layout="wide")
 
 st.title("🐾 Auditoria Dinâmica de Preços - Royal Canin (Juiz de Fora)")
-st.markdown("Busque por nome (colunas D ou E), EAN (coluna F) ou código. As imagens são carregadas automaticamente da pasta `imagens/` pelo código.")
+st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. As imagens são carregadas automaticamente da pasta `imagens/`.")
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
 
@@ -31,7 +31,7 @@ else:
 
 codigos_10 = [21209, 21874, 21878, 21140, 24310, 21873, 21921, 21472, 24077, 21888]
 
-# 2. Carregar base de produtos da planilha preçosrecoroyal.xlsx (Colunas A/B, D, E, F e I)
+# 2. Carregar base de produtos da planilha preçosrecoroyal.xlsx
 @st.cache_data
 def load_produtos():
     if os.path.exists('preçosrecoroyal.xlsx'):
@@ -44,9 +44,12 @@ def load_produtos():
                 if idx == 0 and any(str(v).upper() in ['DESCRIÇÃO', 'PRODUTO', 'NOME', 'EAN', 'PREÇO'] for v in row.values):
                     continue
                 
-                # Código interno (ex: 100052, 97978 nas colunas A ou B)
-                val_cod1 = str(row.iloc[0]).strip() if len(row) > 0 and pd.notna(row.iloc[0]) else ""
-                val_cod2 = str(row.iloc[1]).strip() if len(row) > 1 and pd.notna(row.iloc[1]) else ""
+                # Capturar colunas de código/ID (A, B, C)
+                cods = []
+                for col_idx in range(min(3, len(row))):
+                    val = str(row.iloc[col_idx]).strip()
+                    if val and val.lower() != 'nan':
+                        cods.append(val.replace('.0', ''))
                 
                 # Coluna D = index 3, Coluna E = index 4, Coluna F = index 5, Coluna I = index 8
                 val_d = str(row.iloc[3]).strip() if len(row) > 3 and pd.notna(row.iloc[3]) else ""
@@ -62,17 +65,18 @@ def load_produtos():
                 except:
                     preco = 0.0
                 
-                if val_d or val_e or val_f or val_cod1:
+                if val_d or val_e or val_f or cods:
                     nome_principal = val_d if val_d and val_d.lower() != 'nan' else val_e
-                    codigo_interno = val_cod1 if val_cod1 and val_cod1.lower() != 'nan' else (val_cod2 if val_cod2 and val_cod2.lower() != 'nan' else val_f)
+                    ean = val_f if val_f and val_f.lower() != 'nan' else ""
                     
                     produtos.append({
-                        "CODIGO": str(codigo_interno).replace('.0', ''),
+                        "CODIGOS": cods,
                         "NOME_D": val_d,
                         "NOME_E": val_e,
                         "PRODUTO": nome_principal,
-                        "EAN": val_f,
-                        "PREÇO": preco
+                        "EAN": ean,
+                        "PREÇO": preco,
+                        "ROW_INDEX": str(idx)
                     })
             if produtos:
                 return pd.DataFrame(produtos)
@@ -80,7 +84,7 @@ def load_produtos():
             pass
             
     data = [
-        {"CODIGO": "100052", "NOME_D": "Royal Canin Hairball Care 1,5kg", "NOME_E": "Hairball 1.5", "PRODUTO": "Royal Canin Hairball Care 1,5kg", "EAN": "7896029011111", "PREÇO": 89.90},
+        {"CODIGOS": ["100052"], "NOME_D": "Royal Canin Hairball Care 1,5kg", "NOME_E": "Hairball 1.5", "PRODUTO": "Royal Canin Hairball Care 1,5kg", "EAN": "7896029011111", "PREÇO": 89.90, "ROW_INDEX": "1"},
     ]
     return pd.DataFrame(data)
 
@@ -144,57 +148,66 @@ with aba_coleta:
         if termo_busca:
             termo = termo_busca.strip().lower()
             
-            df_encontrados = df_produtos[
-                df_produtos['NOME_D'].astype(str).str.lower().str.contains(termo, na=False) |
-                df_produtos['NOME_E'].astype(str).str.lower().str.contains(termo, na=False) |
-                df_produtos['EAN'].astype(str).str.lower().str.contains(termo, na=False) |
-                df_produtos['CODIGO'].astype(str).str.lower().str.contains(termo, na=False)
-            ]
+            def match_row(row):
+                if termo in str(row['NOME_D']).lower(): return True
+                if termo in str(row['NOME_E']).lower(): return True
+                if termo in str(row['EAN']).lower(): return True
+                for c in row['CODIGOS']:
+                    if termo in str(c).lower(): return True
+                return False
+
+            df_encontrados = df_produtos[df_produtos.apply(match_row, axis=1)]
             
             if not df_encontrados.empty:
                 st.info(f"Encontrado(s) {len(df_encontrados)} produto(s):")
                 for idx, prod in df_encontrados.iterrows():
-                    p_cod = str(prod['CODIGO'])
+                    codigos_lista = prod['CODIGOS']
                     p_ean = str(prod['EAN'])
                     p_nome = str(prod['PRODUTO'])
                     p_rec = float(prod['PREÇO'])
+                    row_idx = str(prod['ROW_INDEX'])
+                    
+                    # Formatar preço com vírgula
+                    p_rec_str = f"R$ {p_rec:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
                     
                     with st.container():
                         c_img, c_info, c_preco, c_qtd, c_btn = st.columns([1, 3, 2, 2, 2])
                         
                         with c_img:
-                            # Buscar imagem na pasta imagens/ usando o código interno ou EAN como nome do arquivo (.png ou .jpg)
                             img_path = None
-                            possiveis_nomes = [p_cod, p_ean]
-                            for nome_arq in possiveis_nomes:
-                                if not nome_arq:
-                                    continue
-                                for ext in ['.png', '.jpg', '.jpeg', '.PNG', '.JPG']:
-                                    teste = os.path.join("imagens", f"{nome_arq}{ext}")
-                                    if os.path.exists(teste):
-                                        img_path = teste
+                            candidatos = codigos_lista + [p_ean, row_idx]
+                            
+                            if os.path.exists("imagens"):
+                                arquivos_pasta = os.listdir("imagens")
+                                for arq in arquivos_pasta:
+                                    nome_base, ext = os.path.splitext(arq)
+                                    if ext.lower() in ['.png', '.jpg', '.jpeg']:
+                                        for cand in candidatos:
+                                            if cand and (cand.lower() == nome_base.lower() or cand.lower() in nome_base.lower() or nome_base.lower() in cand.lower()):
+                                                img_path = os.path.join("imagens", arq)
+                                                break
+                                    if img_path:
                                         break
-                                if img_path:
-                                    break
-                                    
-                            if img_path:
+                                        
+                            if img_path and os.path.exists(img_path):
                                 st.image(img_path, width=70)
                             else:
                                 st.markdown("📦 *Sem foto*")
                                 
                         with c_info:
-                            st.markdown(f"**{p_nome}**<br><small>Cód: {p_cod} | EAN: {p_ean}</small>", unsafe_allow_html=True)
-                            st.text(f"Preço recomendado: R$ {p_rec:.2f}")
+                            cod_exibicao = codigos_lista[0] if codigos_lista else p_ean
+                            st.markdown(f"**{p_nome}**<br><small>Cód: {cod_exibicao} | EAN: {p_ean}</small>", unsafe_allow_html=True)
+                            st.text(f"Preço recomendado: {p_rec_str}")
                             
                         with c_preco:
-                            preco_prat = st.number_input(f"Preço Gôndola", min_value=0.0, value=0.0, step=0.50, format="%.2f", key=f"preco_{p_cod}_{idx}")
+                            preco_prat = st.number_input(f"Preço Gôndola", min_value=0.0, value=0.0, step=0.50, format="%.2f", key=f"preco_{row_idx}_{idx}")
                             
                         with c_qtd:
-                            qtd_loja = st.number_input(f"Qtd Loja", min_value=0, value=1, step=1, key=f"qtd_{p_cod}_{idx}")
+                            qtd_loja = st.number_input(f"Qtd Loja", min_value=0, value=1, step=1, key=f"qtd_{row_idx}_{idx}")
                             
                         with c_btn:
                             st.markdown("<br>", unsafe_allow_html=True)
-                            if st.button("➕ Adicionar", key=f"btn_add_{p_cod}_{idx}"):
+                            if st.button("➕ Adicionar", key=f"btn_add_{row_idx}_{idx}"):
                                 if preco_prat <= 0:
                                     st.warning("Informe o preço praticado.")
                                 else:
@@ -206,7 +219,7 @@ with aba_coleta:
                                         "Código Loja": int(loja_selecionada['CÓDIGO']),
                                         "Nome Loja": str(loja_selecionada['NOME']),
                                         "Cidade": str(loja_selecionada['CIDADE']),
-                                        "Código Produto": p_cod,
+                                        "Código Produto": cod_exibicao,
                                         "Produto": p_nome,
                                         "Preco Recomendado": p_rec,
                                         "Preco Praticado": preco_prat,
