@@ -1,1 +1,16 @@
-[]
+[
+    {
+        "ID_REGISTRO": "21472_7896181213215_224111653854",
+        "Data/Hora": "15/11/2026 19:41:11",
+        "Código Loja": 21472,
+        "Nome Loja": "AGROPECUARIA RIANELLI E BONOTO LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181213215",
+        "Produto": "ACC FHN CASTRADOS 1,5KG",
+        "Preco Recomendado": 120.645,
+        "Preco Praticado": 128.0,
+        "Quantidade Loja": 5,
+        "Diferenca (R$)": 7.36,
+        "Variação (%)": 6.1
+    }
+]
