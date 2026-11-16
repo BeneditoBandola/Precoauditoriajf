@@ -222,5 +222,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -4.56,
         "Variação (%)": -2.43
+    },
+    {
+        "ID_REGISTRO": "21140_7908248302197_181635110780",
+        "Data/Hora": "16/11/2026 15:16:35",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7908248302197",
+        "Produto": "ACC VDF GI HYDROL PROT 1,5KG",
+        "Preco Recomendado": 187.56045,
+        "Preco Praticado": 187.4,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -0.16,
+        "Variação (%)": -0.09
     }
 ]
