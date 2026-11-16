@@ -516,5 +516,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 6.83,
         "Variação (%)": 4.19
+    },
+    {
+        "ID_REGISTRO": "21472_7896181215417_192204120025",
+        "Data/Hora": "16/11/2026 16:22:04",
+        "Código Loja": 21472,
+        "Nome Loja": "AGROPECUARIA RIANELLI E BONOTO LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181215417",
+        "Produto": "ACC VDF URINARY S/O 1,5KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 169.9,
+        "Quantidade Loja": 5,
+        "Diferenca (R$)": 6.83,
+        "Variação (%)": 4.19
     }
 ]
