@@ -236,5 +236,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -0.16,
         "Variação (%)": -0.09
+    },
+    {
+        "ID_REGISTRO": "21140_7896181298083_181739425656",
+        "Data/Hora": "16/11/2026 15:17:39",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181298083",
+        "Produto": "ACC VDC URINARY SMALL DOG 2 KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 173.2,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 10.13,
+        "Variação (%)": 6.21
     }
 ]
