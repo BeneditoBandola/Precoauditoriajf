@@ -572,5 +572,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 6.83,
         "Variação (%)": 4.19
+    },
+    {
+        "ID_REGISTRO": "21472_7896181213529_192823950581",
+        "Data/Hora": "16/11/2026 16:28:23",
+        "Código Loja": 21472,
+        "Nome Loja": "AGROPECUARIA RIANELLI E BONOTO LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181213529",
+        "Produto": "ACC VDC RENAL 2KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 169.9,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 6.83,
+        "Variação (%)": 4.19
     }
 ]
