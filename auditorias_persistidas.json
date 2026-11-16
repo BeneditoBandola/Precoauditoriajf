@@ -488,5 +488,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 4.25,
         "Variação (%)": 3.38
+    },
+    {
+        "ID_REGISTRO": "21472_7896181213567_192106234945",
+        "Data/Hora": "16/11/2026 16:21:06",
+        "Código Loja": 21472,
+        "Nome Loja": "AGROPECUARIA RIANELLI E BONOTO LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181213567",
+        "Produto": "ACC VDC GAST INT 2KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 169.9,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 6.83,
+        "Variação (%)": 4.19
     }
 ]
