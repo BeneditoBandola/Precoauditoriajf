@@ -208,5 +208,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 0.07,
         "Variação (%)": 0.15
+    },
+    {
+        "ID_REGISTRO": "21140_7896181215370_181612873147",
+        "Data/Hora": "16/11/2026 15:16:12",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181215370",
+        "Produto": "ACC VDF HYPOALLERGENIC 1,5KG",
+        "Preco Recomendado": 187.56045,
+        "Preco Praticado": 183.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -4.56,
+        "Variação (%)": -2.43
     }
 ]
