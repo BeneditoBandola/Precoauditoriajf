@@ -124,5 +124,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": 0.35,
         "Variação (%)": 0.97
+    },
+    {
+        "ID_REGISTRO": "21140_7896181213208_181215776403",
+        "Data/Hora": "16/11/2026 15:12:15",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181213208",
+        "Produto": "ACC FHN CASTRADOS 400G",
+        "Preco Recomendado": 36.645,
+        "Preco Praticado": 37.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 0.35,
+        "Variação (%)": 0.97
     }
 ]
