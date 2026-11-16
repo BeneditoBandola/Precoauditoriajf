@@ -82,5 +82,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 0.2,
         "Variação (%)": 0.34
+    },
+    {
+        "ID_REGISTRO": "21140_7896181299974_180640799242",
+        "Data/Hora": "16/11/2026 15:06:40",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181299974",
+        "Produto": "ACC SHN MINI IND SENIOR 1 KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 67.2,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 4.3,
+        "Variação (%)": 6.84
     }
 ]
