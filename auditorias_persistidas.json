@@ -446,5 +446,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 10.16,
         "Variação (%)": 17.0
+    },
+    {
+        "ID_REGISTRO": "21472_7896181213642_191937451290",
+        "Data/Hora": "16/11/2026 16:19:37",
+        "Código Loja": 21472,
+        "Nome Loja": "AGROPECUARIA RIANELLI E BONOTO LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181213642",
+        "Produto": "ACC VDC HEPATIC 2KG",
+        "Preco Recomendado": 166.53945,
+        "Preco Praticado": 169.9,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 3.36,
+        "Variação (%)": 2.02
     }
 ]
