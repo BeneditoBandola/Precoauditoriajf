@@ -334,5 +334,19 @@
         "Quantidade Loja": 12,
         "Diferenca (R$)": -0.4,
         "Variação (%)": -4.05
+    },
+    {
+        "ID_REGISTRO": "21140_7896181222781_182300044446",
+        "Data/Hora": "16/11/2026 15:23:00",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181222781",
+        "Produto": "ACC SHN MINI ADULT WET 85G",
+        "Preco Recomendado": 9.900776531492665,
+        "Preco Praticado": 9.5,
+        "Quantidade Loja": 12,
+        "Diferenca (R$)": -0.4,
+        "Variação (%)": -4.05
     }
 ]
