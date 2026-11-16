@@ -250,5 +250,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 10.13,
         "Variação (%)": 6.21
+    },
+    {
+        "ID_REGISTRO": "21140_7896181218364_181822297497",
+        "Data/Hora": "16/11/2026 15:18:22",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181218364",
+        "Produto": "ACC VDC SATIETY SMALL D 1,5KG",
+        "Preco Recomendado": 131.42745,
+        "Preco Praticado": 131.4,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -0.03,
+        "Variação (%)": -0.02
     }
 ]
