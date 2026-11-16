@@ -474,19 +474,5 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -1.43,
         "Variação (%)": -0.76
-    },
-    {
-        "ID_REGISTRO": "21472_7908248302203_192016328043",
-        "Data/Hora": "16/11/2026 16:20:16",
-        "Código Loja": 21472,
-        "Nome Loja": "AGROPECUARIA RIANELLI E BONOTO LTDA",
-        "Cidade": "JUIZ DE FORA",
-        "Código Produto": "7908248302203",
-        "Produto": "ACC VDC GI L FAT SD 1,5KG",
-        "Preco Recomendado": 125.65245,
-        "Preco Praticado": 129.9,
-        "Quantidade Loja": 1,
-        "Diferenca (R$)": 4.25,
-        "Variação (%)": 3.38
     }
 ]
