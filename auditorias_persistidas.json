@@ -348,5 +348,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 0.07,
         "Variação (%)": 0.15
+    },
+    {
+        "ID_REGISTRO": "21472_7896181214717_191503803990",
+        "Data/Hora": "16/11/2026 16:15:03",
+        "Código Loja": 21472,
+        "Nome Loja": "AGROPECUARIA RIANELLI E BONOTO LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181214717",
+        "Produto": "ACC SBN YORKSHIRE AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 65.9,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 3.01,
+        "Variação (%)": 4.78
     }
 ]
