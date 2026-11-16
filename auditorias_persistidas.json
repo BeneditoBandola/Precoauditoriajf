@@ -404,5 +404,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 3.01,
         "Variação (%)": 4.78
+    },
+    {
+        "ID_REGISTRO": "21472_7896181212089_191720798366",
+        "Data/Hora": "16/11/2026 16:17:20",
+        "Código Loja": 21472,
+        "Nome Loja": "AGROPECUARIA RIANELLI E BONOTO LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181212089",
+        "Produto": "ACC SHN MINI AD 1KG",
+        "Preco Recomendado": 55.54499999999999,
+        "Preco Praticado": 59.9,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 4.36,
+        "Variação (%)": 7.84
     }
 ]
