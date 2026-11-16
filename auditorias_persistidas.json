@@ -362,5 +362,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 3.01,
         "Variação (%)": 4.78
+    },
+    {
+        "ID_REGISTRO": "21472_7896181214731_191527940638",
+        "Data/Hora": "16/11/2026 16:15:27",
+        "Código Loja": 21472,
+        "Nome Loja": "AGROPECUARIA RIANELLI E BONOTO LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181214731",
+        "Produto": "ACC SBN SHIH TZU AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 65.9,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": 3.01,
+        "Variação (%)": 4.78
     }
 ]
