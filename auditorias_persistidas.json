@@ -586,5 +586,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 6.83,
         "Variação (%)": 4.19
+    },
+    {
+        "ID_REGISTRO": "21472_7896181216575_192844584556",
+        "Data/Hora": "16/11/2026 16:28:44",
+        "Código Loja": 21472,
+        "Nome Loja": "AGROPECUARIA RIANELLI E BONOTO LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181216575",
+        "Produto": "ACC VDC DIABETIC 1,5KG",
+        "Preco Recomendado": 131.42745,
+        "Preco Praticado": 139.9,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 8.47,
+        "Variação (%)": 6.45
     }
 ]
