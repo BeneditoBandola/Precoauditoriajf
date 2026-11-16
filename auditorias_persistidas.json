@@ -432,5 +432,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 1.1,
         "Variação (%)": 1.82
+    },
+    {
+        "ID_REGISTRO": "21472_7908248300346_191813464434",
+        "Data/Hora": "16/11/2026 16:18:13",
+        "Código Loja": 21472,
+        "Nome Loja": "AGROPECUARIA RIANELLI E BONOTO LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7908248300346",
+        "Produto": "ACC SBN YORKSHIRE PUPPY 1KG",
+        "Preco Recomendado": 59.745,
+        "Preco Praticado": 69.9,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 10.16,
+        "Variação (%)": 17.0
     }
 ]
