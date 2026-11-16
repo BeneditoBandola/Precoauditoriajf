@@ -180,5 +180,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 1.45,
         "Variação (%)": 1.21
+    },
+    {
+        "ID_REGISTRO": "21140_7896181215417_181510376260",
+        "Data/Hora": "16/11/2026 15:15:10",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181215417",
+        "Produto": "ACC VDF URINARY S/O 1,5KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 161.9,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -1.17,
+        "Variação (%)": -0.72
     }
 ]
