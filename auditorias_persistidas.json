@@ -278,5 +278,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -2.33,
         "Variação (%)": -1.24
+    },
+    {
+        "ID_REGISTRO": "21140_7908248302203_182005322450",
+        "Data/Hora": "16/11/2026 15:20:05",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7908248302203",
+        "Produto": "ACC VDC GI L FAT SD 1,5KG",
+        "Preco Recomendado": 125.65245,
+        "Preco Praticado": 124.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -1.65,
+        "Variação (%)": -1.32
     }
 ]
