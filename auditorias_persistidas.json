@@ -306,5 +306,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -1.24,
         "Variação (%)": -0.74
+    },
+    {
+        "ID_REGISTRO": "21140_7896181217466_182118879056",
+        "Data/Hora": "16/11/2026 15:21:18",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181217466",
+        "Produto": "ACC VDC HYPOALL PATE 400G",
+        "Preco Recomendado": 48.72945,
+        "Preco Praticado": 49.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 0.27,
+        "Variação (%)": 0.56
     }
 ]
