@@ -54,5 +54,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -0.59,
         "Variação (%)": -0.9
+    },
+    {
+        "ID_REGISTRO": "21140_7896181212089_180508366991",
+        "Data/Hora": "16/11/2026 15:05:08",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181212089",
+        "Produto": "ACC SHN MINI AD 1KG",
+        "Preco Recomendado": 55.54499999999999,
+        "Preco Praticado": 55.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -0.54,
+        "Variação (%)": -0.98
     }
 ]
