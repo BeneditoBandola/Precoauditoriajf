@@ -264,5 +264,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -0.03,
         "Variação (%)": -0.02
+    },
+    {
+        "ID_REGISTRO": "21140_7896181216452_181928443965",
+        "Data/Hora": "16/11/2026 15:19:28",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181216452",
+        "Produto": "ACC VDC HYPOALL SMALL 2KG",
+        "Preco Recomendado": 187.32945,
+        "Preco Praticado": 185.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -2.33,
+        "Variação (%)": -1.24
     }
 ]
