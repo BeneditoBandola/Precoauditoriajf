@@ -292,5 +292,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -1.65,
         "Variação (%)": -1.32
+    },
+    {
+        "ID_REGISTRO": "21140_7896181213642_182024327040",
+        "Data/Hora": "16/11/2026 15:20:24",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181213642",
+        "Produto": "ACC VDC HEPATIC 2KG",
+        "Preco Recomendado": 166.53945,
+        "Preco Praticado": 165.3,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -1.24,
+        "Variação (%)": -0.74
     }
 ]
