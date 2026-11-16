@@ -12,5 +12,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -0.4,
         "Variação (%)": -0.63
+    },
+    {
+        "ID_REGISTRO": "21140_7896181214731_180122422092",
+        "Data/Hora": "16/11/2026 15:01:22",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181214731",
+        "Produto": "ACC SBN SHIH TZU AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 62.5,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -0.4,
+        "Variação (%)": -0.63
     }
 ]
