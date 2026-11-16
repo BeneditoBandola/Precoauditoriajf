@@ -600,5 +600,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 8.47,
         "Variação (%)": 6.45
+    },
+    {
+        "ID_REGISTRO": "21472_7896181287261_193002593587",
+        "Data/Hora": "16/11/2026 16:30:02",
+        "Código Loja": 21472,
+        "Nome Loja": "AGROPECUARIA RIANELLI E BONOTO LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181287261",
+        "Produto": "ACC SHN MINI PUPPY WET  85G",
+        "Preco Recomendado": 9.900776531492665,
+        "Preco Praticado": 9.9,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -0.0,
+        "Variação (%)": -0.01
     }
 ]
