@@ -40,5 +40,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -0.4,
         "Variação (%)": -0.63
+    },
+    {
+        "ID_REGISTRO": "21140_7896181215622_180414650514",
+        "Data/Hora": "16/11/2026 15:04:14",
+        "Código Loja": 21140,
+        "Nome Loja": "LOMBELLO E TEIXEIRA AGROPECUARIA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "7896181215622",
+        "Produto": "ACC SHN X-SMALL AD 1KG",
+        "Preco Recomendado": 65.59245000000001,
+        "Preco Praticado": 65.0,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -0.59,
+        "Variação (%)": -0.9
     }
 ]
