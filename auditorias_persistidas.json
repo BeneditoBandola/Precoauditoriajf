@@ -1804,5 +1804,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 5.76,
         "Variação (%)": 4.77
+    },
+    {
+        "ID_REGISTRO": "21209_98060_192558148770",
+        "Data/Hora": "17/11/2026 16:25:58",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98060",
+        "Produto": "ACC FHN EXIGENT 1,5KG",
+        "Preco Recomendado": 120.645,
+        "Preco Praticado": 116.3,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -4.34,
+        "Variação (%)": -3.6
     }
 ]
