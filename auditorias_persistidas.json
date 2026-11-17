@@ -1286,5 +1286,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -1.22,
         "Variação (%)": -0.75
+    },
+    {
+        "ID_REGISTRO": "21209_98092_184756744179",
+        "Data/Hora": "17/11/2026 15:47:56",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98092",
+        "Produto": "ACC VDC HEPATIC 2KG",
+        "Preco Recomendado": 166.53945,
+        "Preco Praticado": 165.3,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -1.24,
+        "Variação (%)": -0.74
     }
 ]
