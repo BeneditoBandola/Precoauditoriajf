@@ -1300,5 +1300,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -1.24,
         "Variação (%)": -0.74
+    },
+    {
+        "ID_REGISTRO": "21209_98650_184826884571",
+        "Data/Hora": "17/11/2026 15:48:26",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98650",
+        "Produto": "ACC VHN C HYPO MOD CALORIE 2KG",
+        "Preco Recomendado": 187.32945,
+        "Preco Praticado": 185.9,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -1.43,
+        "Variação (%)": -0.76
     }
 ]
