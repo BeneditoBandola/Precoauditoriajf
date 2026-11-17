@@ -2644,5 +2644,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -0.33,
         "Variação (%)": -0.68
+    },
+    {
+        "ID_REGISTRO": "21209_98296_202817583213",
+        "Data/Hora": "17/11/2026 17:28:17",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98296",
+        "Produto": "ACC VDC RENAL WET 410G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 45.6,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": -0.36,
+        "Variação (%)": -0.78
     }
 ]
