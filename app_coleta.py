@@ -19,17 +19,15 @@ from reportlab.lib import colors
 st.set_page_config(page_title="Monitor de Preços - Royal Canin (JF)", layout="wide")
 
 st.title("🐾 Auditoria Dinâmica de Preços - Royal Canin (Juiz de Fora)")
-st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Os dados são salvos no GitHub e os e-mails são enviados via Gmail.")
+st.markdown("Busque por parte do nome, EAN ou código. Os dados são salvos no GitHub e os e-mails são enviados via Gmail.")
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
-CUSTOM_PROD_JSON = "produtos_customizados.json" # NOVO: JSON para produtos inseridos manualmente
+CUSTOM_PROD_JSON = "produtos_customizados.json" 
 
-# Fuso horário do Brasil e formato padrão brasileiro (DD/MM/YYYY HH:MM:SS)
 def hora_brasil():
     tz_br = timezone(timedelta(hours=-3))
     return datetime.datetime.now(tz_br).strftime("%d/%m/%Y %H:%M:%S")
 
-# 1. Carregar base de clientes de Juiz de Fora
 @st.cache_data
 def load_clients():
     if os.path.exists('clientes base atualizado 14112026.xlsx'):
@@ -49,7 +47,7 @@ else:
 
 codigos_10 = [21209, 21874, 21878, 21140, 24310, 21873, 21921, 21472, 24077, 21888]
 
-# 2. Carregar base de produtos da planilha preçosrecoroyal.xlsx
+# --- MODIFICAÇÃO: Tratamento Exato da Coluna C ---
 @st.cache_data
 def load_produtos():
     if os.path.exists('preçosrecoroyal.xlsx'):
@@ -62,9 +60,30 @@ def load_produtos():
                 if idx == 0 and any(str(v).upper() in ['DESCRIÇÃO', 'PRODUTO', 'NOME', 'EAN', 'PREÇO'] for v in row.values):
                     continue
                 
+                # Extraindo o Código da Coluna C (índice 2) e forçando ser número inteiro limpo
+                val_c_raw = row.iloc[2] if len(row) > 2 else None
+                if pd.notna(val_c_raw):
+                    try:
+                        # Se for um número como 12345.0, isso transforma direto para "12345"
+                        val_c = str(int(float(val_c_raw)))
+                    except:
+                        val_c = str(val_c_raw).strip()
+                else:
+                    val_c = ""
+                
                 val_d = str(row.iloc[3]).strip() if len(row) > 3 and pd.notna(row.iloc[3]) else ""
                 val_e = str(row.iloc[4]).strip() if len(row) > 4 and pd.notna(row.iloc[4]) else ""
-                val_f = str(row.iloc[5]).strip() if len(row) > 5 and pd.notna(row.iloc[5]) else ""
+                
+                # Tratamento do EAN também para evitar o .0
+                val_f_raw = row.iloc[5] if len(row) > 5 else None
+                if pd.notna(val_f_raw):
+                    try:
+                        val_f = str(int(float(val_f_raw)))
+                    except:
+                        val_f = str(val_f_raw).strip()
+                else:
+                    val_f = ""
+
                 val_i = row.iloc[8] if len(row) > 8 and pd.notna(row.iloc[8]) else 0.0
                 
                 try:
@@ -75,11 +94,12 @@ def load_produtos():
                 except:
                     preco = 0.0
                 
-                if val_d or val_e or val_f:
+                if val_d or val_e or val_f or val_c:
                     nome_principal = val_d if val_d and val_d.lower() != 'nan' else val_e
-                    ean = val_f.replace('.0', '') if val_f and val_f.lower() != 'nan' else f"ITEM_{idx}"
+                    ean = val_f if val_f and val_f.lower() != 'nan' else f"ITEM_{idx}"
                     
                     produtos.append({
+                        "COD_C": val_c,
                         "PRODUTO": nome_principal,
                         "EAN": ean,
                         "PREÇO": preco,
@@ -91,7 +111,7 @@ def load_produtos():
             pass
             
     data = [
-        {"PRODUTO": "Royal Canin Hairball Care 1,5kg", "EAN": "7896029011111", "PREÇO": 89.90, "ROW_INDEX": "1"},
+        {"COD_C": "100", "PRODUTO": "Royal Canin Exemplo", "EAN": "7896029011111", "PREÇO": 89.90, "ROW_INDEX": "1"},
     ]
     return pd.DataFrame(data)
 
@@ -109,7 +129,6 @@ def parse_preco_br(texto):
 def fmt_brl(val):
     return f"R$ {val:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
 
-# 3. Sincronização Automática com o GitHub e JSON Local (AGORA ACEITA QUALQUER NOME DE ARQUIVO)
 def carregar_dados_json(nome_arquivo):
     if "GITHUB_TOKEN" in st.secrets and "GITHUB_REPO" in st.secrets:
         try:
@@ -164,19 +183,16 @@ def salvar_dados_json(dados, nome_arquivo):
         except Exception as e:
             st.warning(f"Aviso: Não foi possível sincronizar o {nome_arquivo} com o GitHub ({e}), mas está salvo localmente.")
 
-# Carregar os dois históricos (Auditorias e Produtos Customizados)
 if 'historico_auditoria' not in st.session_state:
     st.session_state['historico_auditoria'] = carregar_dados_json(ARQUIVO_JSON)
 
 if 'produtos_customizados' not in st.session_state:
     st.session_state['produtos_customizados'] = carregar_dados_json(CUSTOM_PROD_JSON)
 
-# Mesclar os produtos customizados com os produtos da planilha na memória
 if st.session_state['produtos_customizados']:
     df_customizados = pd.DataFrame(st.session_state['produtos_customizados'])
     df_produtos = pd.concat([df_produtos, df_customizados], ignore_index=True)
 
-# Função para enviar e-mail via Gmail SMTP saindo estritamente de beneditobandola@gmail.com
 def enviar_email_com_anexo(destinatarios_str, assunto, corpo, caminho_pdf):
     remetente = "beneditobandola@gmail.com"
     if "GMAIL_APP_PASSWORD" not in st.secrets:
@@ -210,7 +226,6 @@ def enviar_email_com_anexo(destinatarios_str, assunto, corpo, caminho_pdf):
     except Exception as e:
         return False, f"Erro ao enviar e-mail: {str(e)}"
 
-# Função para gerar PDF profissional
 def gerar_pdf_loja(nome_loja, cod_loja, cidade_loja, itens):
     pdf_filename = f"auditoria_loja_{cod_loja}.pdf"
     doc = SimpleDocTemplate(pdf_filename, pagesize=letter, rightMargin=36, leftMargin=36, topMargin=36, bottomMargin=36)
@@ -292,7 +307,6 @@ def gerar_pdf_loja(nome_loja, cod_loja, cidade_loja, itens):
     doc.build(story)
     return pdf_filename
 
-# --- SIDEBAR: Seleção de Loja ---
 st.sidebar.header("📍 Seleção de Loja (Juiz de Fora)")
 modo_selecao = st.sidebar.radio("Modo de Lista de Lojas:", ["10 Lojas Principais", "Todos os Clientes de Juiz de Fora"])
 
@@ -313,7 +327,6 @@ if not df_lojas_disponiveis.empty:
         cod_loja = int(opcao_escolhida.split(" - ")[0])
         loja_selecionada = df_lojas_disponiveis[df_lojas_disponiveis['CÓDIGO'] == cod_loja].iloc[0]
 
-# --- ABAS DO APLICATIVO ---
 aba_coleta, aba_historico = st.tabs(["📝 Coleta Dinâmica em Loja", "📊 Histórico, Edição e Exclusão (JSON)"])
 
 with aba_coleta:
@@ -326,9 +339,8 @@ with aba_coleta:
         st.markdown("---")
         st.subheader("🔍 Buscar Produto por Nome, EAN ou Código")
         
-        termo_busca = st.text_input("Digite sua busca (ex: 'uri', '1kg', '100052', '78960'):")
+        termo_busca = st.text_input("Digite sua busca (ex: 'uri', '100052', '78960'):")
         
-        # INÍCIO DO NOVO BLOCO: Cadastrar produto manualmente
         with st.expander("➕ Não encontrou o produto? Cadastre manualmente"):
             with st.form("form_add_produto_custom"):
                 st.markdown("Os produtos cadastrados aqui ficarão salvos para sempre no sistema e aparecerão nas buscas.")
@@ -336,7 +348,7 @@ with aba_coleta:
                 with c1:
                     novo_nome = st.text_input("Nome do Produto *")
                 with c2:
-                    novo_ean = st.text_input("EAN (Código de Barras)")
+                    novo_codigo = st.text_input("Código na Coluna C ou EAN")
                 with c3:
                     novo_preco_rec = st.number_input("Preço Recomendado (R$)", min_value=0.0, format="%.2f")
                 
@@ -344,25 +356,26 @@ with aba_coleta:
                     if not novo_nome.strip():
                         st.error("O nome do produto é obrigatório!")
                     else:
-                        _ean = novo_ean.strip() if novo_ean.strip() else f"CUSTOM_{datetime.datetime.now().strftime('%H%M%S')}"
+                        _cod = novo_codigo.strip() if novo_codigo.strip() else f"CUSTOM_{datetime.datetime.now().strftime('%H%M%S')}"
                         novo_item_bd = {
                             "PRODUTO": novo_nome.strip().upper(),
-                            "EAN": _ean,
+                            "EAN": _cod,
+                            "COD_C": _cod,
                             "PREÇO": novo_preco_rec,
-                            "ROW_INDEX": f"C_{_ean}"
+                            "ROW_INDEX": f"C_{_cod}"
                         }
                         st.session_state['produtos_customizados'].append(novo_item_bd)
                         salvar_dados_json(st.session_state['produtos_customizados'], CUSTOM_PROD_JSON)
                         st.success("Produto cadastrado com sucesso! Já pode buscá-lo acima.")
                         st.rerun()
-        # FIM DO NOVO BLOCO
         
         if termo_busca:
             termo = termo_busca.strip().lower()
             
             def match_row(row):
-                if termo in str(row['PRODUTO']).lower(): return True
-                if termo in str(row['EAN']).lower(): return True
+                if termo in str(row.get('PRODUTO', '')).lower(): return True
+                if termo in str(row.get('EAN', '')).lower(): return True
+                if termo in str(row.get('COD_C', '')).lower(): return True
                 return False
 
             df_encontrados = df_produtos[df_produtos.apply(match_row, axis=1)]
@@ -370,11 +383,16 @@ with aba_coleta:
             if not df_encontrados.empty:
                 st.info(f"Encontrado(s) {len(df_encontrados)} produto(s):")
                 for idx, prod in df_encontrados.iterrows():
-                    p_ean = str(prod['EAN'])
-                    p_nome = str(prod['PRODUTO'])
-                    p_rec = float(prod['PREÇO'])
-                    row_idx = str(prod['ROW_INDEX'])
+                    p_ean = str(prod.get('EAN', ''))
+                    p_nome = str(prod.get('PRODUTO', ''))
+                    p_rec = float(prod.get('PREÇO', 0.0))
+                    row_idx = str(prod.get('ROW_INDEX', ''))
                     
+                    # Pega o Código da Coluna C; se não tiver, usa o EAN
+                    p_cod = str(prod.get('COD_C', '')).strip()
+                    if not p_cod:
+                        p_cod = p_ean
+                        
                     p_rec_str = fmt_brl(p_rec)
                     
                     with st.container():
@@ -382,16 +400,19 @@ with aba_coleta:
                         
                         with c_img:
                             img_path = None
-                            candidatos = [p_ean, row_idx]
                             
+                            # Filtra apenas os códigos que não estão vazios
+                            candidatos = [c for c in [p_cod, p_ean] if c]
+                                        
                             if os.path.exists("imagens"):
                                 arquivos_pasta = os.listdir("imagens")
                                 for arq in arquivos_pasta:
                                     nome_base, ext = os.path.splitext(arq)
+                                    # Procura especificamente pelas extensões de imagem
                                     if ext.lower() in ['.png', '.jpg', '.jpeg']:
                                         for cand in candidatos:
-                                            # CORREÇÃO DA IMAGEM: A correspondência agora é EXATA (==) e não "in"
-                                            if cand and cand.lower() == nome_base.lower():
+                                            # Comparação exata entre o código da coluna C e o nome da imagem
+                                            if cand.lower() == nome_base.lower():
                                                 img_path = os.path.join("imagens", arq)
                                                 break
                                     if img_path:
@@ -403,7 +424,7 @@ with aba_coleta:
                                 st.markdown("📦 *Sem foto*")
                                 
                         with c_info:
-                            st.markdown(f"**{p_nome}**<br><small>EAN: {p_ean}</small>", unsafe_allow_html=True)
+                            st.markdown(f"**{p_nome}**<br><small>Código: {p_cod}</small>", unsafe_allow_html=True)
                             st.text(f"Preço recomendado: {p_rec_str}")
                             
                         with c_preco:
@@ -419,20 +440,20 @@ with aba_coleta:
                                 if preco_prat <= 0:
                                     st.warning("Informe o preço praticado.")
                                 else:
-                                    ja_adicionado = any(str(item.get('Código Produto')) == str(p_ean) for item in itens_loja_salvos)
+                                    ja_adicionado = any(str(item.get('Código Produto')) == str(p_cod) for item in itens_loja_salvos)
                                     if ja_adicionado:
-                                        st.error(f"⚠️ Este produto ({p_nome}) já está salvo nesta loja! Exclua-o na lista abaixo se precisar alterar o preço ou quantidade.")
+                                        st.error(f"⚠️ Este produto ({p_nome}) já está salvo nesta loja!")
                                     else:
                                         dif = preco_prat - p_rec
                                         var = (dif / p_rec) * 100 if p_rec > 0 else 0.0
                                         
                                         novo_item = {
-                                            "ID_REGISTRO": f"{cod_loja}_{p_ean}_{datetime.datetime.now().strftime('%H%M%S%f')}",
+                                            "ID_REGISTRO": f"{cod_loja}_{p_cod}_{datetime.datetime.now().strftime('%H%M%S%f')}",
                                             "Data/Hora": hora_brasil(),
                                             "Código Loja": cod_loja,
                                             "Nome Loja": str(loja_selecionada['NOME']),
                                             "Cidade": str(loja_selecionada['CIDADE']),
-                                            "Código Produto": p_ean,
+                                            "Código Produto": p_cod,
                                             "Produto": p_nome,
                                             "Preco Recomendado": p_rec,
                                             "Preco Praticado": preco_prat,
@@ -450,7 +471,7 @@ with aba_coleta:
                 st.info("Nenhum produto encontrado com este termo de busca.")
 
         st.markdown("---")
-        st.subheader("🛒 Produtos Já Catalogados Nesta Loja (Salvos Permanentemente)")
+        st.subheader("🛒 Produtos Já Catalogados Nesta Loja")
         
         itens_loja_salvos = [item for item in st.session_state['historico_auditoria'] if int(item.get('Código Loja', 0)) == cod_loja_atual]
         
@@ -467,9 +488,9 @@ with aba_coleta:
                     **{item['Produto']}**  
                     * **Quantidade:** {item['Quantidade Loja']}  
                     * **Preço Recomendado:** {rec_str}  
-                    * **Preço da Loja (Gôndola):** {prat_str}  
-                    * **Diferença em Reais:** {dif_str}  
-                    * **Diferença em Porcentagem:** {var_str}
+                    * **Preço da Loja:** {prat_str}  
+                    * **Diferença (R$):** {dif_str}  
+                    * **Variação (%):** {var_str}
                     """)
                     if st.button("🗑️ Excluir da Loja", key=f"rm_eterno_{cod_loja_atual}_{i}"):
                         id_alvo = item.get('ID_REGISTRO')
@@ -479,9 +500,9 @@ with aba_coleta:
                         st.rerun()
                     st.divider()
             
-            if st.button("🚪 Salvar e Sair (Continuar Depois)"):
+            if st.button("🚪 Salvar e Sair"):
                 salvar_dados_json(st.session_state['historico_auditoria'], ARQUIVO_JSON)
-                st.success("✅ Progresso salvo e sincronizado no GitHub!")
+                st.success("✅ Progresso salvo!")
                 st.rerun()
 
             st.markdown("---")
@@ -511,92 +532,52 @@ with aba_coleta:
             
             if st.button("📧 Enviar Relatório por E-mail"):
                 assunto = f"Relatório de Auditoria de Preços - Loja {loja_selecionada['CÓDIGO']} - {loja_selecionada['NOME']}"
-                corpo = f"""Olá,
-
-Segue em anexo o relatório de auditoria de preços da loja {loja_selecionada['CÓDIGO']} - {loja_selecionada['NOME']} ({loja_selecionada['CIDADE']}), emitido em {hora_brasil()}.
-
-Nota: O valor da diferença financeira calculado no relatório é utilizado apenas como caráter informativo para suporte à gestão.
-
-Atenciosamente,
-Benedito"""
-                
+                corpo = f"Olá,\n\nSegue em anexo o relatório emitido em {hora_brasil()}."
                 sucesso, mensagem = enviar_email_com_anexo(email_destino, assunto, corpo, pdf_path)
                 if sucesso:
-                    st.success(f"✅ E-mail enviado com sucesso de beneditobandola@gmail.com para: {email_destino}")
+                    st.success(f"✅ Enviado com sucesso para: {email_destino}")
                 else:
-                    st.error(f"❌ Falha no envio: {mensagem}")
+                    st.error(f"❌ Erro: {mensagem}")
         else:
-            st.info("Nenhum produto cadastrado nesta loja ainda. Use a busca acima para começar.")
+            st.info("Nenhum produto cadastrado nesta loja ainda.")
     else:
-        st.info("👈 Selecione uma loja na barra lateral.")
+        st.info("👈 Selecione uma loja na lateral.")
 
 with aba_historico:
-    st.header("📂 Histórico Geral, Edição e Exclusão (JSON)")
-    st.markdown("Aqui você pode consultar, editar o preço/quantidade ou excluir qualquer registro salvo.")
-    
+    st.header("📂 Histórico Geral")
     if st.session_state['historico_auditoria']:
         hist = st.session_state['historico_auditoria']
-        
         lojas_hist = list(set([f"{item['Código Loja']} - {item['Nome Loja']}" for item in hist]))
-        filtro_l = st.selectbox("Filtrar Histórico por Loja:", ["Todas as Lojas"] + lojas_hist)
+        filtro_l = st.selectbox("Filtrar Histórico:", ["Todas as Lojas"] + lojas_hist)
         
         for i, item in enumerate(hist):
-            loja_str = f"{item['Código Loja']} - {item['Nome Loja']}"
-            if filtro_l != "Todas as Lojas" and filtro_l != loja_str:
+            if filtro_l != "Todas as Lojas" and filtro_l != f"{item['Código Loja']} - {item['Nome Loja']}":
                 continue
-                
-            prat_s = fmt_brl(item['Preco Praticado'])
-            rec_s = fmt_brl(item['Preco Recomendado'])
-            dif_s = fmt_brl(item['Diferenca (R$)'])
-            var_s = f"{item['Variação (%)']:+.2f}%".replace('.', ',')
-            
-            with st.expander(f"📌 [{item['Data/Hora']}] {item['Nome Loja']} — {item['Produto']} | Qtd: {item['Quantidade Loja']} | Gôndola: {prat_s} | Var: {var_s}"):
+            with st.expander(f"📌 {item['Nome Loja']} — {item['Produto']} | R$ {item['Preco Praticado']}"):
                 with st.form(f"form_edit_{i}"):
                     c_e1, c_e2, c_e3 = st.columns(3)
                     with c_e1:
-                        novo_prat = st.number_input("Preço Praticado (R$)", min_value=0.0, value=float(item['Preco Praticado']), step=0.50, format="%.2f")
+                        novo_prat = st.number_input("Praticado (R$)", value=float(item['Preco Praticado']), step=0.50)
                     with c_e2:
-                        nova_qtd = st.number_input("Quantidade", min_value=0, value=int(item['Quantidade Loja']), step=1)
-                    with c_e3:
-                        st.text(f"Rec.: {rec_s}")
+                        nova_qtd = st.number_input("Qtd", value=int(item['Quantidade Loja']), step=1)
                         
                     col_b1, col_b2 = st.columns(2)
                     with col_b1:
-                        atualizar = st.form_submit_button("✏️ Atualizar Registro")
+                        if st.form_submit_button("✏️ Atualizar"):
+                            rec = float(item['Preco Recomendado'])
+                            dif = novo_prat - rec
+                            var = (dif / rec) * 100 if rec > 0 else 0.0
+                            hist[i].update({'Preco Praticado': float(novo_prat), 'Quantidade Loja': int(nova_qtd), 'Diferenca (R$)': round(dif, 2), 'Variação (%)': round(var, 2)})
+                            st.session_state['historico_auditoria'] = hist
+                            salvar_dados_json(hist, ARQUIVO_JSON)
+                            st.success("Atualizado!")
+                            st.rerun()
                     with col_b2:
-                        deletar = st.form_submit_button("🗑️ Excluir Registro")
-                        
-                    if atualizar:
-                        rec = float(item['Preco Recomendado'])
-                        dif = novo_prat - rec
-                        var = (dif / rec) * 100 if rec > 0 else 0.0
-                        
-                        hist[i]['Preco Praticado'] = float(novo_prat)
-                        hist[i]['Quantidade Loja'] = int(nova_qtd)
-                        hist[i]['Diferenca (R$)'] = round(dif, 2)
-                        hist[i]['Variação (%)'] = round(var, 2)
-                        
-                        st.session_state['historico_auditoria'] = hist
-                        salvar_dados_json(hist, ARQUIVO_JSON)
-                        st.success("Registro atualizado e sincronizado!")
-                        st.rerun()
-                        
-                    if deletar:
-                        hist.pop(i)
-                        st.session_state['historico_auditoria'] = hist
-                        salvar_dados_json(hist, ARQUIVO_JSON)
-                        st.success("Registro excluído e sincronizado!")
-                        st.rerun()
-                        
-        st.markdown("---")
-        df_hist = pd.DataFrame(hist)
-        csv_b = df_hist.to_csv(index=False).encode('utf-8')
-        st.download_button("📥 Baixar Histórico Completo em CSV/Excel", data=csv_b, file_name="historico_auditoria_completo.csv", mime="text/csv")
-        
-        if st.button("🗑️ Limpar Todo o Histórico Salvo"):
-            st.session_state['historico_auditoria'] = []
-            salvar_dados_json([], ARQUIVO_JSON)
-            st.success("Histórico limpo e sincronizado.")
-            st.rerun()
+                        if st.form_submit_button("🗑️ Excluir"):
+                            hist.pop(i)
+                            st.session_state['historico_auditoria'] = hist
+                            salvar_dados_json(hist, ARQUIVO_JSON)
+                            st.success("Excluído!")
+                            st.rerun()
     else:
-        st.info("Nenhum registro no histórico geral ainda.")
+        st.info("Nenhum registro.")
