@@ -880,5 +880,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -45.57,
         "Variação (%)": -27.95
+    },
+    {
+        "ID_REGISTRO": "21878_99426_160727430888",
+        "Data/Hora": "17/11/2026 13:07:27",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99426",
+        "Produto": "ACC VDC GI L FAT SD 1,5KG",
+        "Preco Recomendado": 125.65245,
+        "Preco Praticado": 113.4,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -12.25,
+        "Variação (%)": -9.75
     }
 ]
