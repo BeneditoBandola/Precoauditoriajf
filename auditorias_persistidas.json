@@ -2350,5 +2350,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -0.55,
         "Variação (%)": -0.69
+    },
+    {
+        "ID_REGISTRO": "21209_98019_200336749555",
+        "Data/Hora": "17/11/2026 17:03:36",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98019",
+        "Produto": "ACC SHN MINI LIGHT 1KG",
+        "Preco Recomendado": 67.09500000000001,
+        "Preco Praticado": 64.7,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -2.4,
+        "Variação (%)": -3.57
     }
 ]
