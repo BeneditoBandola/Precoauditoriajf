@@ -1972,5 +1972,19 @@
         "Quantidade Loja": 6,
         "Diferenca (R$)": -0.7,
         "Variação (%)": -3.74
+    },
+    {
+        "ID_REGISTRO": "21209_98857_194135596017",
+        "Data/Hora": "17/11/2026 16:41:35",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98857",
+        "Produto": "ACC FHN STERILIS GELAT WET 85G",
+        "Preco Recomendado": 9.9,
+        "Preco Praticado": 9.85,
+        "Quantidade Loja": 14,
+        "Diferenca (R$)": -0.05,
+        "Variação (%)": -0.51
     }
 ]
