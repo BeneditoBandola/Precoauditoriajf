@@ -796,5 +796,19 @@
         "Quantidade Loja": 6,
         "Diferenca (R$)": -5.24,
         "Variação (%)": -3.96
+    },
+    {
+        "ID_REGISTRO": "21878_98434_155251518143",
+        "Data/Hora": "17/11/2026 12:52:51",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98434",
+        "Produto": "ACC SHN MINI IND SENIOR 2,5 KG",
+        "Preco Recomendado": 135.345,
+        "Preco Praticado": 133.0,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -2.34,
+        "Variação (%)": -1.73
     }
 ]
