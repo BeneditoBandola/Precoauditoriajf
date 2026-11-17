@@ -1538,5 +1538,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": -0.38,
         "Variação (%)": -0.76
+    },
+    {
+        "ID_REGISTRO": "21209_99419_190852801353",
+        "Data/Hora": "17/11/2026 16:08:52",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99419",
+        "Produto": "ACC VDF RENAL 400G",
+        "Preco Recomendado": 46.92996000000001,
+        "Preco Praticado": 46.6,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -0.33,
+        "Variação (%)": -0.7
     }
 ]
