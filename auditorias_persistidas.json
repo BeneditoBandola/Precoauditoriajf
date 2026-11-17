@@ -2084,5 +2084,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -0.45,
         "Variação (%)": -0.74
+    },
+    {
+        "ID_REGISTRO": "21209_98324_195011859786",
+        "Data/Hora": "17/11/2026 16:50:11",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98324",
+        "Produto": "ACC CAT PREM AD BELEZA PL 10,1KG",
+        "Preco Recomendado": 326.5279499999999,
+        "Preco Praticado": 287.9,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -38.63,
+        "Variação (%)": -11.83
     }
 ]
