@@ -1426,5 +1426,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -6.81,
         "Variação (%)": -3.63
+    },
+    {
+        "ID_REGISTRO": "21209_99425_190105821943",
+        "Data/Hora": "17/11/2026 16:01:05",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99425",
+        "Produto": "ACC VDF GI HYDROL PROT 1,5KG",
+        "Preco Recomendado": 187.56045,
+        "Preco Praticado": 180.75,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -6.81,
+        "Variação (%)": -3.63
     }
 ]
