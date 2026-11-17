@@ -2238,5 +2238,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 3.9,
         "Variação (%)": 6.77
+    },
+    {
+        "ID_REGISTRO": "21209_98490_195821651721",
+        "Data/Hora": "17/11/2026 16:58:21",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98490",
+        "Produto": "ACC BHN POMERANIAN ADULT 1KG",
+        "Preco Recomendado": 62.89499999999998,
+        "Preco Praticado": 60.6,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -2.29,
+        "Variação (%)": -3.65
     }
 ]
