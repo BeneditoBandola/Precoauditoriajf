@@ -2602,5 +2602,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -1.05,
         "Variação (%)": -0.74
+    },
+    {
+        "ID_REGISTRO": "21209_98464_202442919474",
+        "Data/Hora": "17/11/2026 17:24:42",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98464",
+        "Produto": "ACC CCN DERMACOMFORT WET 85G",
+        "Preco Recomendado": 9.9,
+        "Preco Praticado": 9.9,
+        "Quantidade Loja": 22,
+        "Diferenca (R$)": 0.0,
+        "Variação (%)": 0.0
     }
 ]
