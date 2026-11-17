@@ -1734,5 +1734,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -1.13,
         "Variação (%)": -0.74
+    },
+    {
+        "ID_REGISTRO": "21209_98055_192143508466",
+        "Data/Hora": "17/11/2026 16:21:43",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98055",
+        "Produto": "ACC FHN SENSIBLE 1,5KG",
+        "Preco Recomendado": 120.645,
+        "Preco Praticado": 128.5,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": 7.86,
+        "Variação (%)": 6.51
     }
 ]
