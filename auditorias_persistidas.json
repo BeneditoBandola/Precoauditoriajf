@@ -1944,5 +1944,19 @@
         "Quantidade Loja": 12,
         "Diferenca (R$)": -0.05,
         "Variação (%)": -0.44
+    },
+    {
+        "ID_REGISTRO": "21209_98441_193919785147",
+        "Data/Hora": "17/11/2026 16:39:19",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98441",
+        "Produto": "ACC VDF SATIETY FELINE WET 85G",
+        "Preco Recomendado": 18.69945000000001,
+        "Preco Praticado": 19.0,
+        "Quantidade Loja": 12,
+        "Diferenca (R$)": 0.3,
+        "Variação (%)": 1.61
     }
 ]
