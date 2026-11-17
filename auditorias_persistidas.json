@@ -2560,5 +2560,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -1.04,
         "Variação (%)": -0.77
+    },
+    {
+        "ID_REGISTRO": "21209_98357_201544752721",
+        "Data/Hora": "17/11/2026 17:15:44",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98357",
+        "Produto": "ACC SHN MINI AD 2,5KG",
+        "Preco Recomendado": 120.645,
+        "Preco Praticado": 119.75,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -0.89,
+        "Variação (%)": -0.74
     }
 ]
