@@ -2630,5 +2630,19 @@
         "Quantidade Loja": 5,
         "Diferenca (R$)": -1.66,
         "Variação (%)": -3.61
+    },
+    {
+        "ID_REGISTRO": "21209_98258_202703733169",
+        "Data/Hora": "17/11/2026 17:27:03",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98258",
+        "Produto": "ACC VDC HYPOALL PATE 400G",
+        "Preco Recomendado": 48.72945,
+        "Preco Praticado": 48.4,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -0.33,
+        "Variação (%)": -0.68
     }
 ]
