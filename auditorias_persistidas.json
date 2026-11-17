@@ -614,19 +614,5 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -0.0,
         "Variação (%)": -0.01
-    },
-    {
-        "ID_REGISTRO": "21878_98124_154200904481",
-        "Data/Hora": "17/11/2026 12:42:00",
-        "Código Loja": 21878,
-        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
-        "Cidade": "JUIZ DE FORA",
-        "Código Produto": "98124",
-        "Produto": "ACC SBN YORKSHIRE AD 1KG",
-        "Preco Recomendado": 62.895,
-        "Preco Praticado": 62.0,
-        "Quantidade Loja": 2,
-        "Diferenca (R$)": -0.9,
-        "Variação (%)": -1.42
     }
 ]
