@@ -1468,5 +1468,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -6.02,
         "Variação (%)": -3.61
+    },
+    {
+        "ID_REGISTRO": "21209_98164_190653365256",
+        "Data/Hora": "17/11/2026 16:06:53",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98164",
+        "Produto": "ACC VDF RENAL 1,5KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 161.85,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -1.22,
+        "Variação (%)": -0.75
     }
 ]
