@@ -908,5 +908,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -15.93,
         "Variação (%)": -12.12
+    },
+    {
+        "ID_REGISTRO": "21878_98372_160839424578",
+        "Data/Hora": "17/11/2026 13:08:39",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98372",
+        "Produto": "ACC VDC URINARY SMALL DOG 2 KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 139.5,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -23.57,
+        "Variação (%)": -14.46
     }
 ]
