@@ -1706,5 +1706,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -2.65,
         "Variação (%)": -7.22
+    },
+    {
+        "ID_REGISTRO": "21209_98052_192100356410",
+        "Data/Hora": "17/11/2026 16:21:00",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98052",
+        "Produto": "ACC FHN KITTEN 1,5KG",
+        "Preco Recomendado": 120.645,
+        "Preco Praticado": 116.3,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -4.34,
+        "Variação (%)": -3.6
     }
 ]
