@@ -922,5 +922,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -23.57,
         "Variação (%)": -14.46
+    },
+    {
+        "ID_REGISTRO": "21878_98209_160942345488",
+        "Data/Hora": "17/11/2026 13:09:42",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98209",
+        "Produto": "ACC VDC HYPOALL SMALL 2KG",
+        "Preco Recomendado": 187.32945,
+        "Preco Praticado": 165.0,
+        "Quantidade Loja": 6,
+        "Diferenca (R$)": -22.33,
+        "Variação (%)": -11.92
     }
 ]
