@@ -2182,5 +2182,19 @@
         "Quantidade Loja": 11,
         "Diferenca (R$)": 0.0,
         "Variação (%)": 0.0
+    },
+    {
+        "ID_REGISTRO": "21209_98433_195543946165",
+        "Data/Hora": "17/11/2026 16:55:43",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98433",
+        "Produto": "ACC SHN MINI IND SENIOR 1 KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 60.6,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": -2.3,
+        "Variação (%)": -3.65
     }
 ]
