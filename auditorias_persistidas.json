@@ -2672,5 +2672,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -0.36,
         "Variação (%)": -0.78
+    },
+    {
+        "ID_REGISTRO": "21209_98110_202954295167",
+        "Data/Hora": "17/11/2026 17:29:54",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98110",
+        "Produto": "ACC VDC CARDIAC PATE 410G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 45.6,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": -0.36,
+        "Variação (%)": -0.78
     }
 ]
