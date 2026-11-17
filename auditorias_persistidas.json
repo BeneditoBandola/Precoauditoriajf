@@ -1244,5 +1244,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -1.22,
         "Variação (%)": -0.75
+    },
+    {
+        "ID_REGISTRO": "21209_98209_184621278339",
+        "Data/Hora": "17/11/2026 15:46:21",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98209",
+        "Produto": "ACC VDC HYPOALL SMALL 2KG",
+        "Preco Recomendado": 187.32945,
+        "Preco Praticado": 185.9,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": -1.43,
+        "Variação (%)": -0.76
     }
 ]
