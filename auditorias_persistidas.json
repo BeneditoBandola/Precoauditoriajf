@@ -866,5 +866,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -8.07,
         "Variação (%)": -4.95
+    },
+    {
+        "ID_REGISTRO": "21878_98691_160613424917",
+        "Data/Hora": "17/11/2026 13:06:13",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98691",
+        "Produto": "ACC VDC GAST INT H FIB 2KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 117.5,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -45.57,
+        "Variação (%)": -27.95
     }
 ]
