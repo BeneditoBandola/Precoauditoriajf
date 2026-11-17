@@ -810,5 +810,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": -2.34,
         "Variação (%)": -1.73
+    },
+    {
+        "ID_REGISTRO": "21878_99039_160349485573",
+        "Data/Hora": "17/11/2026 13:03:49",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99039",
+        "Produto": "ACC VHN C RENAL SMALL DOG 2KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 150.0,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -13.07,
+        "Variação (%)": -8.02
     }
 ]
