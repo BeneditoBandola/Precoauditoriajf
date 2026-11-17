@@ -47,7 +47,6 @@ else:
 
 codigos_10 = [21209, 21874, 21878, 21140, 24310, 21873, 21921, 21472, 24077, 21888]
 
-# --- MODIFICAÇÃO: Tratamento Exato da Coluna C ---
 @st.cache_data
 def load_produtos():
     if os.path.exists('preçosrecoroyal.xlsx'):
@@ -60,11 +59,9 @@ def load_produtos():
                 if idx == 0 and any(str(v).upper() in ['DESCRIÇÃO', 'PRODUTO', 'NOME', 'EAN', 'PREÇO'] for v in row.values):
                     continue
                 
-                # Extraindo o Código da Coluna C (índice 2) e forçando ser número inteiro limpo
                 val_c_raw = row.iloc[2] if len(row) > 2 else None
                 if pd.notna(val_c_raw):
                     try:
-                        # Se for um número como 12345.0, isso transforma direto para "12345"
                         val_c = str(int(float(val_c_raw)))
                     except:
                         val_c = str(val_c_raw).strip()
@@ -74,7 +71,6 @@ def load_produtos():
                 val_d = str(row.iloc[3]).strip() if len(row) > 3 and pd.notna(row.iloc[3]) else ""
                 val_e = str(row.iloc[4]).strip() if len(row) > 4 and pd.notna(row.iloc[4]) else ""
                 
-                # Tratamento do EAN também para evitar o .0
                 val_f_raw = row.iloc[5] if len(row) > 5 else None
                 if pd.notna(val_f_raw):
                     try:
@@ -388,7 +384,6 @@ with aba_coleta:
                     p_rec = float(prod.get('PREÇO', 0.0))
                     row_idx = str(prod.get('ROW_INDEX', ''))
                     
-                    # Pega o Código da Coluna C; se não tiver, usa o EAN
                     p_cod = str(prod.get('COD_C', '')).strip()
                     if not p_cod:
                         p_cod = p_ean
@@ -401,17 +396,14 @@ with aba_coleta:
                         with c_img:
                             img_path = None
                             
-                            # Filtra apenas os códigos que não estão vazios
                             candidatos = [c for c in [p_cod, p_ean] if c]
                                         
                             if os.path.exists("imagens"):
                                 arquivos_pasta = os.listdir("imagens")
                                 for arq in arquivos_pasta:
                                     nome_base, ext = os.path.splitext(arq)
-                                    # Procura especificamente pelas extensões de imagem
                                     if ext.lower() in ['.png', '.jpg', '.jpeg']:
                                         for cand in candidatos:
-                                            # Comparação exata entre o código da coluna C e o nome da imagem
                                             if cand.lower() == nome_base.lower():
                                                 img_path = os.path.join("imagens", arq)
                                                 break
@@ -419,7 +411,7 @@ with aba_coleta:
                                         break
                                         
                             if img_path and os.path.exists(img_path):
-                                st.image(img_path, width=70)
+                                st.image(img_path, width=140)
                             else:
                                 st.markdown("📦 *Sem foto*")
                                 
