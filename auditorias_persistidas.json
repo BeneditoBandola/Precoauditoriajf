@@ -1930,5 +1930,19 @@
         "Quantidade Loja": 21,
         "Diferenca (R$)": -0.05,
         "Variação (%)": -0.51
+    },
+    {
+        "ID_REGISTRO": "21209_99268_193837865812",
+        "Data/Hora": "17/11/2026 16:38:37",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99268",
+        "Produto": "ACC FCN DIGESTIVE CARE LOAF WET 85G",
+        "Preco Recomendado": 11.7516,
+        "Preco Praticado": 11.7,
+        "Quantidade Loja": 12,
+        "Diferenca (R$)": -0.05,
+        "Variação (%)": -0.44
     }
 ]
