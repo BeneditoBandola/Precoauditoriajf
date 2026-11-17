@@ -1160,5 +1160,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -12.62,
         "Variação (%)": -4.37
+    },
+    {
+        "ID_REGISTRO": "21209_98094_184038281981",
+        "Data/Hora": "17/11/2026 15:40:38",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98094",
+        "Produto": "ACC VDC CARDIAC 2KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 161.85,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -1.22,
+        "Variação (%)": -0.75
     }
 ]
