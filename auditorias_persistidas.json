@@ -2434,5 +2434,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -1.19,
         "Variação (%)": -0.9
+    },
+    {
+        "ID_REGISTRO": "21209_98370_200848736450",
+        "Data/Hora": "17/11/2026 17:08:48",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98370",
+        "Produto": "ACC SHN X-SMALL AD 8+ 2,5KG",
+        "Preco Recomendado": 151.52445,
+        "Preco Praticado": 150.4,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -1.12,
+        "Variação (%)": -0.74
     }
 ]
