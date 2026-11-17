@@ -1328,5 +1328,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -0.98,
         "Variação (%)": -0.74
+    },
+    {
+        "ID_REGISTRO": "21209_98307_184930494462",
+        "Data/Hora": "17/11/2026 15:49:30",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98307",
+        "Produto": "ACC VDC SATIETY SMALL D 1,5KG",
+        "Preco Recomendado": 131.42745,
+        "Preco Praticado": 126.7,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -4.73,
+        "Variação (%)": -3.6
     }
 ]
