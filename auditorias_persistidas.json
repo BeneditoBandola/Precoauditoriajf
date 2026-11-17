@@ -2266,5 +2266,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -0.5,
         "Variação (%)": -0.79
+    },
+    {
+        "ID_REGISTRO": "21209_98126_195934524821",
+        "Data/Hora": "17/11/2026 16:59:34",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98126",
+        "Produto": "ACC SBN SHIH TZU AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 62.4,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": -0.5,
+        "Variação (%)": -0.79
     }
 ]
