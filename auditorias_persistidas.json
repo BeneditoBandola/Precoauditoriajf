@@ -1888,5 +1888,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 75.91,
         "Variação (%)": 34.44
+    },
+    {
+        "ID_REGISTRO": "21209_98119_193609544434",
+        "Data/Hora": "17/11/2026 16:36:09",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98119",
+        "Produto": "ACC FHN KITTEN WET 85G",
+        "Preco Recomendado": 9.900776531492665,
+        "Preco Praticado": 7.2,
+        "Quantidade Loja": 19,
+        "Diferenca (R$)": -2.7,
+        "Variação (%)": -27.28
     }
 ]
