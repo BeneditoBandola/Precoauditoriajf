@@ -2616,5 +2616,19 @@
         "Quantidade Loja": 22,
         "Diferenca (R$)": 0.0,
         "Variação (%)": 0.0
+    },
+    {
+        "ID_REGISTRO": "21209_98300_202624410550",
+        "Data/Hora": "17/11/2026 17:26:24",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98300",
+        "Produto": "ACC VDC SATIETY SUP WET 410G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 44.3,
+        "Quantidade Loja": 5,
+        "Diferenca (R$)": -1.66,
+        "Variação (%)": -3.61
     }
 ]
