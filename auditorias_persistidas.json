@@ -1510,5 +1510,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -1.68,
         "Variação (%)": -3.58
+    },
+    {
+        "ID_REGISTRO": "21209_99424_190807456785",
+        "Data/Hora": "17/11/2026 16:08:07",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99424",
+        "Produto": "ACC VDF SATIETY 400G",
+        "Preco Recomendado": 48.33785880000001,
+        "Preco Praticado": 48.0,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": -0.34,
+        "Variação (%)": -0.7
     }
 ]
