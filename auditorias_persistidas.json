@@ -1188,5 +1188,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -4.55,
         "Variação (%)": -3.62
+    },
+    {
+        "ID_REGISTRO": "21209_98154_184246995879",
+        "Data/Hora": "17/11/2026 15:42:46",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98154",
+        "Produto": "ACC VDC SATIETY SUP 1,5KG",
+        "Preco Recomendado": 131.42745,
+        "Preco Praticado": 130.45,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -0.98,
+        "Variação (%)": -0.74
     }
 ]
