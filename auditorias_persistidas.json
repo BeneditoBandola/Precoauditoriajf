@@ -1678,5 +1678,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 0.05,
         "Variação (%)": 0.15
+    },
+    {
+        "ID_REGISTRO": "21209_98170_191739579121",
+        "Data/Hora": "17/11/2026 16:17:39",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98170",
+        "Produto": "ACC FHN CASTRADOS 7+ 400G",
+        "Preco Recomendado": 38.7958725,
+        "Preco Praticado": 37.4,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -1.4,
+        "Variação (%)": -3.6
     }
 ]
