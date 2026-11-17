@@ -1748,5 +1748,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": 7.86,
         "Variação (%)": 6.51
+    },
+    {
+        "ID_REGISTRO": "21209_98246_192203463015",
+        "Data/Hora": "17/11/2026 16:22:03",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98246",
+        "Produto": "ACC FHN M BABY CAT WET 195G",
+        "Preco Recomendado": 22.9,
+        "Preco Praticado": 23.75,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 0.85,
+        "Variação (%)": 3.71
     }
 ]
