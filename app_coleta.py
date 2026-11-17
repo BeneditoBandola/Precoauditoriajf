@@ -22,6 +22,7 @@ st.title("🐾 Auditoria Dinâmica de Preços - Royal Canin (Juiz de Fora)")
 st.markdown("Busque por parte do nome (colunas D ou E), EAN (coluna F) ou código. Os dados são salvos no GitHub e os e-mails são enviados via Gmail.")
 
 ARQUIVO_JSON = "auditorias_persistidas.json"
+CUSTOM_PROD_JSON = "produtos_customizados.json" # NOVO: JSON para produtos inseridos manualmente
 
 # Fuso horário do Brasil e formato padrão brasileiro (DD/MM/YYYY HH:MM:SS)
 def hora_brasil():
@@ -108,42 +109,42 @@ def parse_preco_br(texto):
 def fmt_brl(val):
     return f"R$ {val:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.')
 
-# 3. Sincronização Automática com o GitHub e JSON Local
-def carregar_dados_json():
+# 3. Sincronização Automática com o GitHub e JSON Local (AGORA ACEITA QUALQUER NOME DE ARQUIVO)
+def carregar_dados_json(nome_arquivo):
     if "GITHUB_TOKEN" in st.secrets and "GITHUB_REPO" in st.secrets:
         try:
             token = st.secrets["GITHUB_TOKEN"]
             repo = st.secrets["GITHUB_REPO"]
-            url = f"https://api.github.com/repos/{repo}/contents/{ARQUIVO_JSON}"
+            url = f"https://api.github.com/repos/{repo}/contents/{nome_arquivo}"
             headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
             resp = requests.get(url, headers=headers)
             if resp.status_code == 200:
                 file_info = resp.json()
                 file_content = base64.b64decode(file_info['content']).decode('utf-8')
                 data = json.loads(file_content)
-                with open(ARQUIVO_JSON, 'w', encoding='utf-8') as f:
+                with open(nome_arquivo, 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False, indent=4)
                 return data
         except Exception:
             pass
 
-    if os.path.exists(ARQUIVO_JSON):
+    if os.path.exists(nome_arquivo):
         try:
-            with open(ARQUIVO_JSON, 'r', encoding='utf-8') as f:
+            with open(nome_arquivo, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except Exception:
             return []
     return []
 
-def salvar_dados_json(dados):
-    with open(ARQUIVO_JSON, 'w', encoding='utf-8') as f:
+def salvar_dados_json(dados, nome_arquivo):
+    with open(nome_arquivo, 'w', encoding='utf-8') as f:
         json.dump(dados, f, ensure_ascii=False, indent=4)
         
     if "GITHUB_TOKEN" in st.secrets and "GITHUB_REPO" in st.secrets:
         try:
             token = st.secrets["GITHUB_TOKEN"]
             repo = st.secrets["GITHUB_REPO"]
-            url = f"https://api.github.com/repos/{repo}/contents/{ARQUIVO_JSON}"
+            url = f"https://api.github.com/repos/{repo}/contents/{nome_arquivo}"
             headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
             
             resp_get = requests.get(url, headers=headers)
@@ -153,7 +154,7 @@ def salvar_dados_json(dados):
             content_encoded = base64.b64encode(content_json_str.encode('utf-8')).decode('utf-8')
             
             payload = {
-                "message": f"Atualização automática de auditoria via app em {hora_brasil()}",
+                "message": f"Atualização de {nome_arquivo} via app em {hora_brasil()}",
                 "content": content_encoded
             }
             if sha:
@@ -161,10 +162,19 @@ def salvar_dados_json(dados):
                 
             requests.put(url, headers=headers, json=payload)
         except Exception as e:
-            st.warning(f"Aviso: Não foi possível sincronizar com o GitHub ({e}), mas os dados estão seguros localmente.")
+            st.warning(f"Aviso: Não foi possível sincronizar o {nome_arquivo} com o GitHub ({e}), mas está salvo localmente.")
 
+# Carregar os dois históricos (Auditorias e Produtos Customizados)
 if 'historico_auditoria' not in st.session_state:
-    st.session_state['historico_auditoria'] = carregar_dados_json()
+    st.session_state['historico_auditoria'] = carregar_dados_json(ARQUIVO_JSON)
+
+if 'produtos_customizados' not in st.session_state:
+    st.session_state['produtos_customizados'] = carregar_dados_json(CUSTOM_PROD_JSON)
+
+# Mesclar os produtos customizados com os produtos da planilha na memória
+if st.session_state['produtos_customizados']:
+    df_customizados = pd.DataFrame(st.session_state['produtos_customizados'])
+    df_produtos = pd.concat([df_produtos, df_customizados], ignore_index=True)
 
 # Função para enviar e-mail via Gmail SMTP saindo estritamente de beneditobandola@gmail.com
 def enviar_email_com_anexo(destinatarios_str, assunto, corpo, caminho_pdf):
@@ -314,9 +324,38 @@ with aba_coleta:
         itens_loja_salvos = [item for item in st.session_state['historico_auditoria'] if int(item.get('Código Loja', 0)) == cod_loja_atual]
 
         st.markdown("---")
-        st.subheader("🔍 Buscar Produto por Nome (Col. D ou E), EAN (Col. F) ou Código")
+        st.subheader("🔍 Buscar Produto por Nome, EAN ou Código")
         
         termo_busca = st.text_input("Digite sua busca (ex: 'uri', '1kg', '100052', '78960'):")
+        
+        # INÍCIO DO NOVO BLOCO: Cadastrar produto manualmente
+        with st.expander("➕ Não encontrou o produto? Cadastre manualmente"):
+            with st.form("form_add_produto_custom"):
+                st.markdown("Os produtos cadastrados aqui ficarão salvos para sempre no sistema e aparecerão nas buscas.")
+                c1, c2, c3 = st.columns(3)
+                with c1:
+                    novo_nome = st.text_input("Nome do Produto *")
+                with c2:
+                    novo_ean = st.text_input("EAN (Código de Barras)")
+                with c3:
+                    novo_preco_rec = st.number_input("Preço Recomendado (R$)", min_value=0.0, format="%.2f")
+                
+                if st.form_submit_button("Salvar Produto no Sistema"):
+                    if not novo_nome.strip():
+                        st.error("O nome do produto é obrigatório!")
+                    else:
+                        _ean = novo_ean.strip() if novo_ean.strip() else f"CUSTOM_{datetime.datetime.now().strftime('%H%M%S')}"
+                        novo_item_bd = {
+                            "PRODUTO": novo_nome.strip().upper(),
+                            "EAN": _ean,
+                            "PREÇO": novo_preco_rec,
+                            "ROW_INDEX": f"C_{_ean}"
+                        }
+                        st.session_state['produtos_customizados'].append(novo_item_bd)
+                        salvar_dados_json(st.session_state['produtos_customizados'], CUSTOM_PROD_JSON)
+                        st.success("Produto cadastrado com sucesso! Já pode buscá-lo acima.")
+                        st.rerun()
+        # FIM DO NOVO BLOCO
         
         if termo_busca:
             termo = termo_busca.strip().lower()
@@ -351,7 +390,8 @@ with aba_coleta:
                                     nome_base, ext = os.path.splitext(arq)
                                     if ext.lower() in ['.png', '.jpg', '.jpeg']:
                                         for cand in candidatos:
-                                            if cand and (cand.lower() == nome_base.lower() or cand.lower() in nome_base.lower() or nome_base.lower() in cand.lower()):
+                                            # CORREÇÃO DA IMAGEM: A correspondência agora é EXATA (==) e não "in"
+                                            if cand and cand.lower() == nome_base.lower():
                                                 img_path = os.path.join("imagens", arq)
                                                 break
                                     if img_path:
@@ -402,7 +442,7 @@ with aba_coleta:
                                         }
                                         
                                         st.session_state['historico_auditoria'].append(novo_item)
-                                        salvar_dados_json(st.session_state['historico_auditoria'])
+                                        salvar_dados_json(st.session_state['historico_auditoria'], ARQUIVO_JSON)
                                         st.success(f"Adicionado e sincronizado com o GitHub: {p_nome}")
                                         st.rerun()
                         st.divider()
@@ -434,13 +474,13 @@ with aba_coleta:
                     if st.button("🗑️ Excluir da Loja", key=f"rm_eterno_{cod_loja_atual}_{i}"):
                         id_alvo = item.get('ID_REGISTRO')
                         st.session_state['historico_auditoria'] = [x for x in st.session_state['historico_auditoria'] if x.get('ID_REGISTRO') != id_alvo]
-                        salvar_dados_json(st.session_state['historico_auditoria'])
+                        salvar_dados_json(st.session_state['historico_auditoria'], ARQUIVO_JSON)
                         st.success("Item removido e sincronizado!")
                         st.rerun()
                     st.divider()
             
             if st.button("🚪 Salvar e Sair (Continuar Depois)"):
-                salvar_dados_json(st.session_state['historico_auditoria'])
+                salvar_dados_json(st.session_state['historico_auditoria'], ARQUIVO_JSON)
                 st.success("✅ Progresso salvo e sincronizado no GitHub!")
                 st.rerun()
 
@@ -537,14 +577,14 @@ with aba_historico:
                         hist[i]['Variação (%)'] = round(var, 2)
                         
                         st.session_state['historico_auditoria'] = hist
-                        salvar_dados_json(hist)
+                        salvar_dados_json(hist, ARQUIVO_JSON)
                         st.success("Registro atualizado e sincronizado!")
                         st.rerun()
                         
                     if deletar:
                         hist.pop(i)
                         st.session_state['historico_auditoria'] = hist
-                        salvar_dados_json(hist)
+                        salvar_dados_json(hist, ARQUIVO_JSON)
                         st.success("Registro excluído e sincronizado!")
                         st.rerun()
                         
@@ -555,7 +595,7 @@ with aba_historico:
         
         if st.button("🗑️ Limpar Todo o Histórico Salvo"):
             st.session_state['historico_auditoria'] = []
-            salvar_dados_json([])
+            salvar_dados_json([], ARQUIVO_JSON)
             st.success("Histórico limpo e sincronizado.")
             st.rerun()
     else:
