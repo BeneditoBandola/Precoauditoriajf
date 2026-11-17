@@ -2686,5 +2686,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -0.36,
         "Variação (%)": -0.78
+    },
+    {
+        "ID_REGISTRO": "21209_98345_203042477435",
+        "Data/Hora": "17/11/2026 17:30:42",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98345",
+        "Produto": "ACC VDC URINARY S/O WET 410G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 45.6,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -0.36,
+        "Variação (%)": -0.78
     }
 ]
