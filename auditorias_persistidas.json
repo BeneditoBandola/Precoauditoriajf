@@ -698,5 +698,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 4.3,
         "Variação (%)": 7.47
+    },
+    {
+        "ID_REGISTRO": "21878_98175_154719962024",
+        "Data/Hora": "17/11/2026 12:47:19",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98175",
+        "Produto": "ACC SHN X-SMALL AD 1KG",
+        "Preco Recomendado": 65.59245000000001,
+        "Preco Praticado": 65.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -0.59,
+        "Variação (%)": -0.9
     }
 ]
