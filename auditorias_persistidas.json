@@ -1958,5 +1958,19 @@
         "Quantidade Loja": 12,
         "Diferenca (R$)": 0.3,
         "Variação (%)": 1.61
+    },
+    {
+        "ID_REGISTRO": "21209_98456_193944054230",
+        "Data/Hora": "17/11/2026 16:39:44",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98456",
+        "Produto": "ACC VDF URINARY S/O WET 85G",
+        "Preco Recomendado": 18.69945000000001,
+        "Preco Praticado": 18.0,
+        "Quantidade Loja": 6,
+        "Diferenca (R$)": -0.7,
+        "Variação (%)": -3.74
     }
 ]
