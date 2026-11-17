@@ -337,26 +337,49 @@ with aba_coleta:
         
         termo_busca = st.text_input("Digite sua busca (ex: 'uri', '100052', '78960'):")
         
+        # --- NOVO FORMULÁRIO DE CADASTRO EXPANDIDO ---
         with st.expander("➕ Não encontrou o produto? Cadastre manualmente"):
             with st.form("form_add_produto_custom"):
-                st.markdown("Os produtos cadastrados aqui ficarão salvos para sempre no sistema e aparecerão nas buscas.")
-                c1, c2, c3 = st.columns(3)
-                with c1:
-                    novo_nome = st.text_input("Nome do Produto *")
-                with c2:
-                    novo_codigo = st.text_input("Código na Coluna C ou EAN")
-                with c3:
-                    novo_preco_rec = st.number_input("Preço Recomendado (R$)", min_value=0.0, format="%.2f")
+                st.markdown("Preencha os dados abaixo. O Fabricante já está travado como **ROYAL CANIN**.")
+                
+                c_fab, c_fam, c_cod = st.columns([1, 1, 1])
+                with c_fab:
+                    fabricante = st.text_input("Fabricante", value="ROYAL CANIN", disabled=True)
+                with c_fam:
+                    nova_familia = st.text_input("Família")
+                with c_cod:
+                    novo_codigo = st.text_input("Código (Para buscar a imagem .png)")
+                    
+                c_desc, c_nome = st.columns([2, 2])
+                with c_desc:
+                    nova_descricao = st.text_input("Descrição")
+                with c_nome:
+                    novo_nome = st.text_input("Nome Comercial * (Obrigatório)")
+                    
+                c_ean, c_sku, c_ncm, c_preco = st.columns([1, 1, 1, 1])
+                with c_ean:
+                    novo_ean = st.text_input("Código EAN")
+                with c_sku:
+                    novo_sku = st.text_input("SKU")
+                with c_ncm:
+                    novo_ncm = st.text_input("NCM")
+                with c_preco:
+                    novo_preco_rec = st.number_input("Valor Recomendado (R$)", min_value=0.0, format="%.2f")
                 
                 if st.form_submit_button("Salvar Produto no Sistema"):
                     if not novo_nome.strip():
-                        st.error("O nome do produto é obrigatório!")
+                        st.error("O Nome Comercial é obrigatório!")
                     else:
                         _cod = novo_codigo.strip() if novo_codigo.strip() else f"CUSTOM_{datetime.datetime.now().strftime('%H%M%S')}"
                         novo_item_bd = {
-                            "PRODUTO": novo_nome.strip().upper(),
-                            "EAN": _cod,
+                            "FABRICANTE": "ROYAL CANIN",
+                            "FAMILIA": nova_familia.strip().upper(),
                             "COD_C": _cod,
+                            "DESCRICAO": nova_descricao.strip().upper(),
+                            "PRODUTO": novo_nome.strip().upper(),
+                            "EAN": novo_ean.strip(),
+                            "SKU": novo_sku.strip(),
+                            "NCM": novo_ncm.strip(),
                             "PREÇO": novo_preco_rec,
                             "ROW_INDEX": f"C_{_cod}"
                         }
