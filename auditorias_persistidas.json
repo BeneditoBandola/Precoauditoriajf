@@ -642,5 +642,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 2.1,
         "Variação (%)": 3.35
+    },
+    {
+        "ID_REGISTRO": "21878_98490_154503061612",
+        "Data/Hora": "17/11/2026 12:45:03",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98490",
+        "Produto": "ACC BHN POMERANIAN ADULT 1KG",
+        "Preco Recomendado": 62.89499999999998,
+        "Preco Praticado": 62.0,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -0.89,
+        "Variação (%)": -1.42
     }
 ]
