@@ -1524,5 +1524,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -0.34,
         "Variação (%)": -0.7
+    },
+    {
+        "ID_REGISTRO": "21209_99422_190826859245",
+        "Data/Hora": "17/11/2026 16:08:26",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99422",
+        "Produto": "ACC VDF HYPOALLERGENIC 400G",
+        "Preco Recomendado": 49.27645800000001,
+        "Preco Praticado": 48.9,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -0.38,
+        "Variação (%)": -0.76
     }
 ]
