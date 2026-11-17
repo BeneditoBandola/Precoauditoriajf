@@ -1370,5 +1370,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -5.92,
         "Variação (%)": -3.63
+    },
+    {
+        "ID_REGISTRO": "21209_98166_185627551074",
+        "Data/Hora": "17/11/2026 15:56:27",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98166",
+        "Produto": "ACC VDF URINARY S/O 1,5KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 161.2,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -1.87,
+        "Variação (%)": -1.15
     }
 ]
