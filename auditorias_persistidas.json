@@ -1314,5 +1314,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -1.43,
         "Variação (%)": -0.76
+    },
+    {
+        "ID_REGISTRO": "21209_98219_184854154176",
+        "Data/Hora": "17/11/2026 15:48:54",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98219",
+        "Produto": "ACC VDC DIABETIC 1,5KG",
+        "Preco Recomendado": 131.42745,
+        "Preco Praticado": 130.45,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -0.98,
+        "Variação (%)": -0.74
     }
 ]
