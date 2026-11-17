@@ -2294,5 +2294,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -2.3,
         "Variação (%)": -3.65
+    },
+    {
+        "ID_REGISTRO": "21209_98177_200101761507",
+        "Data/Hora": "17/11/2026 17:01:01",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98177",
+        "Produto": "ACC SHN X-SMALL AG 12+ 1KG",
+        "Preco Recomendado": 75.98745000000002,
+        "Preco Praticado": 75.4,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -0.59,
+        "Variação (%)": -0.77
     }
 ]
