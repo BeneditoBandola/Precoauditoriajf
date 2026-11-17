@@ -1566,5 +1566,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -0.33,
         "Variação (%)": -0.7
+    },
+    {
+        "ID_REGISTRO": "21209_99341_191037031151",
+        "Data/Hora": "17/11/2026 16:10:37",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99341",
+        "Produto": "ACC VDF GAST INT 4KG",
+        "Preco Recomendado": 372.8224500000001,
+        "Preco Praticado": 346.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -26.82,
+        "Variação (%)": -7.19
     }
 ]
