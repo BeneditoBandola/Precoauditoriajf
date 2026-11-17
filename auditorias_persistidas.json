@@ -2406,5 +2406,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -1.04,
         "Variação (%)": -0.75
+    },
+    {
+        "ID_REGISTRO": "21209_98353_200627342169",
+        "Data/Hora": "17/11/2026 17:06:27",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98353",
+        "Produto": "ACC SBN YORKSHIRE AD 2,5KG",
+        "Preco Recomendado": 139.545,
+        "Preco Praticado": 138.5,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": -1.04,
+        "Variação (%)": -0.75
     }
 ]
