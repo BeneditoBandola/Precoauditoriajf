@@ -1916,5 +1916,19 @@
         "Quantidade Loja": 20,
         "Diferenca (R$)": -0.05,
         "Variação (%)": -0.51
+    },
+    {
+        "ID_REGISTRO": "21209_98260_193745172159",
+        "Data/Hora": "17/11/2026 16:37:45",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98260",
+        "Produto": "ACC FHN INSTINCTIVE 7+ WET 85G",
+        "Preco Recomendado": 9.900776531492665,
+        "Preco Praticado": 9.85,
+        "Quantidade Loja": 21,
+        "Diferenca (R$)": -0.05,
+        "Variação (%)": -0.51
     }
 ]
