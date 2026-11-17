@@ -1006,5 +1006,19 @@
         "Quantidade Loja": 5,
         "Diferenca (R$)": -6.64,
         "Variação (%)": -5.51
+    },
+    {
+        "ID_REGISTRO": "21878_98052_161510323415",
+        "Data/Hora": "17/11/2026 13:15:10",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98052",
+        "Produto": "ACC FHN KITTEN 1,5KG",
+        "Preco Recomendado": 120.645,
+        "Preco Praticado": 127.0,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 6.36,
+        "Variação (%)": 5.27
     }
 ]
