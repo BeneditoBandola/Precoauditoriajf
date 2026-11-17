@@ -1762,5 +1762,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 0.85,
         "Variação (%)": 3.71
+    },
+    {
+        "ID_REGISTRO": "21209_98063_192306651045",
+        "Data/Hora": "17/11/2026 16:23:06",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98063",
+        "Produto": "ACC FHN CASTRADOS 1,5KG",
+        "Preco Recomendado": 120.645,
+        "Preco Praticado": 122.1,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": 1.45,
+        "Variação (%)": 1.21
     }
 ]
