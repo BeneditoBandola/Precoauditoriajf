@@ -1062,5 +1062,19 @@
         "Quantidade Loja": 10,
         "Diferenca (R$)": -6.64,
         "Variação (%)": -5.51
+    },
+    {
+        "ID_REGISTRO": "21878_98307_162143609999",
+        "Data/Hora": "17/11/2026 13:21:43",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98307",
+        "Produto": "ACC VDC SATIETY SMALL D 1,5KG",
+        "Preco Recomendado": 131.42745,
+        "Preco Praticado": 131.0,
+        "Quantidade Loja": 5,
+        "Diferenca (R$)": -0.43,
+        "Variação (%)": -0.33
     }
 ]
