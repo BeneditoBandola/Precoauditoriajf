@@ -2252,5 +2252,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -2.29,
         "Variação (%)": -3.65
+    },
+    {
+        "ID_REGISTRO": "21209_98144_195857088348",
+        "Data/Hora": "17/11/2026 16:58:57",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98144",
+        "Produto": "ACC SBN MALTES AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 62.4,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": -0.5,
+        "Variação (%)": -0.79
     }
 ]
