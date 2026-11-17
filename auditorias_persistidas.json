@@ -2028,5 +2028,19 @@
         "Quantidade Loja": 17,
         "Diferenca (R$)": 9.75,
         "Variação (%)": 0.0
+    },
+    {
+        "ID_REGISTRO": "21209_98472_194602461549",
+        "Data/Hora": "17/11/2026 16:46:02",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98472",
+        "Produto": "ACC VDF GASTROINTEST SO WET 85G",
+        "Preco Recomendado": 18.69945000000001,
+        "Preco Praticado": 19.0,
+        "Quantidade Loja": 8,
+        "Diferenca (R$)": 0.3,
+        "Variação (%)": 1.61
     }
 ]
