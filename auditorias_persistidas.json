@@ -656,5 +656,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -0.89,
         "Variação (%)": -1.42
+    },
+    {
+        "ID_REGISTRO": "21878_98144_154524452691",
+        "Data/Hora": "17/11/2026 12:45:24",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98144",
+        "Produto": "ACC SBN MALTES AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 65.6,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 2.7,
+        "Variação (%)": 4.3
     }
 ]
