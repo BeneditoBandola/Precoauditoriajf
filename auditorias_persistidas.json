@@ -950,5 +950,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 0.03,
         "Variação (%)": 0.02
+    },
+    {
+        "ID_REGISTRO": "21878_98163_161106614846",
+        "Data/Hora": "17/11/2026 13:11:06",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98163",
+        "Produto": "GASTRO FHN 1,5",
+        "Preco Recomendado": 0.0,
+        "Preco Praticado": 165.3,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 165.3,
+        "Variação (%)": 0.0
     }
 ]
