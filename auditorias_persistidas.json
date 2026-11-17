@@ -782,5 +782,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 1.06,
         "Variação (%)": 0.84
+    },
+    {
+        "ID_REGISTRO": "21878_98364_155228547997",
+        "Data/Hora": "17/11/2026 12:52:28",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98364",
+        "Produto": "ACC SHN MINI IND AD 2,5KG",
+        "Preco Recomendado": 132.18975,
+        "Preco Praticado": 126.95,
+        "Quantidade Loja": 6,
+        "Diferenca (R$)": -5.24,
+        "Variação (%)": -3.96
     }
 ]
