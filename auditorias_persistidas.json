@@ -2658,5 +2658,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -0.36,
         "Variação (%)": -0.78
+    },
+    {
+        "ID_REGISTRO": "21209_98109_202855438392",
+        "Data/Hora": "17/11/2026 17:28:55",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98109",
+        "Produto": "ACC VDC HEPATIC WET 420G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 45.6,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -0.36,
+        "Variação (%)": -0.78
     }
 ]
