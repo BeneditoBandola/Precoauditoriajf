@@ -628,5 +628,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -0.9,
         "Variação (%)": -1.42
+    },
+    {
+        "ID_REGISTRO": "21878_98126_154353321878",
+        "Data/Hora": "17/11/2026 12:43:53",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98126",
+        "Produto": "ACC SBN SHIH TZU AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 65.0,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 2.1,
+        "Variação (%)": 3.35
     }
 ]
