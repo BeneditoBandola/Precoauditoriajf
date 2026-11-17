@@ -2056,5 +2056,19 @@
         "Quantidade Loja": 6,
         "Diferenca (R$)": -0.15,
         "Variação (%)": -0.8
+    },
+    {
+        "ID_REGISTRO": "21209_99792_194746515958",
+        "Data/Hora": "17/11/2026 16:47:46",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99792",
+        "Produto": "ACC SUPER PREMIUM CAT CASTRADO 2,5KG",
+        "Preco Recomendado": 140.9988461538462,
+        "Preco Praticado": 58.9,
+        "Quantidade Loja": 7,
+        "Diferenca (R$)": -82.1,
+        "Variação (%)": -58.23
     }
 ]
