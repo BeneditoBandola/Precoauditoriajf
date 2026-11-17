@@ -2378,5 +2378,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -0.55,
         "Variação (%)": -0.69
+    },
+    {
+        "ID_REGISTRO": "21209_98350_200505672480",
+        "Data/Hora": "17/11/2026 17:05:05",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98350",
+        "Produto": "ACC SHN MINI IND PUPPY/JR 2,5K",
+        "Preco Recomendado": 125.895,
+        "Preco Praticado": 124.95,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -0.94,
+        "Variação (%)": -0.75
     }
 ]
