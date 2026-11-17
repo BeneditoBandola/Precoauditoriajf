@@ -2112,5 +2112,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -38.63,
         "Variação (%)": -11.83
+    },
+    {
+        "ID_REGISTRO": "21209_98320_195108998345",
+        "Data/Hora": "17/11/2026 16:51:08",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98320",
+        "Produto": "ACC SUPER PREMIUM CAT AD VITAL 10,1KG",
+        "Preco Recomendado": 326.5279499999999,
+        "Preco Praticado": 312.1,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -14.43,
+        "Variação (%)": -4.42
     }
 ]
