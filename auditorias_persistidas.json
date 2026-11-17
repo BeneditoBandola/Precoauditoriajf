@@ -614,5 +614,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -0.0,
         "Variação (%)": -0.01
+    },
+    {
+        "ID_REGISTRO": "21878_98469_154232783703",
+        "Data/Hora": "17/11/2026 12:42:32",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98469",
+        "Produto": "ACC SBN YORKSHIRE PUPPY 1KG",
+        "Preco Recomendado": 59.745,
+        "Preco Praticado": 62.0,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 2.26,
+        "Variação (%)": 3.77
     }
 ]
