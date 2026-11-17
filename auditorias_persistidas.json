@@ -1720,5 +1720,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -4.34,
         "Variação (%)": -3.6
+    },
+    {
+        "ID_REGISTRO": "21209_98069_192121475456",
+        "Data/Hora": "17/11/2026 16:21:21",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98069",
+        "Produto": "ACC FBN PERSIAN 1,5KG",
+        "Preco Recomendado": 153.0259500000001,
+        "Preco Praticado": 151.9,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -1.13,
+        "Variação (%)": -0.74
     }
 ]
