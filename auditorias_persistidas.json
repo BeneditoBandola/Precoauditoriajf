@@ -1132,5 +1132,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": -53.03,
         "Variação (%)": -13.63
+    },
+    {
+        "ID_REGISTRO": "21878_99753_163007553596",
+        "Data/Hora": "17/11/2026 13:30:07",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99753",
+        "Produto": "ACC SHN MED AD 12KG",
+        "Preco Recomendado": 297.0449999999999,
+        "Preco Praticado": 251.19,
+        "Quantidade Loja": 11,
+        "Diferenca (R$)": -45.85,
+        "Variação (%)": -15.44
     }
 ]
