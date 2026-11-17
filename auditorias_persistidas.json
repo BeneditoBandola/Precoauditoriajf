@@ -2532,5 +2532,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -6.19,
         "Variação (%)": -4.44
+    },
+    {
+        "ID_REGISTRO": "21209_98338_201349929072",
+        "Data/Hora": "17/11/2026 17:13:49",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98338",
+        "Produto": "ACC SHN MINI DERMAC 2,5KG",
+        "Preco Recomendado": 171.045,
+        "Preco Praticado": 164.85,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -6.19,
+        "Variação (%)": -3.62
     }
 ]
