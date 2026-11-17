@@ -2014,5 +2014,19 @@
         "Quantidade Loja": 39,
         "Diferenca (R$)": -0.05,
         "Variação (%)": -0.51
+    },
+    {
+        "ID_REGISTRO": "21209_98259_194508620723",
+        "Data/Hora": "17/11/2026 16:45:08",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98259",
+        "Produto": "ACC FHN AGEING 12+ WET 85G",
+        "Preco Recomendado": 0.0,
+        "Preco Praticado": 9.75,
+        "Quantidade Loja": 17,
+        "Diferenca (R$)": 9.75,
+        "Variação (%)": 0.0
     }
 ]
