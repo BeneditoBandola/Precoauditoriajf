@@ -2462,5 +2462,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -1.03,
         "Variação (%)": -0.72
+    },
+    {
+        "ID_REGISTRO": "21209_98719_201018201805",
+        "Data/Hora": "17/11/2026 17:10:18",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98719",
+        "Produto": "ACC CCN MINI DIGEST CARE 2,5KG",
+        "Preco Recomendado": 171.045,
+        "Preco Praticado": 169.95,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -1.09,
+        "Variação (%)": -0.64
     }
 ]
