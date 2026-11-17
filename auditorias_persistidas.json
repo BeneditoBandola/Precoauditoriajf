@@ -1104,5 +1104,19 @@
         "Quantidade Loja": 12,
         "Diferenca (R$)": -91.93,
         "Variação (%)": -25.41
+    },
+    {
+        "ID_REGISTRO": "21878_99755_162831562231",
+        "Data/Hora": "17/11/2026 13:28:31",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99755",
+        "Produto": "ACC SHN GIANT AD 12KG",
+        "Preco Recomendado": 342.3327600000001,
+        "Preco Praticado": 307.11,
+        "Quantidade Loja": 7,
+        "Diferenca (R$)": -35.22,
+        "Variação (%)": -10.29
     }
 ]
