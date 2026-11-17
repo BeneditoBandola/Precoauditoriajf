@@ -1636,5 +1636,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 3.48,
         "Variação (%)": 7.9
+    },
+    {
+        "ID_REGISTRO": "21209_98080_191604933794",
+        "Data/Hora": "17/11/2026 16:16:04",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98080",
+        "Produto": "ACC FHN HAIRBALL CARE 400G",
+        "Preco Recomendado": 43.974,
+        "Preco Praticado": 47.45,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 3.48,
+        "Variação (%)": 7.9
     }
 ]
