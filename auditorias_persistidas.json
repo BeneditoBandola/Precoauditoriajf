@@ -1020,5 +1020,19 @@
         "Quantidade Loja": 8,
         "Diferenca (R$)": -6.64,
         "Variação (%)": -5.51
+    },
+    {
+        "ID_REGISTRO": "21878_98169_161639338118",
+        "Data/Hora": "17/11/2026 13:16:39",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98169",
+        "Produto": "ACC FHN STERILI 12+ 1,5KG",
+        "Preco Recomendado": 136.395,
+        "Preco Praticado": 134.07,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -2.33,
+        "Variação (%)": -1.7
     }
 ]
