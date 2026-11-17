@@ -1230,5 +1230,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -1.22,
         "Variação (%)": -0.75
+    },
+    {
+        "ID_REGISTRO": "21209_98086_184550680706",
+        "Data/Hora": "17/11/2026 15:45:50",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98086",
+        "Produto": "ACC VDC GAST INT 2KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 161.85,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -1.22,
+        "Variação (%)": -0.75
     }
 ]
