@@ -964,5 +964,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 165.3,
         "Variação (%)": 0.0
+    },
+    {
+        "ID_REGISTRO": "21878_98308_161223165911",
+        "Data/Hora": "17/11/2026 13:12:23",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98308",
+        "Produto": "ACC VDF SATIETY 1,5KG",
+        "Preco Recomendado": 170.58195,
+        "Preco Praticado": 149.0,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -21.58,
+        "Variação (%)": -12.65
     }
 ]
