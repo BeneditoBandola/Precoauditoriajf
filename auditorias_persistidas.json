@@ -1398,5 +1398,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -1.28,
         "Variação (%)": -0.75
+    },
+    {
+        "ID_REGISTRO": "21209_98308_185838708852",
+        "Data/Hora": "17/11/2026 15:58:38",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98308",
+        "Produto": "ACC VDF SATIETY 1,5KG",
+        "Preco Recomendado": 170.58195,
+        "Preco Praticado": 169.3,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": -1.28,
+        "Variação (%)": -0.75
     }
 ]
