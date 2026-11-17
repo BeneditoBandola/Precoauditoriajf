@@ -1440,5 +1440,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": -6.81,
         "Variação (%)": -3.63
+    },
+    {
+        "ID_REGISTRO": "21209_98163_190520163490",
+        "Data/Hora": "17/11/2026 16:05:20",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98163",
+        "Produto": "GASTRO FHN 1,5",
+        "Preco Recomendado": 0.0,
+        "Preco Praticado": 161.85,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 161.85,
+        "Variação (%)": 0.0
     }
 ]
