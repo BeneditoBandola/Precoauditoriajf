@@ -2224,5 +2224,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -0.54,
         "Variação (%)": -0.75
+    },
+    {
+        "ID_REGISTRO": "21209_97994_195742454562",
+        "Data/Hora": "17/11/2026 16:57:42",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "97994",
+        "Produto": "ACC SHN MINI IND PUPPY/JR 1KG",
+        "Preco Recomendado": 57.645,
+        "Preco Praticado": 61.55,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 3.9,
+        "Variação (%)": 6.77
     }
 ]
