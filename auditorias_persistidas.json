@@ -1118,5 +1118,19 @@
         "Quantidade Loja": 7,
         "Diferenca (R$)": -35.22,
         "Variação (%)": -10.29
+    },
+    {
+        "ID_REGISTRO": "21878_99756_162910354658",
+        "Data/Hora": "17/11/2026 13:29:10",
+        "Código Loja": 21878,
+        "Nome Loja": "LUCIANO REZENDE TOSTES CPF 028.521.656-27",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99756",
+        "Produto": "ACC SHN MAXI PUPPY 12KG",
+        "Preco Recomendado": 389.17956,
+        "Preco Praticado": 336.15,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -53.03,
+        "Variação (%)": -13.63
     }
 ]
