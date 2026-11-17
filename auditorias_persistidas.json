@@ -1832,5 +1832,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 12.83,
         "Variação (%)": 8.49
+    },
+    {
+        "ID_REGISTRO": "21209_98079_192726556644",
+        "Data/Hora": "17/11/2026 16:27:26",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98079",
+        "Produto": "ACC FHN HAIR & SKIN CARE 1,5KG",
+        "Preco Recomendado": 151.074,
+        "Preco Praticado": 163.9,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 12.83,
+        "Variação (%)": 8.49
     }
 ]
