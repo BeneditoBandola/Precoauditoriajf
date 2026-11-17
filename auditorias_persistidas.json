@@ -2168,5 +2168,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": -1.99,
         "Variação (%)": -3.59
+    },
+    {
+        "ID_REGISTRO": "21209_98673_195501440017",
+        "Data/Hora": "17/11/2026 16:55:01",
+        "Código Loja": 21209,
+        "Nome Loja": "AGROTELA COMERCIAL LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98673",
+        "Produto": "ACC FCN LIGHT WEIGHT WET 85G",
+        "Preco Recomendado": 9.9,
+        "Preco Praticado": 9.9,
+        "Quantidade Loja": 11,
+        "Diferenca (R$)": 0.0,
+        "Variação (%)": 0.0
     }
 ]
