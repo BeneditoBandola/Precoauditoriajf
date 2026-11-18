@@ -4058,5 +4058,19 @@
         "Quantidade Loja": 14,
         "Diferenca (R$)": -2.19,
         "Variação (%)": -4.65
+    },
+    {
+        "ID_REGISTRO": "24310_98111_163508543575",
+        "Data/Hora": "18/11/2026 13:35:08",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98111",
+        "Produto": "ACC VDC/FEL RECOVERY WET 195G",
+        "Preco Recomendado": 40.18245000000001,
+        "Preco Praticado": 37.89,
+        "Quantidade Loja": 36,
+        "Diferenca (R$)": -2.29,
+        "Variação (%)": -5.71
     }
 ]
