@@ -3162,5 +3162,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 14.8,
         "Variação (%)": 23.54
+    },
+    {
+        "ID_REGISTRO": "21873_98490_131338344209",
+        "Data/Hora": "18/11/2026 10:13:38",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98490",
+        "Produto": "ACC BHN POMERANIAN ADULT 1KG",
+        "Preco Recomendado": 62.89499999999998,
+        "Preco Praticado": 75.7,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 12.81,
+        "Variação (%)": 20.36
     }
 ]
