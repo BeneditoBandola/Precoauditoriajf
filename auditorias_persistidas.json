@@ -4296,5 +4296,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 0.03,
         "Variação (%)": 0.02
+    },
+    {
+        "ID_REGISTRO": "21921_98098_192852111588",
+        "Data/Hora": "18/11/2026 16:28:52",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98098",
+        "Produto": "ACC VDC GAST INT LOW FAT 1,5KG",
+        "Preco Recomendado": 125.65245,
+        "Preco Praticado": 125.7,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 0.05,
+        "Variação (%)": 0.04
     }
 ]
