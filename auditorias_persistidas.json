@@ -2854,5 +2854,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 13.85,
         "Variação (%)": 8.49
+    },
+    {
+        "ID_REGISTRO": "21888_98164_105714279329",
+        "Data/Hora": "18/11/2026 07:57:14",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98164",
+        "Produto": "ACC VDF RENAL 1,5KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 176.9,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 13.83,
+        "Variação (%)": 8.48
     }
 ]
