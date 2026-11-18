@@ -4072,5 +4072,19 @@
         "Quantidade Loja": 36,
         "Diferenca (R$)": -2.29,
         "Variação (%)": -5.71
+    },
+    {
+        "ID_REGISTRO": "24310_98300_163531590231",
+        "Data/Hora": "18/11/2026 13:35:31",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98300",
+        "Produto": "ACC VDC SATIETY SUP WET 410G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 42.9,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -3.06,
+        "Variação (%)": -6.65
     }
 ]
