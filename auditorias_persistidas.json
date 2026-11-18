@@ -2938,5 +2938,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 10.9,
         "Variação (%)": 17.84
+    },
+    {
+        "ID_REGISTRO": "21888_98111_110026943456",
+        "Data/Hora": "18/11/2026 08:00:26",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98111",
+        "Produto": "ACC VDC/FEL RECOVERY WET 195G",
+        "Preco Recomendado": 40.18245000000001,
+        "Preco Praticado": 45.9,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": 5.72,
+        "Variação (%)": 14.23
     }
 ]
