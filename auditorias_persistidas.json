@@ -4338,5 +4338,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 0.02,
         "Variação (%)": 0.04
+    },
+    {
+        "ID_REGISTRO": "21921_98341_193231185483",
+        "Data/Hora": "18/11/2026 16:32:31",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98341",
+        "Produto": "ACC SHN MINI ADULT WET 85G",
+        "Preco Recomendado": 9.900776531492665,
+        "Preco Praticado": 9.9,
+        "Quantidade Loja": 12,
+        "Diferenca (R$)": -0.0,
+        "Variação (%)": -0.01
     }
 ]
