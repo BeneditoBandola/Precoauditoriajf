@@ -3386,5 +3386,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 0.0,
         "Variação (%)": 0.0
+    },
+    {
+        "ID_REGISTRO": "21873_97994_141957632202",
+        "Data/Hora": "18/11/2026 11:19:57",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "97994",
+        "Produto": "ACC SHN MINI IND PUPPY/JR 1KG",
+        "Preco Recomendado": 57.645,
+        "Preco Praticado": 75.0,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 17.35,
+        "Variação (%)": 30.11
     }
 ]
