@@ -3792,5 +3792,19 @@
         "Quantidade Loja": 28,
         "Diferenca (R$)": 2.99,
         "Variação (%)": 30.19
+    },
+    {
+        "ID_REGISTRO": "24310_98857_162347312653",
+        "Data/Hora": "18/11/2026 13:23:47",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98857",
+        "Produto": "ACC FHN STERILIS GELAT WET 85G",
+        "Preco Recomendado": 9.9,
+        "Preco Praticado": 12.89,
+        "Quantidade Loja": 41,
+        "Diferenca (R$)": 2.99,
+        "Variação (%)": 30.2
     }
 ]
