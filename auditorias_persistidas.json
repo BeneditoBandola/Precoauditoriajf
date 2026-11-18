@@ -2840,5 +2840,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 23.81,
         "Variação (%)": 18.01
+    },
+    {
+        "ID_REGISTRO": "21888_98166_105631609523",
+        "Data/Hora": "18/11/2026 07:56:31",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98166",
+        "Produto": "ACC VDF URINARY S/O 1,5KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 176.92,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 13.85,
+        "Variação (%)": 8.49
     }
 ]
