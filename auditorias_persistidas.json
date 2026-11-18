@@ -3582,5 +3582,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -8.0,
         "Variação (%)": -12.71
+    },
+    {
+        "ID_REGISTRO": "24310_98490_161448465856",
+        "Data/Hora": "18/11/2026 13:14:48",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98490",
+        "Produto": "ACC BHN POMERANIAN ADULT 1KG",
+        "Preco Recomendado": 62.89499999999998,
+        "Preco Praticado": 62.49,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -0.4,
+        "Variação (%)": -0.64
     }
 ]
