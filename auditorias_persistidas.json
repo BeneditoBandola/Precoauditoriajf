@@ -4226,5 +4226,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 0.07,
         "Variação (%)": 0.06
+    },
+    {
+        "ID_REGISTRO": "21921_99426_183423600158",
+        "Data/Hora": "18/11/2026 15:34:23",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99426",
+        "Produto": "ACC VDC GI L FAT SD 1,5KG",
+        "Preco Recomendado": 125.65245,
+        "Preco Praticado": 125.7,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 0.05,
+        "Variação (%)": 0.04
     }
 ]
