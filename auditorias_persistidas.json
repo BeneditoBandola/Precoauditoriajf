@@ -3624,5 +3624,19 @@
         "Quantidade Loja": 5,
         "Diferenca (R$)": -0.41,
         "Variação (%)": -0.64
+    },
+    {
+        "ID_REGISTRO": "24310_97991_161609781007",
+        "Data/Hora": "18/11/2026 13:16:09",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "97991",
+        "Produto": "ACC SHN MINI AD 1KG",
+        "Preco Recomendado": 55.54499999999999,
+        "Preco Praticado": 57.89,
+        "Quantidade Loja": 5,
+        "Diferenca (R$)": 2.35,
+        "Variação (%)": 4.22
     }
 ]
