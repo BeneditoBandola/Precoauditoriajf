@@ -4240,5 +4240,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 0.05,
         "Variação (%)": 0.04
+    },
+    {
+        "ID_REGISTRO": "21921_98467_192121945344",
+        "Data/Hora": "18/11/2026 16:21:21",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98467",
+        "Produto": "ACC SBN SHIH TZU PUPPY 1KG",
+        "Preco Recomendado": 59.745,
+        "Preco Praticado": 59.74,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": -0.0,
+        "Variação (%)": -0.01
     }
 ]
