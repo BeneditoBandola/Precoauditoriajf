@@ -3134,5 +3134,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 21.14,
         "Variação (%)": 11.27
+    },
+    {
+        "ID_REGISTRO": "21873_98126_131143162147",
+        "Data/Hora": "18/11/2026 10:11:43",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98126",
+        "Produto": "ACC SBN SHIH TZU AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 75.7,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 12.8,
+        "Variação (%)": 20.36
     }
 ]
