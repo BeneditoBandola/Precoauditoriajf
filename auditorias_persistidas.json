@@ -3876,5 +3876,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": -12.66,
         "Variação (%)": -6.75
+    },
+    {
+        "ID_REGISTRO": "24310_98166_162707001327",
+        "Data/Hora": "18/11/2026 13:27:07",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98166",
+        "Produto": "ACC VDF URINARY S/O 1,5KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 154.89,
+        "Quantidade Loja": 5,
+        "Diferenca (R$)": -8.18,
+        "Variação (%)": -5.02
     }
 ]
