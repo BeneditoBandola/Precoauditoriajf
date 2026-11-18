@@ -3806,5 +3806,19 @@
         "Quantidade Loja": 41,
         "Diferenca (R$)": 2.99,
         "Variação (%)": 30.2
+    },
+    {
+        "ID_REGISTRO": "24310_98117_162412324130",
+        "Data/Hora": "18/11/2026 13:24:12",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98117",
+        "Produto": "ACC FHN INSTINCTIVE WET 85G",
+        "Preco Recomendado": 9.900776531492665,
+        "Preco Praticado": 12.89,
+        "Quantidade Loja": 30,
+        "Diferenca (R$)": 2.99,
+        "Variação (%)": 30.19
     }
 ]
