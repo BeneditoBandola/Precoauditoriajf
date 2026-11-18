@@ -3652,5 +3652,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 16.11,
         "Variação (%)": 26.49
+    },
+    {
+        "ID_REGISTRO": "24310_98222_161727602867",
+        "Data/Hora": "18/11/2026 13:17:27",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98222",
+        "Produto": "ACC SHN MINI AD 8+ 1KG",
+        "Preco Recomendado": 58.695,
+        "Preco Praticado": 56.89,
+        "Quantidade Loja": 6,
+        "Diferenca (R$)": -1.8,
+        "Variação (%)": -3.08
     }
 ]
