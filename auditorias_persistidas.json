@@ -3190,5 +3190,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 13.57,
         "Variação (%)": 10.33
+    },
+    {
+        "ID_REGISTRO": "21873_98154_132026898143",
+        "Data/Hora": "18/11/2026 10:20:26",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98154",
+        "Produto": "ACC VDC SATIETY SUP 1,5KG",
+        "Preco Recomendado": 131.42745,
+        "Preco Praticado": 145.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 13.57,
+        "Variação (%)": 10.33
     }
 ]
