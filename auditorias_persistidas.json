@@ -4282,5 +4282,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 0.03,
         "Variação (%)": 0.02
+    },
+    {
+        "ID_REGISTRO": "21921_99039_192809777941",
+        "Data/Hora": "18/11/2026 16:28:09",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99039",
+        "Produto": "ACC VHN C RENAL SMALL DOG 2KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 163.1,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 0.03,
+        "Variação (%)": 0.02
     }
 ]
