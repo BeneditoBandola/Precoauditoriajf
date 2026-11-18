@@ -3120,5 +3120,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 16.86,
         "Variação (%)": 13.97
+    },
+    {
+        "ID_REGISTRO": "21873_98162_131022075596",
+        "Data/Hora": "18/11/2026 10:10:22",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98162",
+        "Produto": "ACC VDF HYPOALLERGENIC 1,5KG",
+        "Preco Recomendado": 187.56045,
+        "Preco Praticado": 208.7,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 21.14,
+        "Variação (%)": 11.27
     }
 ]
