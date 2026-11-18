@@ -3302,5 +3302,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 16.83,
         "Variação (%)": 10.32
+    },
+    {
+        "ID_REGISTRO": "21873_98353_133033158559",
+        "Data/Hora": "18/11/2026 10:30:33",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98353",
+        "Produto": "ACC SBN YORKSHIRE AD 2,5KG",
+        "Preco Recomendado": 139.545,
+        "Preco Praticado": 186.8,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 47.26,
+        "Variação (%)": 33.86
     }
 ]
