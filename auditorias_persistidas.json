@@ -3568,5 +3568,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": -3.76,
         "Variação (%)": -4.77
+    },
+    {
+        "ID_REGISTRO": "24310_98137_161423511874",
+        "Data/Hora": "18/11/2026 13:14:23",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98137",
+        "Produto": "ACC SBN PUG AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 54.9,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": -8.0,
+        "Variação (%)": -12.71
     }
 ]
