@@ -3414,5 +3414,19 @@
         "Quantidade Loja": 13,
         "Diferenca (R$)": 4.02,
         "Variação (%)": 10.0
+    },
+    {
+        "ID_REGISTRO": "21873_98104_142146847329",
+        "Data/Hora": "18/11/2026 11:21:46",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98104",
+        "Produto": "ACC VDC GAST INT WET 400G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 49.5,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 3.54,
+        "Variação (%)": 7.71
     }
 ]
