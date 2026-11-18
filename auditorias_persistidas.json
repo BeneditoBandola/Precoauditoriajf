@@ -2910,5 +2910,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 32.67,
         "Variação (%)": 17.44
+    },
+    {
+        "ID_REGISTRO": "21888_98372_105923928273",
+        "Data/Hora": "18/11/2026 07:59:23",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98372",
+        "Produto": "ACC VDC URINARY SMALL DOG 2 KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 191.0,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 27.93,
+        "Variação (%)": 17.12
     }
 ]
