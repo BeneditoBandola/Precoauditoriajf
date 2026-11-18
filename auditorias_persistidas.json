@@ -3974,5 +3974,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": -5.76,
         "Variação (%)": -4.59
+    },
+    {
+        "ID_REGISTRO": "24310_98209_163057351749",
+        "Data/Hora": "18/11/2026 13:30:57",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98209",
+        "Produto": "ACC VDC HYPOALL SMALL 2KG",
+        "Preco Recomendado": 187.32945,
+        "Preco Praticado": 177.89,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": -9.44,
+        "Variação (%)": -5.04
     }
 ]
