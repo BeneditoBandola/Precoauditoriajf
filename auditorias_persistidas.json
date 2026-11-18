@@ -2868,5 +2868,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 13.83,
         "Variação (%)": 8.48
+    },
+    {
+        "ID_REGISTRO": "21888_98307_105751663464",
+        "Data/Hora": "18/11/2026 07:57:51",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98307",
+        "Produto": "ACC VDC SATIETY SMALL D 1,5KG",
+        "Preco Recomendado": 131.42745,
+        "Preco Praticado": 143.0,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 11.57,
+        "Variação (%)": 8.81
     }
 ]
