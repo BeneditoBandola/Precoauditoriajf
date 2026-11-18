@@ -4016,5 +4016,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -6.44,
         "Variação (%)": -13.21
+    },
+    {
+        "ID_REGISTRO": "24310_98257_163302367298",
+        "Data/Hora": "18/11/2026 13:33:02",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98257",
+        "Produto": "ACC VDC HYPOALL PATE 200G",
+        "Preco Recomendado": 33.48345,
+        "Preco Praticado": 31.89,
+        "Quantidade Loja": 25,
+        "Diferenca (R$)": -1.59,
+        "Variação (%)": -4.76
     }
 ]
