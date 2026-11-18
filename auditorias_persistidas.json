@@ -3890,5 +3890,19 @@
         "Quantidade Loja": 5,
         "Diferenca (R$)": -8.18,
         "Variação (%)": -5.02
+    },
+    {
+        "ID_REGISTRO": "24310_98295_162748519720",
+        "Data/Hora": "18/11/2026 13:27:48",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98295",
+        "Produto": "ACC VDF RENAL S/O WET 85G",
+        "Preco Recomendado": 18.69945000000001,
+        "Preco Praticado": 18.69,
+        "Quantidade Loja": 36,
+        "Diferenca (R$)": -0.01,
+        "Variação (%)": -0.05
     }
 ]
