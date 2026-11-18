@@ -2966,5 +2966,19 @@
         "Quantidade Loja": 12,
         "Diferenca (R$)": 2.1,
         "Variação (%)": 21.2
+    },
+    {
+        "ID_REGISTRO": "21888_98456_110129875691",
+        "Data/Hora": "18/11/2026 08:01:29",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98456",
+        "Produto": "ACC VDF URINARY S/O WET 85G",
+        "Preco Recomendado": 18.69945000000001,
+        "Preco Praticado": 22.0,
+        "Quantidade Loja": 12,
+        "Diferenca (R$)": 3.3,
+        "Variação (%)": 17.65
     }
 ]
