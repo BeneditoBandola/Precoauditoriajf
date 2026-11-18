@@ -3106,5 +3106,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": 14.8,
         "Variação (%)": 23.54
+    },
+    {
+        "ID_REGISTRO": "21873_98063_130858131300",
+        "Data/Hora": "18/11/2026 10:08:58",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98063",
+        "Produto": "ACC FHN CASTRADOS 1,5KG",
+        "Preco Recomendado": 120.645,
+        "Preco Praticado": 137.5,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 16.86,
+        "Variação (%)": 13.97
     }
 ]
