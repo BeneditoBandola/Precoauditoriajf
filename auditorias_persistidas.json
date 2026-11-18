@@ -3988,5 +3988,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -9.44,
         "Variação (%)": -5.04
+    },
+    {
+        "ID_REGISTRO": "24310_98084_163149837973",
+        "Data/Hora": "18/11/2026 13:31:49",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98084",
+        "Produto": "ACC VDC HYPOALLERGENIC 2KG",
+        "Preco Recomendado": 187.67595,
+        "Preco Praticado": 161.89,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -25.79,
+        "Variação (%)": -13.74
     }
 ]
