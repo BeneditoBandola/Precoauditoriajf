@@ -3428,5 +3428,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 3.54,
         "Variação (%)": 7.71
+    },
+    {
+        "ID_REGISTRO": "21873_98109_142206957973",
+        "Data/Hora": "18/11/2026 11:22:06",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98109",
+        "Produto": "ACC VDC HEPATIC WET 420G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 49.5,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 3.54,
+        "Variação (%)": 7.71
     }
 ]
