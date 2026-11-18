@@ -3820,5 +3820,19 @@
         "Quantidade Loja": 30,
         "Diferenca (R$)": 2.99,
         "Variação (%)": 30.19
+    },
+    {
+        "ID_REGISTRO": "24310_98051_162445923584",
+        "Data/Hora": "18/11/2026 13:24:45",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98051",
+        "Produto": "ACC FHN KITTEN 400G",
+        "Preco Recomendado": 36.645,
+        "Preco Praticado": 37.89,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 1.24,
+        "Variação (%)": 3.4
     }
 ]
