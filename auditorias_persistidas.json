@@ -4044,5 +4044,19 @@
         "Quantidade Loja": 17,
         "Diferenca (R$)": -3.67,
         "Variação (%)": -7.98
+    },
+    {
+        "ID_REGISTRO": "24310_99285_163417037220",
+        "Data/Hora": "18/11/2026 13:34:17",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99285",
+        "Produto": "ACC VDC GAST INT L FAT PATE 420G",
+        "Preco Recomendado": 47.07836341463415,
+        "Preco Praticado": 44.89,
+        "Quantidade Loja": 14,
+        "Diferenca (R$)": -2.19,
+        "Variação (%)": -4.65
     }
 ]
