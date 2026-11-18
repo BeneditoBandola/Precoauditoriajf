@@ -3862,5 +3862,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 49.5,
         "Variação (%)": 22.46
+    },
+    {
+        "ID_REGISTRO": "24310_98162_162645667297",
+        "Data/Hora": "18/11/2026 13:26:45",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98162",
+        "Produto": "ACC VDF HYPOALLERGENIC 1,5KG",
+        "Preco Recomendado": 187.56045,
+        "Preco Praticado": 174.9,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -12.66,
+        "Variação (%)": -6.75
     }
 ]
