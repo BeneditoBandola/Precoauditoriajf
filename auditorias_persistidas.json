@@ -4184,5 +4184,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 14.4,
         "Variação (%)": 22.9
+    },
+    {
+        "ID_REGISTRO": "21921_98166_183151091122",
+        "Data/Hora": "18/11/2026 15:31:51",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98166",
+        "Produto": "ACC VDF URINARY S/O 1,5KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 163.1,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 0.03,
+        "Variação (%)": 0.02
     }
 ]
