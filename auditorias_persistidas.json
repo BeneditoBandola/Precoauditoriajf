@@ -2924,5 +2924,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 27.93,
         "Variação (%)": 17.12
+    },
+    {
+        "ID_REGISTRO": "21888_98317_105956718233",
+        "Data/Hora": "18/11/2026 07:59:56",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98317",
+        "Produto": "ACC CAT PREM AD CASTR 1KG",
+        "Preco Recomendado": 61.0995,
+        "Preco Praticado": 72.0,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 10.9,
+        "Variação (%)": 17.84
     }
 ]
