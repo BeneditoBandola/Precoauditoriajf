@@ -3596,5 +3596,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -0.4,
         "Variação (%)": -0.64
+    },
+    {
+        "ID_REGISTRO": "24310_98126_161511047284",
+        "Data/Hora": "18/11/2026 13:15:11",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98126",
+        "Produto": "ACC SBN SHIH TZU AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 62.49,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": -0.41,
+        "Variação (%)": -0.64
     }
 ]
