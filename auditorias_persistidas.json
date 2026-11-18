@@ -4380,5 +4380,19 @@
         "Quantidade Loja": 12,
         "Diferenca (R$)": -0.0,
         "Variação (%)": -0.01
+    },
+    {
+        "ID_REGISTRO": "21921_98063_193448810698",
+        "Data/Hora": "18/11/2026 16:34:48",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98063",
+        "Produto": "ACC FHN CASTRADOS 1,5KG",
+        "Preco Recomendado": 120.645,
+        "Preco Praticado": 120.65,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 0.01,
+        "Variação (%)": 0.0
     }
 ]
