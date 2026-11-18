@@ -2742,5 +2742,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 11.1,
         "Variação (%)": 17.66
+    },
+    {
+        "ID_REGISTRO": "21888_98126_104931446849",
+        "Data/Hora": "18/11/2026 07:49:31",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98126",
+        "Produto": "ACC SBN SHIH TZU AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 74.0,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 11.1,
+        "Variação (%)": 17.66
     }
 ]
