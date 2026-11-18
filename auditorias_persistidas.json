@@ -3960,5 +3960,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": -14.53,
         "Variação (%)": -11.05
+    },
+    {
+        "ID_REGISTRO": "24310_98098_163021219527",
+        "Data/Hora": "18/11/2026 13:30:21",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98098",
+        "Produto": "ACC VDC GAST INT LOW FAT 1,5KG",
+        "Preco Recomendado": 125.65245,
+        "Preco Praticado": 119.89,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -5.76,
+        "Variação (%)": -4.59
     }
 ]
