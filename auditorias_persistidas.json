@@ -3932,5 +3932,19 @@
         "Quantidade Loja": 48,
         "Diferenca (R$)": -0.01,
         "Variação (%)": -0.05
+    },
+    {
+        "ID_REGISTRO": "24310_98307_162918855769",
+        "Data/Hora": "18/11/2026 13:29:18",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98307",
+        "Produto": "ACC VDC SATIETY SMALL D 1,5KG",
+        "Preco Recomendado": 131.42745,
+        "Preco Praticado": 114.9,
+        "Quantidade Loja": 7,
+        "Diferenca (R$)": -16.53,
+        "Variação (%)": -12.58
     }
 ]
