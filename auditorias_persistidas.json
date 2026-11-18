@@ -3050,5 +3050,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 18.1,
         "Variação (%)": 28.79
+    },
+    {
+        "ID_REGISTRO": "21873_98016_130545590988",
+        "Data/Hora": "18/11/2026 10:05:45",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98016",
+        "Produto": "ACC SHN MINI IND AD 1KG",
+        "Preco Recomendado": 60.795,
+        "Preco Praticado": 69.4,
+        "Quantidade Loja": 5,
+        "Diferenca (R$)": 8.61,
+        "Variação (%)": 14.15
     }
 ]
