@@ -3008,5 +3008,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 12.57,
         "Variação (%)": 26.78
+    },
+    {
+        "ID_REGISTRO": "21873_98166_130100122488",
+        "Data/Hora": "18/11/2026 10:01:00",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98166",
+        "Produto": "ACC VDF URINARY S/O 1,5KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 175.8,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 12.73,
+        "Variação (%)": 7.8
     }
 ]
