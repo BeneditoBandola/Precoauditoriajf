@@ -3680,5 +3680,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": 10.01,
         "Variação (%)": 15.91
+    },
+    {
+        "ID_REGISTRO": "24310_98434_161829752956",
+        "Data/Hora": "18/11/2026 13:18:29",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98434",
+        "Produto": "ACC SHN MINI IND SENIOR 2,5 KG",
+        "Preco Recomendado": 135.345,
+        "Preco Praticado": 174.89,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 39.54,
+        "Variação (%)": 29.22
     }
 ]
