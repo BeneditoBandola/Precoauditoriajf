@@ -2728,5 +2728,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 42.71,
         "Variação (%)": 32.31
+    },
+    {
+        "ID_REGISTRO": "21888_98124_104912988323",
+        "Data/Hora": "18/11/2026 07:49:12",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98124",
+        "Produto": "ACC SBN YORKSHIRE AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 74.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 11.1,
+        "Variação (%)": 17.66
     }
 ]
