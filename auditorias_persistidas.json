@@ -4310,5 +4310,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 0.05,
         "Variação (%)": 0.04
+    },
+    {
+        "ID_REGISTRO": "21921_98209_193037867070",
+        "Data/Hora": "18/11/2026 16:30:37",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98209",
+        "Produto": "ACC VDC HYPOALL SMALL 2KG",
+        "Preco Recomendado": 187.32945,
+        "Preco Praticado": 187.35,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 0.02,
+        "Variação (%)": 0.01
     }
 ]
