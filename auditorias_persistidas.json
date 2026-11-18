@@ -3694,5 +3694,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 39.54,
         "Variação (%)": 29.22
+    },
+    {
+        "ID_REGISTRO": "24310_98364_161853406400",
+        "Data/Hora": "18/11/2026 13:18:53",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98364",
+        "Produto": "ACC SHN MINI IND AD 2,5KG",
+        "Preco Recomendado": 132.18975,
+        "Preco Praticado": 151.89,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 19.7,
+        "Variação (%)": 14.9
     }
 ]
