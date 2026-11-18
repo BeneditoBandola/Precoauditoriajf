@@ -3036,5 +3036,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 173.0,
         "Variação (%)": 0.0
+    },
+    {
+        "ID_REGISTRO": "21873_98433_130508483886",
+        "Data/Hora": "18/11/2026 10:05:08",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98433",
+        "Produto": "ACC SHN MINI IND SENIOR 1 KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 81.0,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 18.1,
+        "Variação (%)": 28.79
     }
 ]
