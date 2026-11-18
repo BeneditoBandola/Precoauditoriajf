@@ -4170,5 +4170,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 7.7,
         "Variação (%)": 12.67
+    },
+    {
+        "ID_REGISTRO": "21921_98433_183105979273",
+        "Data/Hora": "18/11/2026 15:31:05",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98433",
+        "Produto": "ACC SHN MINI IND SENIOR 1 KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 77.3,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 14.4,
+        "Variação (%)": 22.9
     }
 ]
