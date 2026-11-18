@@ -3540,5 +3540,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": 10.15,
         "Variação (%)": 16.98
+    },
+    {
+        "ID_REGISTRO": "24310_98019_161332404740",
+        "Data/Hora": "18/11/2026 13:13:32",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98019",
+        "Produto": "ACC SHN MINI LIGHT 1KG",
+        "Preco Recomendado": 67.09500000000001,
+        "Preco Praticado": 74.89,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": 7.79,
+        "Variação (%)": 11.62
     }
 ]
