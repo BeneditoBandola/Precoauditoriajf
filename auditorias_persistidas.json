@@ -4100,5 +4100,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": -25.74,
         "Variação (%)": -5.12
+    },
+    {
+        "ID_REGISTRO": "21921_98124_182547329857",
+        "Data/Hora": "18/11/2026 15:25:47",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98124",
+        "Produto": "ACC SBN YORKSHIRE AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 73.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 10.1,
+        "Variação (%)": 16.07
     }
 ]
