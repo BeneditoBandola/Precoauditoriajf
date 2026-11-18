@@ -3526,5 +3526,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": 0.16,
         "Variação (%)": 0.26
+    },
+    {
+        "ID_REGISTRO": "24310_98467_161306587432",
+        "Data/Hora": "18/11/2026 13:13:06",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98467",
+        "Produto": "ACC SBN SHIH TZU PUPPY 1KG",
+        "Preco Recomendado": 59.745,
+        "Preco Praticado": 69.89,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": 10.15,
+        "Variação (%)": 16.98
     }
 ]
