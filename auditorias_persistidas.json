@@ -3456,5 +3456,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 3.54,
         "Variação (%)": 7.71
+    },
+    {
+        "ID_REGISTRO": "21873_98300_142308790233",
+        "Data/Hora": "18/11/2026 11:23:08",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98300",
+        "Produto": "ACC VDC SATIETY SUP WET 410G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 49.5,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 3.54,
+        "Variação (%)": 7.71
     }
 ]
