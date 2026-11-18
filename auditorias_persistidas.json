@@ -3736,5 +3736,19 @@
         "Quantidade Loja": 23,
         "Diferenca (R$)": 2.99,
         "Variação (%)": 30.19
+    },
+    {
+        "ID_REGISTRO": "24310_98494_162041531438",
+        "Data/Hora": "18/11/2026 13:20:41",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98494",
+        "Produto": "ACC BHN SHIH TZU WET 85G",
+        "Preco Recomendado": 9.9,
+        "Preco Praticado": 14.89,
+        "Quantidade Loja": 6,
+        "Diferenca (R$)": 4.99,
+        "Variação (%)": 50.4
     }
 ]
