@@ -4030,5 +4030,19 @@
         "Quantidade Loja": 25,
         "Diferenca (R$)": -1.59,
         "Variação (%)": -4.76
+    },
+    {
+        "ID_REGISTRO": "24310_98104_163335855993",
+        "Data/Hora": "18/11/2026 13:33:35",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98104",
+        "Produto": "ACC VDC GAST INT WET 400G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 42.29,
+        "Quantidade Loja": 17,
+        "Diferenca (R$)": -3.67,
+        "Variação (%)": -7.98
     }
 ]
