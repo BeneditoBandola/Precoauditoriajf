@@ -2826,5 +2826,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 25.46,
         "Variação (%)": 18.24
+    },
+    {
+        "ID_REGISTRO": "21888_98364_105557562011",
+        "Data/Hora": "18/11/2026 07:55:57",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98364",
+        "Produto": "ACC SHN MINI IND AD 2,5KG",
+        "Preco Recomendado": 132.18975,
+        "Preco Praticado": 156.0,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 23.81,
+        "Variação (%)": 18.01
     }
 ]
