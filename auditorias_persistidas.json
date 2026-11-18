@@ -3750,5 +3750,19 @@
         "Quantidade Loja": 6,
         "Diferenca (R$)": 4.99,
         "Variação (%)": 50.4
+    },
+    {
+        "ID_REGISTRO": "24310_98440_162106600330",
+        "Data/Hora": "18/11/2026 13:21:06",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98440",
+        "Produto": "ACC BHN YORKSHIRE ADULT WET 85G",
+        "Preco Recomendado": 9.9,
+        "Preco Praticado": 14.89,
+        "Quantidade Loja": 11,
+        "Diferenca (R$)": 4.99,
+        "Variação (%)": 50.4
     }
 ]
