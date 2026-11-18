@@ -3918,5 +3918,19 @@
         "Quantidade Loja": 11,
         "Diferenca (R$)": -0.01,
         "Variação (%)": -0.05
+    },
+    {
+        "ID_REGISTRO": "24310_98456_162844522216",
+        "Data/Hora": "18/11/2026 13:28:44",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98456",
+        "Produto": "ACC VDF URINARY S/O WET 85G",
+        "Preco Recomendado": 18.69945000000001,
+        "Preco Praticado": 18.69,
+        "Quantidade Loja": 48,
+        "Diferenca (R$)": -0.01,
+        "Variação (%)": -0.05
     }
 ]
