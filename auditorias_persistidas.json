@@ -3554,5 +3554,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": 7.79,
         "Variação (%)": 11.62
+    },
+    {
+        "ID_REGISTRO": "24310_98228_161359476196",
+        "Data/Hora": "18/11/2026 13:13:59",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98228",
+        "Produto": "ACC SHN MINI DERMAC 1KG",
+        "Preco Recomendado": 78.64500000000001,
+        "Preco Praticado": 74.89,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -3.76,
+        "Variação (%)": -4.77
     }
 ]
