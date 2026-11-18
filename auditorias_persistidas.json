@@ -3400,5 +3400,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 17.35,
         "Variação (%)": 30.11
+    },
+    {
+        "ID_REGISTRO": "21873_98111_142109541087",
+        "Data/Hora": "18/11/2026 11:21:09",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98111",
+        "Produto": "ACC VDC/FEL RECOVERY WET 195G",
+        "Preco Recomendado": 40.18245000000001,
+        "Preco Praticado": 44.2,
+        "Quantidade Loja": 13,
+        "Diferenca (R$)": 4.02,
+        "Variação (%)": 10.0
     }
 ]
