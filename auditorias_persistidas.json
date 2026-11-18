@@ -2756,5 +2756,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 11.1,
         "Variação (%)": 17.66
+    },
+    {
+        "ID_REGISTRO": "21888_98469_105000435788",
+        "Data/Hora": "18/11/2026 07:50:00",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98469",
+        "Produto": "ACC SBN YORKSHIRE PUPPY 1KG",
+        "Preco Recomendado": 59.745,
+        "Preco Praticado": 65.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 5.26,
+        "Variação (%)": 8.8
     }
 ]
