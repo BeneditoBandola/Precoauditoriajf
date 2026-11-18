@@ -3148,5 +3148,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 12.8,
         "Variação (%)": 20.36
+    },
+    {
+        "ID_REGISTRO": "21873_98144_131227117517",
+        "Data/Hora": "18/11/2026 10:12:27",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98144",
+        "Produto": "ACC SBN MALTES AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 77.7,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 14.8,
+        "Variação (%)": 23.54
     }
 ]
