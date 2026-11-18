@@ -4198,5 +4198,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 0.03,
         "Variação (%)": 0.02
+    },
+    {
+        "ID_REGISTRO": "21921_98164_183222752486",
+        "Data/Hora": "18/11/2026 15:32:22",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98164",
+        "Produto": "ACC VDF RENAL 1,5KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 163.1,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 0.03,
+        "Variação (%)": 0.02
     }
 ]
