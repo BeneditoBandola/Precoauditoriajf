@@ -2784,5 +2784,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 21.85,
         "Variação (%)": 37.91
+    },
+    {
+        "ID_REGISTRO": "21888_98179_105118842587",
+        "Data/Hora": "18/11/2026 07:51:18",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98179",
+        "Produto": "ACC SHN X-SMALL PUPPY/JR 1KG",
+        "Preco Recomendado": 72.29145000000001,
+        "Preco Praticado": 79.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 6.71,
+        "Variação (%)": 9.28
     }
 ]
