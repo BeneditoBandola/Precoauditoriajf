@@ -2812,5 +2812,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 11.2,
         "Variação (%)": 18.43
+    },
+    {
+        "ID_REGISTRO": "21888_98467_105210126357",
+        "Data/Hora": "18/11/2026 07:52:10",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98467",
+        "Produto": "ACC SBN SHIH TZU PUPPY 1KG",
+        "Preco Recomendado": 59.745,
+        "Preco Praticado": 71.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 11.26,
+        "Variação (%)": 18.84
     }
 ]
