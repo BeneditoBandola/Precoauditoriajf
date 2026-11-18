@@ -3708,5 +3708,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 19.7,
         "Variação (%)": 14.9
+    },
+    {
+        "ID_REGISTRO": "24310_98343_161946683289",
+        "Data/Hora": "18/11/2026 13:19:46",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98343",
+        "Produto": "ACC SHN MINI PUPPY WET  85G",
+        "Preco Recomendado": 9.900776531492665,
+        "Preco Praticado": 12.89,
+        "Quantidade Loja": 22,
+        "Diferenca (R$)": 2.99,
+        "Variação (%)": 30.19
     }
 ]
