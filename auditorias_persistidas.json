@@ -4366,5 +4366,19 @@
         "Quantidade Loja": 12,
         "Diferenca (R$)": 0.0,
         "Variação (%)": 0.0
+    },
+    {
+        "ID_REGISTRO": "21921_98245_193413193130",
+        "Data/Hora": "18/11/2026 16:34:13",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98245",
+        "Produto": "ACC FHN STERILIS SALSA WET 85G",
+        "Preco Recomendado": 9.900776531492665,
+        "Preco Praticado": 9.9,
+        "Quantidade Loja": 12,
+        "Diferenca (R$)": -0.0,
+        "Variação (%)": -0.01
     }
 ]
