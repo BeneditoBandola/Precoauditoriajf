@@ -3078,5 +3078,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 20.35,
         "Variação (%)": 34.07
+    },
+    {
+        "ID_REGISTRO": "21873_98467_130719136613",
+        "Data/Hora": "18/11/2026 10:07:19",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98467",
+        "Produto": "ACC SBN SHIH TZU PUPPY 1KG",
+        "Preco Recomendado": 59.745,
+        "Preco Praticado": 79.95,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 20.21,
+        "Variação (%)": 33.82
     }
 ]
