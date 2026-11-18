@@ -4268,5 +4268,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": -0.0,
         "Variação (%)": -0.01
+    },
+    {
+        "ID_REGISTRO": "21921_98372_192631479629",
+        "Data/Hora": "18/11/2026 16:26:31",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98372",
+        "Produto": "ACC VDC URINARY SMALL DOG 2 KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 163.1,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 0.03,
+        "Variação (%)": 0.02
     }
 ]
