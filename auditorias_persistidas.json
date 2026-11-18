@@ -4394,5 +4394,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 0.01,
         "Variação (%)": 0.0
+    },
+    {
+        "ID_REGISTRO": "21921_98317_193621214003",
+        "Data/Hora": "18/11/2026 16:36:21",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98317",
+        "Produto": "ACC CAT PREM AD CASTR 1KG",
+        "Preco Recomendado": 61.0995,
+        "Preco Praticado": 61.1,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 0.0,
+        "Variação (%)": 0.0
     }
 ]
