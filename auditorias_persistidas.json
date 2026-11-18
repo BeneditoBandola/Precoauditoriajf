@@ -3834,5 +3834,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 1.24,
         "Variação (%)": 3.4
+    },
+    {
+        "ID_REGISTRO": "24310_98068_162508051051",
+        "Data/Hora": "18/11/2026 13:25:08",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98068",
+        "Produto": "ACC FBN PERSIAN 400G",
+        "Preco Recomendado": 43.974,
+        "Preco Praticado": 41.89,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": -2.08,
+        "Variação (%)": -4.74
     }
 ]
