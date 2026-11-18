@@ -2882,5 +2882,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 11.57,
         "Variação (%)": 8.81
+    },
+    {
+        "ID_REGISTRO": "21888_99426_105813435580",
+        "Data/Hora": "18/11/2026 07:58:13",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99426",
+        "Produto": "ACC VDC GI L FAT SD 1,5KG",
+        "Preco Recomendado": 125.65245,
+        "Preco Praticado": 148.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 22.35,
+        "Variação (%)": 17.79
     }
 ]
