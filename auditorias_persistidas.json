@@ -4142,5 +4142,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 8.26,
         "Variação (%)": 14.86
+    },
+    {
+        "ID_REGISTRO": "21921_98222_182902508680",
+        "Data/Hora": "18/11/2026 15:29:02",
+        "Código Loja": 21921,
+        "Nome Loja": "CINTHIA COELHO PET SHOP PRODUTOS PARA ANIMAIS LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98222",
+        "Produto": "ACC SHN MINI AD 8+ 1KG",
+        "Preco Recomendado": 58.695,
+        "Preco Praticado": 73.8,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 15.1,
+        "Variação (%)": 25.73
     }
 ]
