@@ -3232,5 +3232,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 14.25,
         "Variação (%)": 11.34
+    },
+    {
+        "ID_REGISTRO": "21873_98098_132340281302",
+        "Data/Hora": "18/11/2026 10:23:40",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98098",
+        "Produto": "ACC VDC GAST INT LOW FAT 1,5KG",
+        "Preco Recomendado": 125.65245,
+        "Preco Praticado": 139.9,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 14.25,
+        "Variação (%)": 11.34
     }
 ]
