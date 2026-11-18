@@ -3848,5 +3848,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": -2.08,
         "Variação (%)": -4.74
+    },
+    {
+        "ID_REGISTRO": "24310_98383_162537756095",
+        "Data/Hora": "18/11/2026 13:25:37",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98383",
+        "Produto": "ACC FHN CASTRADOS 4KG",
+        "Preco Recomendado": 220.395,
+        "Preco Praticado": 269.9,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 49.5,
+        "Variação (%)": 22.46
     }
 ]
