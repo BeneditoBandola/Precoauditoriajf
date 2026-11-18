@@ -3946,5 +3946,19 @@
         "Quantidade Loja": 7,
         "Diferenca (R$)": -16.53,
         "Variação (%)": -12.58
+    },
+    {
+        "ID_REGISTRO": "24310_98154_162946198110",
+        "Data/Hora": "18/11/2026 13:29:46",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98154",
+        "Produto": "ACC VDC SATIETY SUP 1,5KG",
+        "Preco Recomendado": 131.42745,
+        "Preco Praticado": 116.9,
+        "Quantidade Loja": 4,
+        "Diferenca (R$)": -14.53,
+        "Variação (%)": -11.05
     }
 ]
