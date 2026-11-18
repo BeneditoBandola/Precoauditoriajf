@@ -3022,5 +3022,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 12.73,
         "Variação (%)": 7.8
+    },
+    {
+        "ID_REGISTRO": "21873_98163_130311373104",
+        "Data/Hora": "18/11/2026 10:03:11",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98163",
+        "Produto": "GASTRO FHN 1,5",
+        "Preco Recomendado": 0.0,
+        "Preco Praticado": 173.0,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 173.0,
+        "Variação (%)": 0.0
     }
 ]
