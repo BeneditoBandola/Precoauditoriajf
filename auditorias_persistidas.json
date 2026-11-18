@@ -2952,5 +2952,19 @@
         "Quantidade Loja": 4,
         "Diferenca (R$)": 5.72,
         "Variação (%)": 14.23
+    },
+    {
+        "ID_REGISTRO": "21888_98245_110101656413",
+        "Data/Hora": "18/11/2026 08:01:01",
+        "Código Loja": 21888,
+        "Nome Loja": "RR AGROPECUARIA DE JUIZ DE FORA LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98245",
+        "Produto": "ACC FHN STERILIS SALSA WET 85G",
+        "Preco Recomendado": 9.900776531492665,
+        "Preco Praticado": 12.0,
+        "Quantidade Loja": 12,
+        "Diferenca (R$)": 2.1,
+        "Variação (%)": 21.2
     }
 ]
