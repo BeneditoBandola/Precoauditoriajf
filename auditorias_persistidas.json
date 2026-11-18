@@ -3484,5 +3484,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 0.77,
         "Variação (%)": 1.58
+    },
+    {
+        "ID_REGISTRO": "24310_97994_161135571002",
+        "Data/Hora": "18/11/2026 13:11:35",
+        "Código Loja": 24310,
+        "Nome Loja": "SUPERMERCADO BAHAMAS S/A",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "97994",
+        "Produto": "ACC SHN MINI IND PUPPY/JR 1KG",
+        "Preco Recomendado": 57.645,
+        "Preco Praticado": 62.49,
+        "Quantidade Loja": 9,
+        "Diferenca (R$)": 4.84,
+        "Variação (%)": 8.4
     }
 ]
