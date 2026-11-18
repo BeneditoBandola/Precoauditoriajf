@@ -3372,5 +3372,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 15.0,
         "Variação (%)": 28.64
+    },
+    {
+        "ID_REGISTRO": "21873_98219_141432715048",
+        "Data/Hora": "18/11/2026 11:14:32",
+        "Código Loja": 21873,
+        "Nome Loja": "CRISTIANO REZENDE TOSTES",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98219",
+        "Produto": "ACC VDC DIABETIC 1,5KG",
+        "Preco Recomendado": 131.42745,
+        "Preco Praticado": 131.43,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 0.0,
+        "Variação (%)": 0.0
     }
 ]
