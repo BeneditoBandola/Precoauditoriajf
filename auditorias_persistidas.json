@@ -4758,5 +4758,19 @@
         "Quantidade Loja": 17,
         "Diferenca (R$)": 1.65,
         "Variação (%)": 8.83
+    },
+    {
+        "ID_REGISTRO": "22341_98456_131505750626",
+        "Data/Hora": "19/11/2026 10:15:05",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98456",
+        "Produto": "ACC VDF URINARY S/O WET 85G",
+        "Preco Recomendado": 18.69945000000001,
+        "Preco Praticado": 20.3,
+        "Quantidade Loja": 16,
+        "Diferenca (R$)": 1.6,
+        "Variação (%)": 8.56
     }
 ]
