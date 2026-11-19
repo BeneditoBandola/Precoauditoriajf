@@ -4436,5 +4436,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 9.05,
         "Variação (%)": 14.4
+    },
+    {
+        "ID_REGISTRO": "22341_97994_120339667321",
+        "Data/Hora": "19/11/2026 09:03:39",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "97994",
+        "Produto": "ACC SHN MINI IND PUPPY/JR 1KG",
+        "Preco Recomendado": 57.645,
+        "Preco Praticado": 58.5,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 0.85,
+        "Variação (%)": 1.48
     }
 ]
