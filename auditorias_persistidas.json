@@ -4786,5 +4786,19 @@
         "Quantidade Loja": 3,
         "Diferenca (R$)": 2.77,
         "Variação (%)": 6.89
+    },
+    {
+        "ID_REGISTRO": "22341_98296_131609434439",
+        "Data/Hora": "19/11/2026 10:16:09",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98296",
+        "Produto": "ACC VDC RENAL WET 410G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 49.95,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 3.99,
+        "Variação (%)": 8.69
     }
 ]
