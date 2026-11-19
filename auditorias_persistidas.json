@@ -4464,5 +4464,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 1.01,
         "Variação (%)": 1.54
+    },
+    {
+        "ID_REGISTRO": "22341_98433_120521399262",
+        "Data/Hora": "19/11/2026 09:05:21",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98433",
+        "Produto": "ACC SHN MINI IND SENIOR 1 KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 63.85,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 0.95,
+        "Variação (%)": 1.52
     }
 ]
