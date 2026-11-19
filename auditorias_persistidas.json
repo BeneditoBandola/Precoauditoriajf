@@ -5122,5 +5122,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 7.36,
         "Variação (%)": 13.24
+    },
+    {
+        "ID_REGISTRO": "21294_97994_174000083249",
+        "Data/Hora": "19/11/2026 14:40:00",
+        "Código Loja": 21294,
+        "Nome Loja": "VETERINARIA MENDES ANDRADE LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "97994",
+        "Produto": "ACC SHN MINI IND PUPPY/JR 1KG",
+        "Preco Recomendado": 57.645,
+        "Preco Praticado": 73.9,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 16.26,
+        "Variação (%)": 28.2
     }
 ]
