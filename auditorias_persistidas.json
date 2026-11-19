@@ -4940,5 +4940,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 2.48,
         "Variação (%)": 1.52
+    },
+    {
+        "ID_REGISTRO": "22341_98092_132527408425",
+        "Data/Hora": "19/11/2026 10:25:27",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98092",
+        "Produto": "ACC VDC HEPATIC 2KG",
+        "Preco Recomendado": 166.53945,
+        "Preco Praticado": 169.05,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 2.51,
+        "Variação (%)": 1.51
     }
 ]
