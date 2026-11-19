@@ -5080,5 +5080,19 @@
         "Quantidade Loja": 13,
         "Diferenca (R$)": 8.47,
         "Variação (%)": 6.45
+    },
+    {
+        "ID_REGISTRO": "21294_98184_173628229979",
+        "Data/Hora": "19/11/2026 14:36:28",
+        "Código Loja": 21294,
+        "Nome Loja": "VETERINARIA MENDES ANDRADE LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98184",
+        "Produto": "ACC FHN KIT STERILI 1,5KG",
+        "Preco Recomendado": 120.645,
+        "Preco Praticado": 120.7,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 0.06,
+        "Variação (%)": 0.05
     }
 ]
