@@ -5094,5 +5094,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 0.06,
         "Variação (%)": 0.05
+    },
+    {
+        "ID_REGISTRO": "21294_98062_173719064862",
+        "Data/Hora": "19/11/2026 14:37:19",
+        "Código Loja": 21294,
+        "Nome Loja": "VETERINARIA MENDES ANDRADE LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98062",
+        "Produto": "ACC FHN CASTRADOS 400G",
+        "Preco Recomendado": 36.645,
+        "Preco Praticado": 37.5,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 0.85,
+        "Variação (%)": 2.33
     }
 ]
