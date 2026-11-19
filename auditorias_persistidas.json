@@ -4968,5 +4968,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 2.58,
         "Variação (%)": 1.58
+    },
+    {
+        "ID_REGISTRO": "22341_99039_132650943084",
+        "Data/Hora": "19/11/2026 10:26:50",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99039",
+        "Produto": "ACC VHN C RENAL SMALL DOG 2KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 167.1,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 4.03,
+        "Variação (%)": 2.47
     }
 ]
