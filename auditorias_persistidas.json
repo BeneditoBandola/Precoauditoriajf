@@ -4520,5 +4520,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 1.91,
         "Variação (%)": 1.51
+    },
+    {
+        "ID_REGISTRO": "22341_98719_120716017704",
+        "Data/Hora": "19/11/2026 09:07:16",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98719",
+        "Produto": "ACC CCN MINI DIGEST CARE 2,5KG",
+        "Preco Recomendado": 171.045,
+        "Preco Praticado": 173.65,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 2.61,
+        "Variação (%)": 1.52
     }
 ]
