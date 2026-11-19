@@ -4744,5 +4744,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 0.72,
         "Variação (%)": 1.53
+    },
+    {
+        "ID_REGISTRO": "22341_98295_130349315176",
+        "Data/Hora": "19/11/2026 10:03:49",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98295",
+        "Produto": "ACC VDF RENAL S/O WET 85G",
+        "Preco Recomendado": 18.69945000000001,
+        "Preco Praticado": 20.35,
+        "Quantidade Loja": 17,
+        "Diferenca (R$)": 1.65,
+        "Variação (%)": 8.83
     }
 ]
