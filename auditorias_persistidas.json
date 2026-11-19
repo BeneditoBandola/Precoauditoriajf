@@ -4772,5 +4772,19 @@
         "Quantidade Loja": 16,
         "Diferenca (R$)": 1.6,
         "Variação (%)": 8.56
+    },
+    {
+        "ID_REGISTRO": "22341_98111_131538343646",
+        "Data/Hora": "19/11/2026 10:15:38",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98111",
+        "Produto": "ACC VDC/FEL RECOVERY WET 195G",
+        "Preco Recomendado": 40.18245000000001,
+        "Preco Praticado": 42.95,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 2.77,
+        "Variação (%)": 6.89
     }
 ]
