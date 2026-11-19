@@ -4954,5 +4954,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 2.51,
         "Variação (%)": 1.51
+    },
+    {
+        "ID_REGISTRO": "22341_98086_132616111346",
+        "Data/Hora": "19/11/2026 10:26:16",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98086",
+        "Produto": "ACC VDC GAST INT 2KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 165.65,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 2.58,
+        "Variação (%)": 1.58
     }
 ]
