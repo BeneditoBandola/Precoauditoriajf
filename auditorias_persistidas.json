@@ -4604,5 +4604,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 20.05,
         "Variação (%)": 16.62
+    },
+    {
+        "ID_REGISTRO": "22341_98321_122004840463",
+        "Data/Hora": "19/11/2026 09:20:04",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98321",
+        "Produto": "ACC CAT PREM FILHOTE 1KG",
+        "Preco Recomendado": 65.9295,
+        "Preco Praticado": 66.95,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 1.02,
+        "Variação (%)": 1.55
     }
 ]
