@@ -4884,5 +4884,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 2.82,
         "Variação (%)": 1.51
+    },
+    {
+        "ID_REGISTRO": "22341_99426_132112297638",
+        "Data/Hora": "19/11/2026 10:21:12",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99426",
+        "Produto": "ACC VDC GI L FAT SD 1,5KG",
+        "Preco Recomendado": 125.65245,
+        "Preco Praticado": 127.55,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 1.9,
+        "Variação (%)": 1.51
     }
 ]
