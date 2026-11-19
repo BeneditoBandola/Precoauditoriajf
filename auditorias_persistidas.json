@@ -4688,5 +4688,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 2.57,
         "Variação (%)": 1.51
+    },
+    {
+        "ID_REGISTRO": "22341_98162_124545034724",
+        "Data/Hora": "19/11/2026 09:45:45",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98162",
+        "Produto": "ACC VDF HYPOALLERGENIC 1,5KG",
+        "Preco Recomendado": 187.56045,
+        "Preco Praticado": 187.8,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 0.24,
+        "Variação (%)": 0.13
     }
 ]
