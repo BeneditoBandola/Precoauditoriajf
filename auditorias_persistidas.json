@@ -5052,5 +5052,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 2.57,
         "Variação (%)": 1.37
+    },
+    {
+        "ID_REGISTRO": "21294_99426_173139852046",
+        "Data/Hora": "19/11/2026 14:31:39",
+        "Código Loja": 21294,
+        "Nome Loja": "VETERINARIA MENDES ANDRADE LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99426",
+        "Produto": "ACC VDC GI L FAT SD 1,5KG",
+        "Preco Recomendado": 125.65245,
+        "Preco Praticado": 134.9,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 9.25,
+        "Variação (%)": 7.36
     }
 ]
