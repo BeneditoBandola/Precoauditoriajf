@@ -4506,5 +4506,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 0.86,
         "Variação (%)": 1.54
+    },
+    {
+        "ID_REGISTRO": "22341_98350_120634059366",
+        "Data/Hora": "19/11/2026 09:06:34",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98350",
+        "Produto": "ACC SHN MINI IND PUPPY/JR 2,5K",
+        "Preco Recomendado": 125.895,
+        "Preco Praticado": 127.8,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 1.91,
+        "Variação (%)": 1.51
     }
 ]
