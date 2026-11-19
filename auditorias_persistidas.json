@@ -4422,5 +4422,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 9.05,
         "Variação (%)": 14.4
+    },
+    {
+        "ID_REGISTRO": "22341_98126_120253423654",
+        "Data/Hora": "19/11/2026 09:02:53",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98126",
+        "Produto": "ACC SBN SHIH TZU AD 1KG",
+        "Preco Recomendado": 62.895,
+        "Preco Praticado": 71.95,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 9.05,
+        "Variação (%)": 14.4
     }
 ]
