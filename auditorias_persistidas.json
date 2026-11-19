@@ -4590,5 +4590,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 8.66,
         "Variação (%)": 7.17
+    },
+    {
+        "ID_REGISTRO": "22341_98190_121930243187",
+        "Data/Hora": "19/11/2026 09:19:30",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98190",
+        "Produto": "ACC FHN MOTHER BABY 1,5KG",
+        "Preco Recomendado": 120.645,
+        "Preco Praticado": 140.7,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 20.05,
+        "Variação (%)": 16.62
     }
 ]
