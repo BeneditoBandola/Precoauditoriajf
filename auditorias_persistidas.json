@@ -4828,5 +4828,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 3.99,
         "Variação (%)": 8.69
+    },
+    {
+        "ID_REGISTRO": "22341_98300_131806655220",
+        "Data/Hora": "19/11/2026 10:18:06",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98300",
+        "Produto": "ACC VDC SATIETY SUP WET 410G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 49.95,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 3.99,
+        "Variação (%)": 8.69
     }
 ]
