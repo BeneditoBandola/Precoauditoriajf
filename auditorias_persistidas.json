@@ -5192,5 +5192,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 3.36,
         "Variação (%)": 2.4
+    },
+    {
+        "ID_REGISTRO": "21294_98341_174417548462",
+        "Data/Hora": "19/11/2026 14:44:17",
+        "Código Loja": 21294,
+        "Nome Loja": "VETERINARIA MENDES ANDRADE LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98341",
+        "Produto": "ACC SHN MINI ADULT WET 85G",
+        "Preco Recomendado": 9.900776531492665,
+        "Preco Praticado": 9.9,
+        "Quantidade Loja": 12,
+        "Diferenca (R$)": -0.0,
+        "Variação (%)": -0.01
     }
 ]
