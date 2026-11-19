@@ -4926,5 +4926,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 1.87,
         "Variação (%)": 1.42
+    },
+    {
+        "ID_REGISTRO": "22341_98372_132451692646",
+        "Data/Hora": "19/11/2026 10:24:51",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98372",
+        "Produto": "ACC VDC URINARY SMALL DOG 2 KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 165.55,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 2.48,
+        "Variação (%)": 1.52
     }
 ]
