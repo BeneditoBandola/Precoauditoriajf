@@ -5024,5 +5024,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 9.83,
         "Variação (%)": 6.03
+    },
+    {
+        "ID_REGISTRO": "21294_98166_172837550139",
+        "Data/Hora": "19/11/2026 14:28:37",
+        "Código Loja": 21294,
+        "Nome Loja": "VETERINARIA MENDES ANDRADE LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98166",
+        "Produto": "ACC VDF URINARY S/O 1,5KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 169.9,
+        "Quantidade Loja": 3,
+        "Diferenca (R$)": 6.83,
+        "Variação (%)": 4.19
     }
 ]
