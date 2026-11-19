@@ -4450,5 +4450,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 0.85,
         "Variação (%)": 1.48
+    },
+    {
+        "ID_REGISTRO": "22341_98175_120417612745",
+        "Data/Hora": "19/11/2026 09:04:17",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98175",
+        "Produto": "ACC SHN X-SMALL AD 1KG",
+        "Preco Recomendado": 65.59245000000001,
+        "Preco Praticado": 66.6,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 1.01,
+        "Variação (%)": 1.54
     }
 ]
