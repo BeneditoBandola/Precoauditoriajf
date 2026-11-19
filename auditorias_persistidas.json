@@ -4912,5 +4912,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 1.9,
         "Variação (%)": 1.51
+    },
+    {
+        "ID_REGISTRO": "22341_98307_132420900033",
+        "Data/Hora": "19/11/2026 10:24:20",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98307",
+        "Produto": "ACC VDC SATIETY SMALL D 1,5KG",
+        "Preco Recomendado": 131.42745,
+        "Preco Praticado": 133.3,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 1.87,
+        "Variação (%)": 1.42
     }
 ]
