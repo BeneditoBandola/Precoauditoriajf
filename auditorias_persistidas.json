@@ -4842,5 +4842,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 3.99,
         "Variação (%)": 8.69
+    },
+    {
+        "ID_REGISTRO": "22341_98109_131825380800",
+        "Data/Hora": "19/11/2026 10:18:25",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98109",
+        "Produto": "ACC VDC HEPATIC WET 420G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 50.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 4.04,
+        "Variação (%)": 8.8
     }
 ]
