@@ -4898,5 +4898,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 1.9,
         "Variação (%)": 1.51
+    },
+    {
+        "ID_REGISTRO": "22341_98098_132333025712",
+        "Data/Hora": "19/11/2026 10:23:33",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98098",
+        "Produto": "ACC VDC GAST INT LOW FAT 1,5KG",
+        "Preco Recomendado": 125.65245,
+        "Preco Praticado": 127.55,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 1.9,
+        "Variação (%)": 1.51
     }
 ]
