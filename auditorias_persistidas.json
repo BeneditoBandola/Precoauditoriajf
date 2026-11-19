@@ -5164,5 +5164,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 12.01,
         "Variação (%)": 19.09
+    },
+    {
+        "ID_REGISTRO": "21294_98353_174250758380",
+        "Data/Hora": "19/11/2026 14:42:50",
+        "Código Loja": 21294,
+        "Nome Loja": "VETERINARIA MENDES ANDRADE LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98353",
+        "Produto": "ACC SBN YORKSHIRE AD 2,5KG",
+        "Preco Recomendado": 139.545,
+        "Preco Praticado": 142.9,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 3.36,
+        "Variação (%)": 2.4
     }
 ]
