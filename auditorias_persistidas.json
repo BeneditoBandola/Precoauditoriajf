@@ -4702,5 +4702,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 0.24,
         "Variação (%)": 0.13
+    },
+    {
+        "ID_REGISTRO": "22341_98164_124753358609",
+        "Data/Hora": "19/11/2026 09:47:53",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98164",
+        "Produto": "ACC VDF RENAL 1,5KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 165.55,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 2.48,
+        "Variação (%)": 1.52
     }
 ]
