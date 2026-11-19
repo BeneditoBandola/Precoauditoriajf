@@ -4618,5 +4618,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 1.02,
         "Variação (%)": 1.55
+    },
+    {
+        "ID_REGISTRO": "22341_98364_122151510717",
+        "Data/Hora": "19/11/2026 09:21:51",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98364",
+        "Produto": "ACC SHN MINI IND AD 2,5KG",
+        "Preco Recomendado": 132.18975,
+        "Preco Praticado": 136.7,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 4.51,
+        "Variação (%)": 3.41
     }
 ]
