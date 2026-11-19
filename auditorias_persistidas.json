@@ -4548,5 +4548,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 43.15,
         "Variação (%)": 0.0
+    },
+    {
+        "ID_REGISTRO": "22341_98059_121800608165",
+        "Data/Hora": "19/11/2026 09:18:00",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98059",
+        "Produto": "ACC FHN EXIGENT 400G",
+        "Preco Recomendado": 36.645,
+        "Preco Praticado": 37.5,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 0.85,
+        "Variação (%)": 2.33
     }
 ]
