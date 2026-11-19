@@ -4534,5 +4534,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 2.61,
         "Variação (%)": 1.52
+    },
+    {
+        "ID_REGISTRO": "22341_98168_121417742511",
+        "Data/Hora": "19/11/2026 09:14:17",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98168",
+        "Produto": "GATO IDOSOS CASTRADOS 12 400G",
+        "Preco Recomendado": 0.0,
+        "Preco Praticado": 43.15,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 43.15,
+        "Variação (%)": 0.0
     }
 ]
