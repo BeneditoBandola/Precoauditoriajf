@@ -5206,5 +5206,19 @@
         "Quantidade Loja": 12,
         "Diferenca (R$)": -0.0,
         "Variação (%)": -0.01
+    },
+    {
+        "ID_REGISTRO": "21294_98857_174457666304",
+        "Data/Hora": "19/11/2026 14:44:57",
+        "Código Loja": 21294,
+        "Nome Loja": "VETERINARIA MENDES ANDRADE LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98857",
+        "Produto": "ACC FHN STERILIS GELAT WET 85G",
+        "Preco Recomendado": 9.9,
+        "Preco Praticado": 9.9,
+        "Quantidade Loja": 12,
+        "Diferenca (R$)": 0.0,
+        "Variação (%)": 0.0
     }
 ]
