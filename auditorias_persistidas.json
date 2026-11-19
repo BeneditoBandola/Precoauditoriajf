@@ -4674,5 +4674,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 165.55,
         "Variação (%)": 0.0
+    },
+    {
+        "ID_REGISTRO": "22341_98102_124513792253",
+        "Data/Hora": "19/11/2026 09:45:13",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98102",
+        "Produto": "ACC VDF DIABETIC 1,5KG",
+        "Preco Recomendado": 170.58195,
+        "Preco Praticado": 173.15,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 2.57,
+        "Variação (%)": 1.51
     }
 ]
