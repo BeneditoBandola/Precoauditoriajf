@@ -4660,5 +4660,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 2.57,
         "Variação (%)": 1.51
+    },
+    {
+        "ID_REGISTRO": "22341_98163_124420941749",
+        "Data/Hora": "19/11/2026 09:44:20",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98163",
+        "Produto": "GASTRO FHN 1,5",
+        "Preco Recomendado": 0.0,
+        "Preco Praticado": 165.55,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 165.55,
+        "Variação (%)": 0.0
     }
 ]
