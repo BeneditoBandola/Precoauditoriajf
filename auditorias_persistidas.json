@@ -5220,5 +5220,19 @@
         "Quantidade Loja": 12,
         "Diferenca (R$)": 0.0,
         "Variação (%)": 0.0
+    },
+    {
+        "ID_REGISTRO": "21294_98111_174536674644",
+        "Data/Hora": "19/11/2026 14:45:36",
+        "Código Loja": 21294,
+        "Nome Loja": "VETERINARIA MENDES ANDRADE LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98111",
+        "Produto": "ACC VDC/FEL RECOVERY WET 195G",
+        "Preco Recomendado": 40.18245000000001,
+        "Preco Praticado": 39.9,
+        "Quantidade Loja": 16,
+        "Diferenca (R$)": -0.28,
+        "Variação (%)": -0.7
     }
 ]
