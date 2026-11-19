@@ -4800,5 +4800,19 @@
         "Quantidade Loja": 2,
         "Diferenca (R$)": 3.99,
         "Variação (%)": 8.69
+    },
+    {
+        "ID_REGISTRO": "22341_98110_131647391519",
+        "Data/Hora": "19/11/2026 10:16:47",
+        "Código Loja": 22341,
+        "Nome Loja": "SITIOS E QUINTAIS PET LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98110",
+        "Produto": "ACC VDC CARDIAC PATE 410G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 50.0,
+        "Quantidade Loja": 1,
+        "Diferenca (R$)": 4.04,
+        "Variação (%)": 8.8
     }
 ]
