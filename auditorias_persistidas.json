@@ -5234,5 +5234,19 @@
         "Quantidade Loja": 16,
         "Diferenca (R$)": -0.28,
         "Variação (%)": -0.7
+    },
+    {
+        "ID_REGISTRO": "21294_98296_174631711280",
+        "Data/Hora": "19/11/2026 14:46:31",
+        "Código Loja": 21294,
+        "Nome Loja": "VETERINARIA MENDES ANDRADE LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "98296",
+        "Produto": "ACC VDC RENAL WET 410G",
+        "Preco Recomendado": 45.95745000000001,
+        "Preco Praticado": 45.96,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 0.0,
+        "Variação (%)": 0.01
     }
 ]
