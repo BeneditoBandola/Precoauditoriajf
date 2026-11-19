@@ -4996,5 +4996,19 @@
         "Quantidade Loja": 1,
         "Diferenca (R$)": 11.12,
         "Variação (%)": 8.46
+    },
+    {
+        "ID_REGISTRO": "21294_99039_172656384476",
+        "Data/Hora": "19/11/2026 14:26:56",
+        "Código Loja": 21294,
+        "Nome Loja": "VETERINARIA MENDES ANDRADE LTDA",
+        "Cidade": "JUIZ DE FORA",
+        "Código Produto": "99039",
+        "Produto": "ACC VHN C RENAL SMALL DOG 2KG",
+        "Preco Recomendado": 163.07445,
+        "Preco Praticado": 169.9,
+        "Quantidade Loja": 2,
+        "Diferenca (R$)": 6.83,
+        "Variação (%)": 4.19
     }
 ]
